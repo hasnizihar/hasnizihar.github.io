@@ -1,0 +1,136 @@
+body{
+    font-family: Gotham;
+    background-color: #1F1F1F;
+    
+    
+}
+.main_card{
+    background-color: #181818;
+    /* box-shadow: 8px 8px 20px 4px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0 20px 2px #48abe0;
+    /* width: 400px;
+    height: 300px; */
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    animation: fadeInUp 3s ease-out;
+    
+}
+.sm_icon a img{
+    width: 30px;
+    padding: 5px;
+    filter: opacity(70%);
+    
+    
+    
+
+}
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1; 
+    }
+  }
+  
+.sm_icon{
+    width: 40px;
+    height: 40px;
+    background-color: #181818;
+    border-radius: 25%;
+    margin: 5px;
+    transition: transform .2s;
+    /* box-shadow: inset 0px 0px 6px 7px rgba(0,0,0,0.2); */
+    box-shadow: inset 0px 0px 4px 1px #48abe0;
+}
+.sm_icon:hover{
+    transform: scale(1.2);
+
+}
+.sm_icon img{
+    color: #fff;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 20px;
+    
+    
+    
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 5px 10px 19px 1px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+    
+  }
+  
+  .flip-card-front img {
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 10px 10px rgba(0,0,0,0.2);
+ 
+  }
+  .flip-card-back {
+    background-color: #212529;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  .sm_card{
+    margin: 20px 20px 20px 0 ;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  @media only screen and (max-width: 600px) {
+    .main_card{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-evenly;
+        align-items: center;
+        }
+    .sm_card{
+        display: flex;
+        flex-direction: row;
+        margin: 0 20px 20px 20px;
+    }
+    
+  }
