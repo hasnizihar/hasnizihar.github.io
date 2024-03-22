@@ -153,7 +153,7 @@ body{
  
   }
   .flip-card-back {
-    background-color: #12171B;
+    background-color: #000;
     color: white;
     transform: rotateY(180deg);
     box-shadow: inset 0px 0px 10px 2px #48abe0;
