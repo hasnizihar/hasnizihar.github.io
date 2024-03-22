@@ -207,9 +207,9 @@ body {
     }
     .flip-card .flip-card-inner {
       animation: b1;
-      animation-duration: 8s;
+      animation-duration: 10s;
       animation-timing-function: linear;
-      animation-delay: 2s;
+      animation-delay: 4s;
       animation-iteration-count: infinite;
       animation-direction:   normal;
     }
