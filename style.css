@@ -29,6 +29,25 @@ body {
     align-content: space-around;
     align-items: center;
   }
+  .msg{
+    border-radius: 40px;
+    box-shadow: 0px 0px 25px 12px rgba(129, 124, 124, 0.2);
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 470px;
+    font-family: "Comfortaa", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 250px;
+    color: white;
+    text-align: center;
+  }
+  .msg:hover{
+    background-color: #000;
+    color: #fff;
+  }
   .imgcard{
     /* background-color: #161616; */
     /* box-shadow: 0px 0px 25px 12px rgba(0, 0, 0, 0.2); */
@@ -45,6 +64,7 @@ body {
     width: 370px;
     height: 370px;
     perspective: 1000px;
+    
 
     
     
@@ -88,7 +108,7 @@ body {
   }
   
   .flip-card-front img {
-    border-radius: 15px;
+    border-radius: 30px;
     width: 370px;
     height: 370px;
     /* box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.2); */
@@ -181,6 +201,9 @@ body {
     100% { transform: rotate(360deg);}
   }
   
+
+
+  
   @keyframes loader-inner {
     0% { height: 0%;}
     25% { height: 0%;}
@@ -195,6 +218,10 @@ body {
       width: 400px;
       height: 470px;
     }
+    .msg{
+      margin-top: 290px;
+      width: 400px
+    }
     .iconcard{
       flex-direction: row;
       justify-content: space-around;
@@ -207,9 +234,9 @@ body {
     }
     .flip-card .flip-card-inner {
       animation: b1;
-      animation-duration: 10s;
+      animation-duration: 8s;
       animation-timing-function: linear;
-      animation-delay: 4s;
+      animation-delay: 2s;
       animation-iteration-count: infinite;
       animation-direction:   normal;
     }
