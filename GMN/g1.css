@@ -138,27 +138,27 @@ input{
   }
 @media only screen and (max-width: 600px) {
     .heading{
-        font-size: 2em;
+        font-size: 20px;
     }
     #scorew{
-        font-size: 25px;
-        margin-right: 4em;
+        font-size: 20px;
+        margin-right: 2em;
     }
     #scorel{
-        font-size: 25px;
-        margin-left: 4em;
+        font-size: 20px;
+        margin-left: 2em;
     }
     #result{
-        font-size: 30px;
+        font-size: 20px;
     }
     .btn{
-        font-size: 30px;
+        font-size: 20px;
     }
     #cguessnum{
-        font-size: 30px;
+        font-size: 20px;
     }
     input{
-        font-size: 30px;
+        font-size: 20px;
     }
     .vss{
         font-size: 20px;
