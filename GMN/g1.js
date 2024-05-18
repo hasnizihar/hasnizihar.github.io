@@ -43,3 +43,7 @@ function check()
         }
 }
 }
+$(window).on("load",function()
+{
+$(".loader-wrapper").fadeOut("slow");
+});
