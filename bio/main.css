@@ -353,7 +353,7 @@ button img:hover{
     filter: invert(100%);
 }
 
-.popup1 button:hover{
+.popup1 button{
     background-color: white;
 }
 #mainpop img{
