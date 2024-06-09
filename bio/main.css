@@ -308,15 +308,7 @@ iframe{
     left: 29%; */
 
 }
-button img{
-    width: 26px;
-    padding: 7px;
-    filter: invert(100%);
-}
-button img:hover{
-    filter: invert(0%);
 
-}
 #left{
     position: fixed;
     top: 50%;
@@ -333,12 +325,25 @@ button img:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 40px;
     height: 40px;
     background-color: #000;
     border: 2px solid white;
     border-radius: 5px;
+}
+.popup1 button:hover{
+    background-color: #fff;
+    box-shadow:  0px 0px 12px 0px #ffffffad;
+
+}
+button img{
+    width: 26px;
+    padding: 7px;
+    filter: invert(100%);
+}
+
+button img:hover{
+    filter: invert(0%);
 }
 #ccc{
     position: fixed;
@@ -353,9 +358,9 @@ button img:hover{
     filter: invert(100%);
 }
 
-.popup1 button{
+/* .popup1 button{
     background-color: white;
-}
+} */
 #mainpop img{
     width: 400px;
     border-radius: 20px;
@@ -594,7 +599,7 @@ left: 0;
 right: 0;
 bottom: 0;
 background-color: #000;
--webkit-transition: .4s;
+-webkit-transition: 1s;
 transition: .4s;
 box-shadow: 0 0 0 2px #fff;
 }
@@ -607,8 +612,8 @@ width: 26px;
 left: 4px;
 bottom: 4px;
 background-color: white;
--webkit-transition: .4s;
-transition: .4s;
+-webkit-transition: 1s;
+transition: 1s;
 }
 
 input:checked + .slider {
@@ -697,9 +702,9 @@ border-radius: 50%;
     box-shadow:  0px 0px 12px 0px #ffffffad;
 
 }
-button img{
+/* button img{
     filter: invert(0%);
-}
+} */
 .loader-wrapper {
     width: 100%;
     height: 100%;
@@ -764,7 +769,7 @@ button img{
         left: 3%;
         z-index: 6;
         border: 2px solid white;
-        border-radius: 10px;
+        border-radius: 5px;
         display: flex;
         /* background-color: #000; */
         background-color: white;
@@ -772,9 +777,10 @@ button img{
         
     }
     .menu img{
-        width: 40px;
+        width: 20px;
         filter: invert(0%);
         padding: 5px;
+        
     }
     .profile h1{
         font-size: 30px;
@@ -852,7 +858,7 @@ button img{
         margin: 5px;
     }
     .profile-img img{
-        width: 300px;
+        width: 250px;
         border-radius: 50%;
     }
     .profile{
@@ -896,15 +902,27 @@ button img{
         height: 600px;
     }
     #popup1{
-        width: 400px;
+        width: 300px;
         height: 400px;
     }
     #mainpop img{
         width: 250px;
     }
+    #left{
+        position: fixed;
+        top: 110%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+    }
+    #right{
+        position: fixed;
+        top: 110%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+    }
     #ccc{
-        left: 58%;
-        top: 42%;
+        left: 56%;
+        top: 41.75%;
     }
     #subcon{
         display: flex;
@@ -997,24 +1015,49 @@ button img{
     #myBtn {
         background-color: white;
         box-shadow:  0px 0px 12px 0px #ffffffad;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    #mybtn img{
+    /* #mybtn img{
+        
+        width: 20px;
+    } */
+    #myBtn img{
+        filter: invert(0%);
+        z-index: 100;
+        width: 20px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    .popup1 button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border: 2px solid white;
+        border-radius: 5px;
+    }
+    .popup1 button:hover{
+        background-color: #fff;
+        box-shadow:  0px 0px 12px 0px #ffffffad;
+    
+    }
+    button img{
+        width: 26px;
+        padding: 7px;
         filter: invert(0%);
     }
-    /* .box,.box1{
-        width: 100%;
-    } */
+    
+    button img:hover{
+        filter: invert(0%);
+    }
 
-    /* @keyframes rot  {
-        0% {
-          
-          transform: rotate(0deg);
-        }
-        100% {
-             
-            transform: rotate(90deg);
-        }
-      } */
 
   }
  
