@@ -225,8 +225,12 @@ h3{
 .prg-list1{
     margin: 20px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
+    overflow-x: scroll;
     justify-items: center;
+}
+.prg-mini{
+    margin: 10px;
 }
 .prg-list2{
     margin: 20px;
