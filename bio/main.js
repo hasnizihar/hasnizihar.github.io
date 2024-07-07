@@ -1,7 +1,7 @@
-$(window).on("load",function()
-{
-$(".loader-wrapper").fadeOut("slow");
-});
+$(window).on("load",function(){
+    $(".loader-wrapper").fadeOut("slow");
+    }
+);
 
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll("nav a");
@@ -47,35 +47,35 @@ window.onbeforeunload = function () {
     window.scrollTo(0,0);
 };
 
-document.getElementById('wdinp').checked = true;
+// document.getElementById('wdinp').checked = true;
 
-if (document.getElementById('wdinp').checked) {
-    console.log('pass')
-    // document.getElementById('wdinp').checked = false;
-    document.getElementById('gdinp').checked = false;
-    gdli.style.display = 'none'
-    document.getElementById('prinp').checked = false;
-    prli.style.display = 'none'
-    document.getElementById('adinp').checked = false;
-    adli.style.display = 'none'
-    document.getElementById('pfinp').checked = false;
-    pfli.style.display = 'none'
-    if (window.matchMedia("(max-width: 600px)").matches) {
-        // If media query matches
-        wdli.style.display = 'block';
-        wdli.classList.add('down');
-    }else {
-        skdis.appendChild(wdli)
-        wdli.style.display = 'block'
-        wdli.classList.add('down');
-    }
+// if (document.getElementById('wdinp').checked) {
+//     console.log('pass')
+//     // document.getElementById('wdinp').checked = false;
+//     document.getElementById('gdinp').checked = false;
+//     gdli.style.display = 'none'
+//     document.getElementById('prinp').checked = false;
+//     prli.style.display = 'none'
+//     document.getElementById('adinp').checked = false;
+//     adli.style.display = 'none'
+//     document.getElementById('pfinp').checked = false;
+//     pfli.style.display = 'none'
+//     if (window.matchMedia("(max-width: 600px)").matches) {
+//         // If media query matches
+//         wdli.style.display = 'block';
+//         wdli.classList.add('down');
+//     }else {
+//         skdis.appendChild(wdli)
+//         wdli.style.display = 'block'
+//         wdli.classList.add('down');
+//     }
 
-} else {
-    console.log('fail')
-    wdli.classList.remove('down');
-    wdli.style.display = 'none';
+// } else {
+//     console.log('fail')
+//     wdli.classList.remove('down');
+//     wdli.style.display = 'none';
     
-}
+// }
 
 // window.onscroll = () => {
 //     console.log('killed')
@@ -137,149 +137,149 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-function togwd(){
-    console.log(document.getElementById('wdinp').checked)
-    if (document.getElementById('wdinp').checked) {
-        console.log('pass')
-        // document.getElementById('wdinp').checked = false;
-        document.getElementById('gdinp').checked = false;
-        gdli.style.display = 'none'
-        document.getElementById('prinp').checked = false;
-        prli.style.display = 'none'
-        document.getElementById('adinp').checked = false;
-        adli.style.display = 'none'
-        document.getElementById('pfinp').checked = false;
-        pfli.style.display = 'none'
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // If media query matches
-            wdli.style.display = 'block';
-            wdli.classList.add('down');
-        }else {
-            skdis.appendChild(wdli)
-            wdli.style.display = 'block'
-            wdli.classList.add('down');
-        }
+// function togwd(){
+//     console.log(document.getElementById('wdinp').checked)
+//     if (document.getElementById('wdinp').checked) {
+//         console.log('pass')
+//         // document.getElementById('wdinp').checked = false;
+//         document.getElementById('gdinp').checked = false;
+//         gdli.style.display = 'none'
+//         document.getElementById('prinp').checked = false;
+//         prli.style.display = 'none'
+//         document.getElementById('adinp').checked = false;
+//         adli.style.display = 'none'
+//         document.getElementById('pfinp').checked = false;
+//         pfli.style.display = 'none'
+//         if (window.matchMedia("(max-width: 600px)").matches) {
+//             // If media query matches
+//             wdli.style.display = 'block';
+//             wdli.classList.add('down');
+//         }else {
+//             skdis.appendChild(wdli)
+//             wdli.style.display = 'block'
+//             wdli.classList.add('down');
+//         }
 
-    } else {
-        console.log('fail')
-        wdli.classList.remove('down');
-        wdli.style.display = 'none';
+//     } else {
+//         console.log('fail')
+//         wdli.classList.remove('down');
+//         wdli.style.display = 'none';
         
-    }
-}
+//     }
+// }
 
-function toggd(){
-    console.log(document.getElementById('gdinp').checked)
-    if (document.getElementById('gdinp').checked) {
-        document.getElementById('wdinp').checked = false;
-        wdli.style.display = 'none';
-        // document.getElementById('gdinp').checked = false;
-        document.getElementById('prinp').checked = false;
-        prli.style.display = 'none'
-        document.getElementById('adinp').checked = false;
-        adli.style.display = 'none'
-        document.getElementById('pfinp').checked = false;
-        pfli.style.display = 'none'
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // If media query matches
-            gdli.style.display = 'block'
-            gdli.classList.add('down');
-        }else {
-            skdis.appendChild(gdli)
-            gdli.style.display = 'block';
-            gdli.classList.add('down');
-        }
-    } else {
-        gdli.classList.remove('down');
-        gdli.style.display = 'none'
+// function toggd(){
+//     console.log(document.getElementById('gdinp').checked)
+//     if (document.getElementById('gdinp').checked) {
+//         document.getElementById('wdinp').checked = false;
+//         wdli.style.display = 'none';
+//         // document.getElementById('gdinp').checked = false;
+//         document.getElementById('prinp').checked = false;
+//         prli.style.display = 'none'
+//         document.getElementById('adinp').checked = false;
+//         adli.style.display = 'none'
+//         document.getElementById('pfinp').checked = false;
+//         pfli.style.display = 'none'
+//         if (window.matchMedia("(max-width: 600px)").matches) {
+//             // If media query matches
+//             gdli.style.display = 'block'
+//             gdli.classList.add('down');
+//         }else {
+//             skdis.appendChild(gdli)
+//             gdli.style.display = 'block';
+//             gdli.classList.add('down');
+//         }
+//     } else {
+//         gdli.classList.remove('down');
+//         gdli.style.display = 'none'
         
-    }
-}
-function togpr(){
-    console.log(document.getElementById('prinp').checked)
-    if (document.getElementById('prinp').checked) {
-        document.getElementById('wdinp').checked = false;
-        wdli.style.display = 'none';
-        document.getElementById('gdinp').checked = false;
-        gdli.style.display = 'none'
-        // document.getElementById('prinp').checked = false;
-        document.getElementById('adinp').checked = false;
-        adli.style.display = 'none'
-        document.getElementById('pfinp').checked = false;
-        pfli.style.display = 'none'
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // If media query matches
-            prli.style.display = 'block'
-            prli.classList.add('down');
-        }else {
-            skdis.appendChild(prli)
-            prli.style.display = 'block'
-            prli.classList.add('down');
-        }
+//     }
+// }
+// function togpr(){
+//     console.log(document.getElementById('prinp').checked)
+//     if (document.getElementById('prinp').checked) {
+//         document.getElementById('wdinp').checked = false;
+//         wdli.style.display = 'none';
+//         document.getElementById('gdinp').checked = false;
+//         gdli.style.display = 'none'
+//         // document.getElementById('prinp').checked = false;
+//         document.getElementById('adinp').checked = false;
+//         adli.style.display = 'none'
+//         document.getElementById('pfinp').checked = false;
+//         pfli.style.display = 'none'
+//         if (window.matchMedia("(max-width: 600px)").matches) {
+//             // If media query matches
+//             prli.style.display = 'block'
+//             prli.classList.add('down');
+//         }else {
+//             skdis.appendChild(prli)
+//             prli.style.display = 'block'
+//             prli.classList.add('down');
+//         }
 
-    } else {
-        prli.classList.remove('down');
-        prli.style.display = 'none'
+//     } else {
+//         prli.classList.remove('down');
+//         prli.style.display = 'none'
         
-    }
-}
-function togad(){
-    console.log(document.getElementById('adinp').checked)
-    if (document.getElementById('adinp').checked) {
-        document.getElementById('wdinp').checked = false;
-        wdli.style.display = 'none';
-        document.getElementById('gdinp').checked = false;
-        gdli.style.display = 'none'
-        document.getElementById('prinp').checked = false;
-        prli.style.display = 'none'
-        // document.getElementById('adinp').checked = false;
-        // adli.style.display = 'none'
-        document.getElementById('pfinp').checked = false;
-        pfli.style.display = 'none'
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // If media query matches
-            adli.style.display = 'block'
-            adli.classList.add('down');
-        }else {
-            skdis.appendChild(adli)
-            adli.style.display = 'block'
-            adli.classList.add('down');
-        }
+//     }
+// }
+// function togad(){
+//     console.log(document.getElementById('adinp').checked)
+//     if (document.getElementById('adinp').checked) {
+//         document.getElementById('wdinp').checked = false;
+//         wdli.style.display = 'none';
+//         document.getElementById('gdinp').checked = false;
+//         gdli.style.display = 'none'
+//         document.getElementById('prinp').checked = false;
+//         prli.style.display = 'none'
+//         // document.getElementById('adinp').checked = false;
+//         // adli.style.display = 'none'
+//         document.getElementById('pfinp').checked = false;
+//         pfli.style.display = 'none'
+//         if (window.matchMedia("(max-width: 600px)").matches) {
+//             // If media query matches
+//             adli.style.display = 'block'
+//             adli.classList.add('down');
+//         }else {
+//             skdis.appendChild(adli)
+//             adli.style.display = 'block'
+//             adli.classList.add('down');
+//         }
 
-    } else {
-        adli.classList.remove('down');
-        adli.style.display = 'none'
+//     } else {
+//         adli.classList.remove('down');
+//         adli.style.display = 'none'
         
-    }
-}
-function togpf(){
-    console.log(document.getElementById('pfinp').checked)
-    if (document.getElementById('pfinp').checked) {
-        document.getElementById('wdinp').checked = false;
-        wdli.style.display = 'none';
-        document.getElementById('gdinp').checked = false;
-        gdli.style.display = 'none'
-        document.getElementById('prinp').checked = false;
-        prli.style.display = 'none'
-        document.getElementById('adinp').checked = false;
-        adli.style.display = 'none'
-        // document.getElementById('pfinp').checked = false;
-        if (window.matchMedia("(max-width: 600px)").matches) {
-            // If media query matches
-            pfli.style.display = 'block'
-            pfli.classList.add('down');
-        }else {
-            skdis.appendChild(pfli)
-            pfli.style.display = 'block'
-            pfli.classList.add('down');
-        }
+//     }
+// }
+// function togpf(){
+//     console.log(document.getElementById('pfinp').checked)
+//     if (document.getElementById('pfinp').checked) {
+//         document.getElementById('wdinp').checked = false;
+//         wdli.style.display = 'none';
+//         document.getElementById('gdinp').checked = false;
+//         gdli.style.display = 'none'
+//         document.getElementById('prinp').checked = false;
+//         prli.style.display = 'none'
+//         document.getElementById('adinp').checked = false;
+//         adli.style.display = 'none'
+//         // document.getElementById('pfinp').checked = false;
+//         if (window.matchMedia("(max-width: 600px)").matches) {
+//             // If media query matches
+//             pfli.style.display = 'block'
+//             pfli.classList.add('down');
+//         }else {
+//             skdis.appendChild(pfli)
+//             pfli.style.display = 'block'
+//             pfli.classList.add('down');
+//         }
 
-    } else {
-        pfli.classList.remove('down');
-        pfli.style.display = 'none'
+//     } else {
+//         pfli.classList.remove('down');
+//         pfli.style.display = 'none'
         
-    }
-}
+//     }
+// }
 var ccc = document.getElementById('ccc')
 var popcls = document.getElementById('popcls')
 var popup1 = document.getElementById('popup1')
