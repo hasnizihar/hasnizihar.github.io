@@ -1,0 +1,112 @@
+/* General body styling */
+body {
+    background: #000;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Screensaver logo animation styling */
+.screensaver-logo {
+    width: 150px;
+    border-radius: 10px;
+    display: block;
+    position: absolute;
+    -webkit-animation: moveX 5s linear 0s infinite alternate, moveY 6.3s linear 0s infinite alternate;
+    animation: moveX 5s linear 0s infinite alternate, moveY 6.3s linear 0s infinite alternate;
+}
+
+/* Horizontal movement animation */
+@keyframes moveX {
+    from { left: 0; }
+    to { left: calc(100% - 145px); }
+}
+
+/* Vertical movement animation */
+@keyframes moveY {
+    from { top: 0; }
+    to { top: calc(100% - 154px); }
+}
+
+/* Fullscreen button styling */
+.fullscreen-btn {
+    /* position: relative; */
+    position: absolute;
+    display: flex;
+    top: 10px;
+    right: 10px;
+    padding: 10px; 
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    margin: 0px;
+}
+.fullscreen-btn:hover{
+    filter: invert(0);
+    background-color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+/* Clock styling */
+.clock {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    font-family: 'Arial', Courier, monospace;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+}
+.clock:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+
+}
+/* Date styling (similar to clock) */
+.date {
+    position: absolute;
+    top: 10px; /* Space it below the clock */
+    left: 10px;
+    font-family: 'Arial', Courier, monospace;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.date:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+
+}
+/* Hide main heading for accessibility */
+.visuallyhidden {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+/* button img{
+    position: relative;
+    top: 50%;
+    left: 50%; 
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    margin: 0px;
+}
+button img:hover{
+    filter: invert(1);
+} 
+*/
