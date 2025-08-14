@@ -438,7 +438,7 @@ h6 {
 
 .scroll-top i {
   font-size: 24px;
-  color: var(--contrast-color);
+  color: var(--background-color);
   line-height: 0;
 }
 
@@ -850,9 +850,10 @@ section,
   font-size: 14px;
   padding: 5px 10px;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
   display: inline-block;
   background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
 .portfolio .portfolio-content .portfolio-info p {
@@ -919,13 +920,13 @@ section,
 }
 
 .services .service-item .icon i {
-  color: var(--contrast-color);
+  color: var(--background-color);
   font-size: 24px;
   line-height: 0;
 }
 
 .services .service-item:hover .icon {
-  background: var(--surface-color);
+  background: var(--background-color);
 }
 
 .services .service-item:hover .icon i {
@@ -1056,6 +1057,9 @@ section,
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
 }
+.contact .info-wrap iframe{
+  border-radius: 5px;
+}
 
 @media (max-width: 575px) {
   .contact .info-wrap {
@@ -1137,7 +1141,7 @@ section,
 }
 
 .contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
+  color: var(--background-color);
   background: var(--accent-color);
   border: 0;
   padding: 10px 30px;
