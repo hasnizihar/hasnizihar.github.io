@@ -1158,6 +1158,10 @@ section,
 --------------------------------------------------------------*/
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
+  border-radius: 10px;
+}
+.portfolio-details-slider{
+  border-radius: 10px;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
@@ -1209,7 +1213,7 @@ section,
   margin-bottom: 20px;
 }
 
-.portfolio-details .portfolio-description p {
+.portfolio-details .portfolio-description p .portfolio-description ul li {
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
