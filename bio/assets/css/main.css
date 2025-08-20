@@ -19,20 +19,20 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #050d18; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --background-color: #000000; /* Background color for the entire website, including individual sections */
+  --default-color: #dcdcdc; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #25d7ff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #a8a9b4;  /* The default color of the main navmenu links */
+  --nav-color: #ffffff;  /* The default color of the main navmenu links */
   --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #040b14; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #040b14; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-mobile-background-color: #000000; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #000000; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #a8a9b4; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
@@ -40,15 +40,15 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f4fafd;
+  --background-color: #000000s;
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #040b14;
+  --background-color: #000000;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #151f2b;
+  --surface-color: #64e3ff;
   --contrast-color: #ffffff;
 }
 
@@ -162,6 +162,7 @@ h6 {
   display: block;
   width: 120px;
   border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
+
 }
 
 .header .logo {
@@ -437,7 +438,7 @@ h6 {
 
 .scroll-top i {
   font-size: 24px;
-  color: var(--contrast-color);
+  color: var(--background-color);
   line-height: 0;
 }
 
@@ -647,6 +648,9 @@ section,
   color: var(--accent-color);
   line-height: 0;
 }
+.about div div div img{
+  border-radius: 10px;
+}
 
 /*--------------------------------------------------------------
 # Stats Section
@@ -709,6 +713,7 @@ section,
 .skills .progress-bar-wrap {
   background: color-mix(in srgb, var(--default-color), transparent 90%);
   height: 10px;
+  border-radius: 4px;
 }
 
 .skills .progress-bar {
@@ -716,6 +721,7 @@ section,
   height: 10px;
   transition: 0.9s;
   background-color: var(--accent-color);
+  border-radius: 4px;
 }
 
 /*--------------------------------------------------------------
@@ -778,16 +784,16 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Portfolio Section
+# project Section
 --------------------------------------------------------------*/
-.portfolio .portfolio-filters {
+.project .project-filters {
   padding: 0;
   margin: 0 auto 20px auto;
   list-style: none;
   text-align: center;
 }
 
-.portfolio .portfolio-filters li {
+.project .project-filters li {
   cursor: pointer;
   display: inline-block;
   padding: 0;
@@ -800,36 +806,37 @@ section,
   transition: all 0.3s ease-in-out;
 }
 
-.portfolio .portfolio-filters li:hover,
-.portfolio .portfolio-filters li.filter-active {
+.project .project-filters li:hover,
+.project .project-filters li.filter-active {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-filters li:first-child {
+.project .project-filters li:first-child {
   margin-left: 0;
 }
 
-.portfolio .portfolio-filters li:last-child {
+.project .project-filters li:last-child {
   margin-right: 0;
 }
 
 @media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
+  .project .project-filters li {
     font-size: 14px;
     margin: 0 5px;
   }
 }
 
-.portfolio .portfolio-content {
+.project .project-content {
   position: relative;
   overflow: hidden;
 }
 
-.portfolio .portfolio-content img {
+.project .project-content img {
   transition: 0.3s;
+  border-radius: 5px;
 }
 
-.portfolio .portfolio-content .portfolio-info {
+.project .project-content .project-info {
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -839,16 +846,17 @@ section,
   padding: 15px;
 }
 
-.portfolio .portfolio-content .portfolio-info h4 {
+.project .project-content .project-info h4 {
   font-size: 14px;
   padding: 5px 10px;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
   display: inline-block;
   background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
-.portfolio .portfolio-content .portfolio-info p {
+.project .project-content .project-info p {
   position: absolute;
   bottom: 10px;
   text-align: center;
@@ -860,8 +868,8 @@ section,
   color: rgba(255, 255, 255, 0.8);
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link,
-.portfolio .portfolio-content .portfolio-info .details-link {
+.project .project-content .project-info .preview-link,
+.project .project-content .project-info .details-link {
   position: absolute;
   left: calc(50% - 40px);
   font-size: 26px;
@@ -871,23 +879,24 @@ section,
   line-height: 1.2;
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link:hover,
-.portfolio .portfolio-content .portfolio-info .details-link:hover {
+.project .project-content .project-info .preview-link:hover,
+.project .project-content .project-info .details-link:hover {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-content .portfolio-info .details-link {
+.project .project-content .project-info .details-link {
   left: 50%;
   font-size: 34px;
   line-height: 0;
 }
 
-.portfolio .portfolio-content:hover .portfolio-info {
+.project .project-content:hover .project-info {
   opacity: 1;
 }
 
-.portfolio .portfolio-content:hover img {
+.project .project-content:hover img {
   transform: scale(1.1);
+  border-radius: 5px;
 }
 
 /*--------------------------------------------------------------
@@ -911,13 +920,13 @@ section,
 }
 
 .services .service-item .icon i {
-  color: var(--contrast-color);
+  color: var(--background-color);
   font-size: 24px;
   line-height: 0;
 }
 
 .services .service-item:hover .icon {
-  background: var(--surface-color);
+  background: var(--background-color);
 }
 
 .services .service-item:hover .icon i {
@@ -1044,9 +1053,12 @@ section,
 # Contact Section
 --------------------------------------------------------------*/
 .contact .info-wrap {
-  background-color: var(--surface-color);
+  background-color: var(--background-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
+}
+.contact .info-wrap iframe{
+  border-radius: 5px;
 }
 
 @media (max-width: 575px) {
@@ -1092,7 +1104,7 @@ section,
 }
 
 .contact .php-email-form {
-  background-color: var(--surface-color);
+  background-color: var(--background-color);
   height: 100%;
   padding: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -1110,9 +1122,9 @@ section,
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 5px;
   color: var(--default-color);
-  background-color: var(--surface-color);
+  background-color: var(--background-color);
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
@@ -1129,7 +1141,7 @@ section,
 }
 
 .contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
+  color: var(--background-color);
   background: var(--accent-color);
   border: 0;
   padding: 10px 30px;
@@ -1142,34 +1154,38 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details Section
+# project Details Section
 --------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
+.project-details .project-details-slider img {
   width: 100%;
+  border-radius: 10px;
+}
+.project-details-slider{
+  border-radius: 10px;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination {
+.project-details .project-details-slider .swiper-pagination {
   margin-top: 20px;
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.project-details .project-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: color-mix(in srgb, var(--default-color), transparent 85%);
   opacity: 1;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.project-details .project-details-slider .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
 }
 
-.portfolio-details .portfolio-info {
+.project-details .project-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-details .portfolio-info h3 {
+.project-details .project-info h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -1177,29 +1193,37 @@ section,
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.portfolio-details .portfolio-info ul {
+.project-details .project-info ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.project-details .project-info ul li+li {
   margin-top: 10px;
 }
 
-.portfolio-details .portfolio-description {
+.project-details .project-description {
   padding-top: 30px;
 }
 
-.portfolio-details .portfolio-description h2 {
+.project-details .project-description h2 {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.portfolio-details .portfolio-description p {
+.project-details .project-description p .project-description ul li {
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+.project-description ul li i {
+    font-size: 20px;
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+.project-description ul{
+  list-style: none;
 }
 
 /*--------------------------------------------------------------
@@ -1233,6 +1257,7 @@ section,
 
 .service-details .services-img {
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .service-details h3 {
@@ -1266,10 +1291,15 @@ section,
   margin-right: 8px;
   color: var(--accent-color);
 }
+.row.gy-4 {
+  flex-direction: row-reverse;
+}
 
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+  background: var(--background-color);
+  padding: 60px 0;
 }

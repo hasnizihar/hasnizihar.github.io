@@ -1,0 +1,99 @@
+.sknp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.sknp h3{
+    margin: 30px 0px 10px 0px ;
+}
+.sknp h3 img{
+    width: 25px;
+    margin-right: 5px;
+}
+.progress-bar {
+    width: 100%;
+    background-color: black;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+.progress-bar-con{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.progress-bar-html {
+    width: 80%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+.progress-bar-css {
+    width: 60%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+.progress-bar-js {
+    width: 40%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+
+.progress-bar-ps {
+    width: 85%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+.progress-bar-ai {
+    width: 80%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+.progress-bar-fi {
+    width: 40%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+
+.progress-bar-py {
+    width: 35%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+
+.progress-bar-fl {
+    width: 5%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
+
+.progress-bar-ui {
+    width: 25%; /* Change this value to control the progress */
+    height: 5px;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 25px 0 0 25px;
+}
