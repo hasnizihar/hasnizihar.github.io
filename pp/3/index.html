@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HzPFC</title>
+    <link rel="icon" type="image/x-icon" href="img/logo/hz1fic.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='prg.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="path/to/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="body">
+    <!-- nav bar -->
+    <nav id="nav" >
+        <a href="#home" id="nav1" onclick="menuclick()">Home</a>
+        <a href="#skills" id="nav2"onclick="menuclick()">Skills</a>
+        <a href="#projects" id="nav3"onclick="menuclick()">Projects</a>
+        <a href="#social" id="nav4" onclick="menuclick()">Social</a>
+        <a href="#contact" id="nav5" onclick="menuclick()">Contact</a>
+    </nav>
+    <Div class="s1b"></Div>
+    <!-- home -->
+    <section class="ho act" id="home">
+        <div class="home">
+            <div class="profile-img">
+                <img src="img/profile.jpg">
+            </div>
+            <div class="profile">
+                <h1>KR HASNI ZIHAR</h1>
+                <h2>Undergraduate Engineering Student<br> at University of Moratuwa <a href="https://uom.lk/" target="_blank"><img src="icon/uom.png" alt="uom" class="uomimg" href="https://uom.lk/"></a></h2>
+                <h3>Freelancer | WebDeveloper | Graphic Designer</h3>
+            </div>
+            
+        </div>
+        <hr>
+
+    </section>
+
+    <!-- Skills -->
+    <section class="skills opp" id="skills">
+        <h1>Skills</h1>
+        <div class="skills1">
+            <div class="skills2">
+                <img class="skicon" src="icon/html (1).png" alt="HTML">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/social.png" alt="CSS">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/js.png" alt="JavaScript">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/php.png" alt="PHP">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/mysql.png" alt="MySQL">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/python.png" alt="Python">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/figma.png" alt="Figma">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/flutter.png" alt="Flutter">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/photoshop.png" alt="Photoshop">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/illustrator.png" alt="Illustator">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/python.png" alt="logo">
+            </div>
+            <div class="skills2">
+                <img class="skicon" src="icon/python.png" alt="logo">
+            </div>
+
+
+        </div>
+        <div id="skmain">
+            <div class="skillset">
+                <div class="sk">
+                    <div class="sk-heading">
+                        <h2>Web Developing</h2>
+                        <label class="switch" onclick="togwd()">
+                            <input type="checkbox" id="wdinp">
+                            <span class="slider round"></span>
+                        </label>        
+                    </div>
+                    <div class="sk-list" id="wdli">
+
+                        <div class="sknp">
+                            <h3><img src="icon/html (1).png" alt="logo">HTML</h3>
+                            <h3>80%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-html" >80%</div>
+                            </div>
+                        </div>
+
+                        <div class="sknp">
+                            <h3><img src="icon/social.png" alt="logo">CSS</h3>
+                            <h3>60%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-css">60%</div>
+                            </div>
+                        </div>
+
+                        <div class="sknp">
+                            <h3><img src="icon/js.png" alt="logo">JavaScript</h3>
+                            <h3>40%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-js">40%</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sk">
+                    <div class="sk-heading">
+                        <h2>Graphic Designing</h2>
+                        <label class="switch" onclick="toggd()">
+                            <input type="checkbox" id="gdinp">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="sk-list" id="gdli">
+
+                        <div class="sknp">
+                            <h3><img src="icon/photoshop.png" alt="logo">PhotoShop</h3>
+                            <h3>85%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-ps">85%</div>
+                            </div>
+                        </div>
+
+                        <div class="sknp">
+                            <h3><img src="icon/illustrator.png" alt="logo">Illustator</h3>
+                            <h3>80%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-ai">80%</div>
+                            </div>
+                        </div>
+
+                        <div class="sknp">
+                            <h3><img src="icon/figma.png" alt="logo">Figma</h3>
+                            <h3>40%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-fi">40%</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sk">
+                    <div class="sk-heading">
+                        <h2>Programming</h2>
+                        <label class="switch" onclick="togpr()">
+                            <input type="checkbox" id="prinp">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="sk-list" id="prli">
+
+                        <div class="sknp">
+                            <h3><img src="icon/python.png" alt="logo">Python</h3>
+                            <h3>35%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-py">35%</div>
+                            </div>
+                        </div>   
+
+                    </div>
+                </div>
+                <div class="sk">
+                    <div class="sk-heading">
+                        <h2>App Developing</h2>
+                        <label class="switch" onclick="togad()">
+                            <input type="checkbox" id="adinp">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="sk-list" id="adli">
+
+                        <div class="sknp">
+                            <h3><img src="icon/flutter.png" alt="logo">Flutter</h3>
+                            <h3>5%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-fl">5%</div>
+                            </div>
+                        </div>   
+
+                    </div>
+                </div>
+                <div class="sk">
+                    <div class="sk-heading">
+                        <h2>Professional Skills</h2>
+                        <label class="switch" onclick="togpf()">
+                            <input type="checkbox" id="pfinp">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="sk-list" id="pfli">
+
+                        <div class="sknp">
+                            <h3>UI/UX</h3>
+                            <h3>25%</h3>
+                        </div>
+                        <div class="progress-bar-con">
+                            <div class="progress-bar">
+                                <div class="progress-bar-ui">25%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div id="sk-dis">  </div>
+        </div> -->
+
+        
+        <hr>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects opp" id="projects">
+        <h1>Projects</h1>
+        <div class="prgmain">
+            <!-- Web App -->
+            <div class="prg">
+                <div class="prg-heading">
+                    <h2>Web App</h2>
+                </div>
+                <div class="prg-list1">
+
+                    <div class="prg-miw">
+                        <div class="prg-mihe">
+                            <h3>Guess My Number</h3>
+                            <div><a href="https://hasnizihar.github.io/myprg/GMN/" target="_blank"><img src="icon/full-screen.png" alt=""></a></div>
+                        </div>
+                        <iframe src="https://hasnizihar.github.io/myprg/GMN/"></iframe>
+                    </div>
+
+                    <div class="prg-miw">
+                        <div class="prg-mihe">
+                            <h3>To Do List</h3>
+                            <div><a href="http://hasnizihar.github.io/myprg/TDL/" target="_blank" ><img src="icon/full-screen.png" alt=""></a></div>
+                        </div>
+                        <iframe src="https://hasnizihar.github.io/myprg/TDL/"></iframe>
+                    </div>
+
+                    <div class="prg-miw">
+                        <div class="prg-mihe">
+                            <h3>Rock Paper Scissor</h3>
+                            <div><a href="https://hasnizihar.github.io/myprg/RPS/" target="_blank" ><img src="icon/full-screen.png" alt=""></a></div>
+                        </div>
+                        <iframe src="https://hasnizihar.github.io/myprg/RPS/"></iframe>
+                    </div>
+
+                    <div class="prg-miw">
+                        <div class="prg-mihe">
+                            <h3>QR Code Generator</h3>
+                            <div><a href="https://hasnizihar.github.io/myprg/QRCG/" target="_blank" ><img src="icon/full-screen.png" alt=""></a></div>
+                        </div>
+                        <iframe src="https://hasnizihar.github.io/myprg/QRCG/"></iframe>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Logo -->
+            <div class="prg">
+                <div class="prg-heading">
+                    <h2>Logo</h2>
+                </div>
+                <div class="prg-list2">
+
+                    <div class="prg-mini" id="logocon1" onclick="popup(event)">
+                        <div>
+                            <img src="img/logo/hzgpd1.jpg" alt="">
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/hzgpd2.jpg" alt="" >
+                        </div>
+                    </div>
+
+                    <div class="prg-mini" id="logocon2" onclick="popup(event)">
+                        <div >
+                            <img src="img/logo/h1.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/h2.jpg" alt="" >
+                        </div>
+                    </div>
+
+                    <div class="prg-mini" id="logocon3" onclick="popup(event)">
+                        <div >
+                            <img src="img/logo/aiz.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/egl.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/cyc-01-01.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/bicycle-01-01.jpg" alt="" >
+                        </div>
+                    </div>
+
+                    <div class="prg-mini" id="logocon4" onclick="popup(event)">
+                        <div >
+                            <img src="img/logo/aked1.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/aked2.jpg" alt="" >
+                        </div>
+                    </div>
+
+                    <div class="prg-mini" id="logocon5" onclick="popup(event)">
+                        <div >
+                            <img src="img/logo/hz1.jpg" alt="" >
+                        </div>
+                        <div style="display: none;">
+                            <img src="img/logo/hz2.jpg" alt="" >
+                        </div>
+                    </div>
+                
+                </div>
+                <div id="popcls"  style="display: none;">
+                    <div id="ccc" onclick="cls()" style="display: none;"><img src="icon/close-button.png" ></div>
+                    <div class="popup1"  id='popup1'>
+                        <div >
+                            <button id="left" onclick="left()" style="display: none;"><img src="icon/left-arrow.png"></button>
+                            <div id="mainpop"></div>
+                            <button id="right" onclick="right()"><img src="icon/right-arrow.png"></button>
+                        </div>
+
+                        <div id="subcon">
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <!-- Social -->
+    <section class="so opp" id="social" >
+        <div class="social">
+            
+        <h1>Social Profiles</h1>
+        <div class="social-container">
+
+            <a href="https://www.linkedin.com/in/kr-hasni-zihar-840208269/" target="_blank">
+                <div class="sid">
+                    <img src="icon/linkedin (1).png" alt="">
+                </div>
+            </a>
+
+            <a href=" https://x.com/HasniZihar?t=Uq66JcKszc-egRr8bobAIg&s=09" target="_blank">
+                <div class="sid">
+                    <img src="icon/Artboard 2.png" alt="">
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/hz_gpd?utm_source=qr&igsh=MWFlN2JpYXN2NWphdw==" target="_blank">
+                <div class="sid">
+                    <img src="icon/instagram (1).png" alt="">
+                </div>
+            </a>
+
+            <a href="https://www.behance.net/hasnizihar" target="_blank">
+                <div class="sid">
+                    <img src="icon/Artboard 1.png" alt="">
+                </div>
+            </a>
+
+            <a href="https://github.com/hasnizihar" target="_blank">
+                <div class="sid">
+                    <img src="icon/github (1).png" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="personel">
+            
+            <div class="prelist grid1">
+                <h2>Personel</h2>
+
+                <a href="https://www.linkedin.com/in/kr-hasni-zihar-840208269/" target="_blank">
+                    <div class="sid">
+                        <h3>linkedIn</h3>
+                        <img src="icon/linkedin (1).png" alt="">
+                    </div>
+                </a>
+                
+
+                <a href=" https://x.com/HasniZihar?t=Uq66JcKszc-egRr8bobAIg&s=09" target="_blank">
+                    <div class="sid">
+                        <h3>X</h3>
+                        <img src="icon/Artboard 2.png" alt="">
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=100090407079635&mibextid=ZbWKwL" target="_blank">
+                    <div class="sid">
+                        <h3>Facebook</h3>
+                        <img src="icon/facebook (1).png" alt="">
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/ziharhasni?utm_source=qr&igsh=bDRoM29tMjA0cmEx" target="_blank">
+                    <div class="sid">
+                        <h3>Instagram</h3>
+                        <img src="icon/instagram (1).png" alt="">
+                    </div>
+                </a>
+
+                <a href="">
+                    <div class="sid">
+                        <h3>Social Media</h3>
+                        <img src="icon/content.png" alt="">
+                    </div>
+                </a>
+            </div>
+
+            <div class="prelist grid2" >
+                <h2>HzGPD</h2>
+
+                <a href="https://www.instagram.com/hz_gpd?utm_source=qr&igsh=MWFlN2JpYXN2NWphdw==" target="_blank">
+                    <div class="sid">
+                        <h3>Instagram</h3>
+                        <img src="icon/instagram (1).png" alt="">
+                    </div>
+                </a>
+
+                <a href="https://www.behance.net/hasnizihar" target="_blank">
+                    <div class="sid">
+                        <h3>Behance</h3>
+                        <img src="icon/Artboard 1.png" alt="">
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="prelist grid3">
+                <h2>Codeings</h2>
+
+                <a href="https://github.com/hasnizihar" target="_blank">
+                    <div class="sid">
+                        <h3>Github</h3>
+                        <img src="icon/github (1).png" alt="">
+                    </div>
+                </a>
+
+                <a href="https://www.hackerrank.com/profile/ziharhasni" target="_blank">
+                    <div class="sid">
+                        <h3>HackeRank</h3>
+                        <img src="icon/Artboard 3.png" alt="">
+                    </div>
+                </a>
+
+            </div> -->
+        </div>
+
+            <hr>
+    </section>
+    <!-- Contact -->
+    <section class="main opp" id="contact">
+        <div class="content">
+            <form class='form'action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="2ee77299-8dad-489e-aa62-231bead58ac2">
+                <h1 class="text1">Contact</h1>
+                <div class="concont">
+                        <h2>Name</h2>
+                        <input class="box" type="text" name="name" placeholder="Your Name" required>
+                        <h2>E-mail</h2>
+                        <input class="box"type="email" name="email" placeholder="Your Email" required>
+                        <h2>Message</h2>
+                        <textarea class="box" name="message" placeholder="Message" required></textarea>
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        <button class="box1" type="submit">SEND</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="copyright">
+              &copy; Copyright 2024 .v2 <strong><span>HzGPD</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by 
+                <a href="https://hasnizihar.github.io/">HzGPD</a>
+            </div>
+          </div>
+    </footer>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div class="menu" id="menu" onclick="menuclick()">
+
+        <img src="icon/menu-burger.png" alt="">
+    </div>
+    <div id="temp" style="display: none;"></div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="icon/top.png" alt=""></button>
+    <script src='main.js'></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC6ZL2LFY4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BC6ZL2LFY4');
+</script>
+    
+</div>
+</body>
+</html>
