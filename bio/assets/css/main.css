@@ -723,6 +723,16 @@ section,
   background-color: var(--accent-color);
   border-radius: 4px;
 }
+.skillimgbox{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.skillimg{
+  width: 40px;
+  margin: 10px;
+}
 
 /*--------------------------------------------------------------
 # Resume Section
