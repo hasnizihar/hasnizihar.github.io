@@ -727,22 +727,22 @@ section,
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
 }
 .skill-category{
-  width: 300px;
+  width: auto;
   height: auto;
   background:  color-mix(in srgb, var(--default-color), transparent 90%);
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-}
-.skill-category{
   text-align: center;
   font-weight: 500;
   font-size: 18px;
-  margin-top: 10px;
+}
+.skill-category p{
+  margin: 0 10px;
 }
 .skillimgbox{
   display: flex;
