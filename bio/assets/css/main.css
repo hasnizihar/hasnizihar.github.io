@@ -723,15 +723,42 @@ section,
   background-color: var(--accent-color);
   border-radius: 4px;
 }
+.softcontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.skill-category{
+  width: 300px;
+  height: auto;
+  background:  color-mix(in srgb, var(--default-color), transparent 90%);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.skill-category{
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 10px;
+}
 .skillimgbox{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+
+
 }
 .skillimg{
-  width: 40px;
+  width: 60px;
+  height: 60px;
   margin: 10px;
+  background-color: #000000;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 /*--------------------------------------------------------------
