@@ -724,8 +724,8 @@ section,
   border-radius: 4px;
 }
 .softcontainer{
-  display: flex;
-  flex-direction: row;
+  display: flex; 
+  flex-direction: row; 
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
