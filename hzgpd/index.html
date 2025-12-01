@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stellar Gallery — Explore Beauty in Every Frame</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="spinner"></div>
+    <div class="preloader-text">Loading gallery...</div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1 class="site-title">HzGPD Gallery</h1>
+        <p class="tagline">Explore Beauty in Every Frame</p>
+      </div>
+      <div class="header-controls">
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Search images or keywords..." aria-label="Search images">
+        </div>
+        <select id="sort" aria-label="Sort images">
+          <option value="newest">Sort: Newest</option>
+          <option value="oldest">Sort: Oldest</option>
+          <option value="category">Sort: Category</option>
+        </select>
+        <button id="themeToggle" class="icon-btn" aria-pressed="false" title="Toggle theme">🌗</button>
+      </div>
+    </div>
+
+    <nav class="filter-bar" aria-label="Filter images">
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="Abstract">Abstract</button>
+        <button class="filter" data-filter="Logo">Logo</button>
+        <button class="filter" data-filter="Photography">Photography</button>
+        <button class="filter" data-filter="Poster & Flyer">Poster & Flyer</button>
+        <button class="filter" data-filter="People">People</button>
+        <button class="filter" data-filter="Animals">Animals</button>
+        <button class="filter" data-filter="Travel">Travel</button>
+        <button class="filter" data-filter="Food">Food</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main" id="main">
+    <section class="gallery" id="gallery" aria-live="polite">
+      <!-- Gallery items injected by script.js -->
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button id="lbClose" class="lb-close" aria-label="Close">✕</button>
+      <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+      <div class="lb-content">
+        <img id="lbImage" src="" alt="">
+        <div class="lb-caption">
+          <h3 id="lbTitle"></h3>
+          <p id="lbCategory"></p>
+        </div>
+      </div>
+      <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
+    </div>
+
+    <!-- Scroll to top -->
+    <button id="toTop" class="to-top" title="Back to top">▲</button>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Hz Gallery</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
