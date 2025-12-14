@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HzGPD - Ultimate Unicode to Bamini Converter</title>
+    <meta name="description"
+        content="Professional Tamil Unicode to Bamini font converter. Fast, secure, and beautiful interface.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="lib/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Unicode to Bamini</h1>
+        <div class="subtitle">Professional Tamil Font Converter</div>
+    </header>
+
+    <main>
+        <div class="actions" style="margin-bottom: 2rem; margin-top: 0;">
+            <button id="convertBtn" class="btn btn-primary">
+                <span>⚡</span> Convert Now
+            </button>
+            <button id="clearBtn" class="btn btn-secondary">
+                <span>🗑️</span> Clear All
+            </button>
+        </div>
+
+        <div class="converter-container">
+            <!-- Source Section -->
+            <div class="input-group">
+                <label>
+                    Unicode Input (Tamil)
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="copy-btn" id="pasteSource">Paste</button>
+                        <button class="copy-btn" id="copySource">Copy</button>
+                    </div>
+                </label>
+                <textarea id="sourceText"
+                    placeholder="Type or paste Tamil Unicode text here... (e.g. தமிழ்)"></textarea>
+            </div>
+
+            <!-- Target Section -->
+            <div class="input-group">
+                <label>
+                    Bamini Output
+                    <button class="copy-btn" id="copyTarget">Copy Result</button>
+                </label>
+                <textarea id="targetText" placeholder="Converted Bamini text will appear here..." readonly></textarea>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HzGPD.</p>
+    </footer>
+
+    <script src="lib/converter.js"></script>
+    <script src="lib/main.js"></script>
+</body>
+
+</html>
