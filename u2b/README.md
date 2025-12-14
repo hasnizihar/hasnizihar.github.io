@@ -2,7 +2,7 @@
 
 Unicode to Bamini Converter is a professional, modern, and high-performance Tamil Unicode to Bamini font converter. It features a sleek, glassmorphism-inspired interface designed for optimal user experience across all devices.
 
-![Unicode to Bamini Converter Screenshot](https://hasnizihar.github.io/u2b/image.png)
+![Unicode to Bamini Converter Screenshot](https://hasnizihar.github.io/u2b/lib/image.png)
 
 ## Features
 
@@ -41,3 +41,4 @@ Unicode to Bamini Converter is a professional, modern, and high-performance Tami
 ## License
 
 This project is open-source and available for personal and educational use.
+
