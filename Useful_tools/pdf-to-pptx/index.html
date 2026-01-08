@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF to PPTX Converter</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- PptxGenJS -->
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            <h1>📄 PDF → PPTX</h1>
+
+            <div class="input-group">
+                <input type="file" id="pdfInput" accept="application/pdf" />
+            </div>
+
+            <div class="btn-container">
+                <button id="convertBtn" onclick="convertPDF()">Convert to PPTX</button>
+                <button id="downloadBtn" onclick="downloadPPTX()" style="display: none;">Download PPTX</button>
+            </div>
+
+            <div id="progressContainer" class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div id="progressBar"></div>
+                </div>
+                <p id="status"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer><a href="https://hasnizihar.github.io/">HzGPD</a> Copyright 2026</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

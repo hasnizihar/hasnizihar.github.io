@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Premium QR Code Generator - HzGPD">
+   <meta name="keywords" content="QR Code Generator, QR, hzqr, hzgpd, custom qr code">
+   <meta name="author" content="Hasni Zihar">
+
+   <link rel="stylesheet" href="main.css">
+   <link rel="shortcut icon" href="hzgpdfavicin.png" type="image/x-icon">
+
+   <title>QR Code Generator | HzGPD</title>
+</head>
+
+<body>
+   <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+   </div>
+
+   <div class="wrapper">
+      <div class="header">
+         <h1>QR Generator</h1>
+         <p>Create custom QR codes instantly</p>
+      </div>
+
+      <main class="content">
+         <div class="input-group">
+            <label for="urltxt">URL or Text</label>
+            <div class="input-wrapper">
+               <input type="text" id="urltxt" placeholder="https://example.com" spellcheck="false">
+               <button id="clear-btn" class="icon-btn" title="Clear input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                     <path d="M18 6L6 18M6 6l12 12"></path>
+                  </svg>
+               </button>
+            </div>
+         </div>
+
+         <div class="options-grid">
+            <div class="input-group">
+               <label for="qr-color">Color</label>
+               <input type="color" id="qr-color" value="#000000">
+            </div>
+            <div class="input-group">
+               <label for="qr-bg">Background</label>
+               <input type="color" id="qr-bg" value="#ffffff">
+            </div>
+            <div class="input-group">
+               <label for="qr-size">Size (px)</label>
+               <input type="number" id="qr-size" value="300" min="100" max="1000" step="50">
+            </div>
+         </div>
+
+         <div class="qr-display" id="imgbox">
+            <div class="qr-container">
+               <div id="loader" class="loader"></div>
+               <img src="" alt="Generated QR Code" id="qrimg">
+               <div class="placeholder-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                     <rect x="3" y="3" width="7" height="7"></rect>
+                     <rect x="14" y="3" width="7" height="7"></rect>
+                     <rect x="3" y="14" width="7" height="7"></rect>
+                     <path d="M14 14h3m0 0h4m-4 0v3m0 0v4m4-4h-4"></path>
+                  </svg>
+               </div>
+               <div id="qr-error" class="error-msg">Failed to generate QR</div>
+            </div>
+         </div>
+
+         <div class="actions">
+            <button id="gen-btn" class="btn primary">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                  <path
+                     d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                  </path>
+               </svg>
+               Generate QR
+            </button>
+            <div class="button-group">
+               <button id="dow" class="btn secondary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                  </svg>
+                  Download
+               </button>
+               <button id="copy-btn" class="btn secondary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy Image
+               </button>
+            </div>
+         </div>
+      </main>
+
+      <footer class="footer">
+         <p>Made with ❤️ by <a href="https://hasnizihar.github.io/">HzGPD</a></p>
+      </footer>
+   </div>
+
+   <script src="main.js"></script>
+</body>
+
+</html>
