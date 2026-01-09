@@ -135,7 +135,7 @@ const PROJECTS = [
         date: '2025-01-05',
         images: [
             { id: 1101, src: 'images/Logo-&-Branding/umek/Umek-black.png', alt: 'Umek — Primary logo Black' },
-            { id: 1102, src: 'images/Logo-&-Branding/umek/Umek-white.png', alt: 'Umek — Primary logo White' }
+            { id: 1102, src: 'images/Logo-&-Branding/umek/Umek-White.png', alt: 'Umek — Primary logo White' }
         ]
     },
     {
