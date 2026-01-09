@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Links Dashboard | HzGPD</title>
+    <meta name="description" content="A curated collection of useful links and resources organized for quick access.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1 id="main-title">Useful Links Dashboard</h1>
+            <p id="sub-title">Quick access to curated tools, resources, and software links.</p>
+
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search links or categories...">
+            </div>
+        </div>
+    </header>
+
+    <main id="links-container" class="container">
+        <!-- Categories and links will be dynamically populated here -->
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading links...</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 HzGPD. All rights reserved.</p>
+            <p>Built with <span class="heart">❤</span> using HTML, CSS & JS</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
