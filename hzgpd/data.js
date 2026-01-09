@@ -98,21 +98,28 @@ const PROJECTS = [
     },
     {
         id: 8,
-        title: 'Misty Mountain',
+        title: 'Life of Livings - Photography',
         category: 'Photography',
-        description: 'High-altitude photography capturing the serene beauty of mist-covered peaks.',
+        description: 'Tiny plant grown under a drainage.',
         tags: ['Nature', 'Landscape', 'Mist'],
         date: '2025-01-02',
-        images: [{ id: 801, src: 'images/Photography/photo-1.svg', alt: 'Misty Mountain' }]
+        images: [{ id: 801, src: 'images/Photography/Life-of-livings.jpg', alt: 'Life of Livings' }]
     },
     {
         id: 9,
-        title: 'Desert Fox',
+        title: 'Eid Mubarak - Poster & Flyer',
         category: 'Poster & Flyer',
-        description: 'A study of desert wildlife and camouflage.',
-        tags: ['Wildlife', 'Desert', 'Fox'],
+        description: 'Eid Mubarak!" with wishes for joy, peace, and blessings',
+        tags: ['Eid Mubarak', 'Poster & Flyer', 'Islamic'],
         date: '2025-01-05',
-        images: [{ id: 901, src: 'images/Postres-&-Flyers/photo-4.svg', alt: 'Desert Fox' }]
+        images: [
+            { id: 901, src: 'images/Poster-&-Flyers/Eid-Mubarak/1.jpg', alt: 'Eid Mubarak' },
+            { id: 902, src: 'images/Poster-&-Flyers/Eid-Mubarak/2.jpg', alt: 'Eid Mubarak' },
+            { id: 903, src: 'images/Poster-&-Flyers/Eid-Mubarak/3.jpg', alt: 'Eid Mubarak' },
+            { id: 904, src: 'images/Poster-&-Flyers/Eid-Mubarak/4.jpg', alt: 'Eid Mubarak' },
+            { id: 905, src: 'images/Poster-&-Flyers/Eid-Mubarak/5.jpg', alt: 'Eid Mubarak' },
+            { id: 906, src: 'images/Poster-&-Flyers/Eid-Mubarak/6.jpg', alt: 'Eid Mubarak' },
+        ]
     },
     {
         id: 10,
@@ -174,4 +181,117 @@ const PROJECTS = [
             { id: 1204, src: 'images/Logo-&-Branding/hamzlab/jpg4 logo.jpg', alt: 'Hamzlab — Primary logo White' },
         ]
     },
-];
+    {
+        id: 15,
+        title: 'The Kitten - Manipulation Art',
+        category: 'Manipulation Art',
+        description: 'A Kittenn and A butterfly nice manuplation art.',
+        tags: ['Manipulation Art', 'Kitten', 'Butterfly'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Manipulation-Art/kitten.jpg', alt: 'The Kitten — Manipulation Art' },
+        ]
+    },
+    {
+        id: 16,
+        title: 'Beautiful Blossom - Photography',
+        category: 'Photography',
+        description: 'Collection of Beautiful Flowers and a Butterfly.',
+        tags: ['Photography', 'Flowers', 'Butterfly'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Photography/Beautiful Blossom/1.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1202, src: 'images/Photography/Beautiful Blossom/2.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1203, src: 'images/Photography/Beautiful Blossom/3.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1204, src: 'images/Photography/Beautiful Blossom/4.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1205, src: 'images/Photography/Beautiful Blossom/5.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1206, src: 'images/Photography/Beautiful Blossom/6.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1207, src: 'images/Photography/Beautiful Blossom/7.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1208, src: 'images/Photography/Beautiful Blossom/8.jpg', alt: 'Beautiful Blossom — Photography' },
+        ]
+    },
+    {
+        id: 17,
+        title: 'Landscape - Photography',
+        category: 'Photography',
+        description: 'Beauty of Mountains and waterfalls.',
+        tags: ['Photography', 'Mountains', 'Waterfalls'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Photography/Landscape/1.jpg', alt: 'Landscape — Photography' },
+            { id: 1202, src: 'images/Photography/Landscape/2.jpg', alt: 'Landscape — Photography' },
+            { id: 1203, src: 'images/Photography/Landscape/3.jpg', alt: 'Landscape — Photography' },
+            { id: 1204, src: 'images/Photography/Landscape/4.jpg', alt: 'Landscape — Photography' },
+            { id: 1205, src: 'images/Photography/Landscape/5.jpg', alt: 'Landscape — Photography' },
+            { id: 1206, src: 'images/Photography/Landscape/6.jpg', alt: 'Landscape — Photography' },
+        ]
+    },
+    {
+        id: 18,
+        title: 'Sky - Photography',
+        category: 'Photography',
+        description: 'Beauty of Infinity sky.',
+        tags: ['Infinity', 'Sky', 'Photography'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Photography/Sky/1.jpg', alt: 'Sky — Photography' },
+            { id: 1202, src: 'images/Photography/Sky/2.jpg', alt: 'Sky — Photography' },
+            { id: 1203, src: 'images/Photography/Sky/3.jpg', alt: 'Sky — Photography' },
+        ]
+    },
+    {
+        id: 19,
+        title: 'Wangadigala Hiking Gallery - Photography',
+        category: 'Photography',
+        description: 'Beauty of Wangadigala Hiking.',
+        tags: ['Wangadigala', 'Hiking', 'Photography'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Photography/Wangadigala/1.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1202, src: 'images/Photography/Wangadigala/2.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1203, src: 'images/Photography/Wangadigala/3.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1204, src: 'images/Photography/Wangadigala/4.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1205, src: 'images/Photography/Wangadigala/5.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1206, src: 'images/Photography/Wangadigala/6.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1207, src: 'images/Photography/Wangadigala/7.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1208, src: 'images/Photography/Wangadigala/8.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1209, src: 'images/Photography/Wangadigala/9.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1210, src: 'images/Photography/Wangadigala/10.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1211, src: 'images/Photography/Wangadigala/11.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1212, src: 'images/Photography/Wangadigala/12.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1213, src: 'images/Photography/Wangadigala/13.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1214, src: 'images/Photography/Wangadigala/14.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1215, src: 'images/Photography/Wangadigala/15.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1216, src: 'images/Photography/Wangadigala/16.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1217, src: 'images/Photography/Wangadigala/17.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1218, src: 'images/Photography/Wangadigala/18.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1219, src: 'images/Photography/Wangadigala/19.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+            { id: 1220, src: 'images/Photography/Wangadigala/20.jpg', alt: 'Wangadigala Hiking Gallery — Photography' },
+        ]
+    },
+    {
+        id: 20,
+        title: 'Wangadigala POV - Photography',
+        category: 'Photography',
+        description: 'Beauty of Wangadigala POV.',
+        tags: ['Wangadigala', 'POV', 'Photography'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Photography/Wangedigala.jpg', alt: 'Wangadigala POV — Photography' },
+        ]
+    },
+    {
+        id: 21,
+        title: 'Social Intro - Poster & Flyer',
+        category: 'Poster & Flyer',
+        description: 'Introductory posters and flyers.',
+        tags: ['Poster & Flyer', 'Social'],
+        date: '2025-01-05',
+        images: [
+            { id: 1201, src: 'images/Poster-&-Flyers/Social-Media-Intro/4.jpg', alt: 'Social Intro — Poster & Flyer' },
+            { id: 1202, src: 'images/Poster-&-Flyers/Social-Media-Intro/5.jpg', alt: 'Social Intro — Poster & Flyer' },
+            { id: 1203, src: 'images/Poster-&-Flyers/Social-Media-Intro/6.jpg', alt: 'Social Intro — Poster & Flyer' },
+            { id: 1204, src: 'images/Poster-&-Flyers/Social-Media-Intro/7.jpg', alt: 'Social Intro — Poster & Flyer' },
+        ]
+    }
+]
