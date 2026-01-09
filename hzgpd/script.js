@@ -350,41 +350,43 @@ function showNext(delta = 1) {
   updateLightboxContent();
 }
 
-lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click', () => showNext(-1));
-lbNext.addEventListener('click', () => showNext(1));
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+if (lightbox) {
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => showNext(-1));
+  lbNext.addEventListener('click', () => showNext(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-// Swipe support for lightbox
-let touchstartX = 0;
-let touchendX = 0;
+  // Swipe support for lightbox
+  let touchstartX = 0;
+  let touchendX = 0;
 
-lightbox.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
-}, { passive: true });
+  lightbox.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  }, { passive: true });
 
-lightbox.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
-  handleSwipe();
-}, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
 
-function handleSwipe() {
-  const swipeThreshold = 50;
-  if (touchendX < touchstartX - swipeThreshold) {
-    showNext(1); // Swipe left -> Next
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchendX < touchstartX - swipeThreshold) {
+      showNext(1); // Swipe left -> Next
+    }
+    if (touchendX > touchstartX + swipeThreshold) {
+      showNext(-1); // Swipe right -> Prev
+    }
   }
-  if (touchendX > touchstartX + swipeThreshold) {
-    showNext(-1); // Swipe right -> Prev
-  }
+
+  document.addEventListener('keydown', e => {
+    if (lightbox.getAttribute('aria-hidden') === 'false') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext(1);
+      if (e.key === 'ArrowLeft') showNext(-1);
+    }
+  });
 }
-
-document.addEventListener('keydown', e => {
-  if (lightbox.getAttribute('aria-hidden') === 'false') {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') showNext(1);
-    if (e.key === 'ArrowLeft') showNext(-1);
-  }
-});
 
 // Theme toggle logic removed. Site is permanently dark.
 
@@ -398,10 +400,12 @@ window.addEventListener('load', () => {
 });
 
 // Scroll to top button
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) toTopBtn.classList.add('show'); else toTopBtn.classList.remove('show');
-});
-toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (toTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) toTopBtn.classList.add('show'); else toTopBtn.classList.remove('show');
+  });
+  toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
 // Initialize small animation triggers for header text
 setTimeout(() => {
