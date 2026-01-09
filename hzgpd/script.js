@@ -18,8 +18,8 @@ const lbPrev = document.getElementById('lbPrev');
 const lbNext = document.getElementById('lbNext');
 const lbClose = document.getElementById('lbClose');
 
-// Theme
-const themeToggle = document.getElementById('themeToggle');
+// Ensure functions only run if elements exist
+const hasGallery = !!galleryEl;
 
 // Local dataset referencing images/ folder so the site is fully static
 // Projects: Single source of truth for all gallery items
@@ -186,6 +186,7 @@ function formatImgItem(project) {
 }
 
 function renderGallery(items) {
+  if (!galleryEl) return;
   // Clear existing slider intervals
   state.intervals.forEach(clearInterval);
   state.intervals = [];
@@ -269,30 +270,36 @@ function applyFilters() {
 }
 
 // Filters
-filtersEl.addEventListener('click', e => {
-  const btn = e.target.closest('.filter');
-  if (!btn) return;
-  Array.from(filtersEl.querySelectorAll('.filter')).forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  state.filter = btn.dataset.filter === 'all' ? 'all' : btn.dataset.filter;
-  applyFilters();
-});
+if (filtersEl) {
+  filtersEl.addEventListener('click', e => {
+    const btn = e.target.closest('.filter');
+    if (!btn) return;
+    Array.from(filtersEl.querySelectorAll('.filter')).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.filter = btn.dataset.filter === 'all' ? 'all' : btn.dataset.filter;
+    applyFilters();
+  });
+}
 
 // Search
-let searchTimeout = null;
-searchEl.addEventListener('input', e => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => {
-    state.query = e.target.value.trim();
-    applyFilters();
-  }, 220);
-});
+if (searchEl) {
+  let searchTimeout = null;
+  searchEl.addEventListener('input', e => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      state.query = e.target.value.trim();
+      applyFilters();
+    }, 220);
+  });
+}
 
 // Sort
-sortEl.addEventListener('change', e => {
-  state.sort = e.target.value;
-  applyFilters();
-});
+if (sortEl) {
+  sortEl.addEventListener('change', e => {
+    state.sort = e.target.value;
+    applyFilters();
+  });
+}
 
 // Lightbox
 const lbCounter = document.getElementById('lbCounter');
@@ -356,25 +363,14 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Theme toggle
-function setTheme(isLight) {
-  document.documentElement.classList.toggle('light', isLight);
-  themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-}
-themeToggle.addEventListener('click', () => {
-  const isLight = !document.documentElement.classList.contains('light');
-  setTheme(isLight);
-  try { localStorage.setItem('gallery_light', isLight ? '1' : '0') } catch (e) { }
-});
-// read saved theme
-try { if (localStorage.getItem('gallery_light') === '1') setTheme(true) } catch (e) { }
+// Theme toggle logic removed. Site is permanently dark.
 
 // Preloader and initial render
 window.addEventListener('load', () => {
   // simulate small delay to show preloader
   setTimeout(() => {
-    preloader.style.display = 'none';
-    applyFilters();
+    if (preloader) preloader.style.display = 'none';
+    if (hasGallery) applyFilters();
   }, 600);
 });
 
@@ -411,3 +407,30 @@ window.addEventListener('scroll', () => {
 
   lastScrollY = currentScrollY;
 });
+
+// Filter Bar Scroll Indicators
+const filtersContainer = document.getElementById('filters');
+const filterBar = filtersContainer?.parentElement;
+if (filtersContainer && filterBar) {
+  const updateScrollIndicators = () => {
+    const scrollLeft = filtersContainer.scrollLeft;
+    const maxScroll = filtersContainer.scrollWidth - filtersContainer.clientWidth;
+
+    if (scrollLeft > 10) {
+      filterBar.classList.add('can-scroll-left');
+    } else {
+      filterBar.classList.remove('can-scroll-left');
+    }
+
+    if (scrollLeft < maxScroll - 10) {
+      filterBar.classList.add('can-scroll-right');
+    } else {
+      filterBar.classList.remove('can-scroll-right');
+    }
+  };
+
+  filtersContainer.addEventListener('scroll', updateScrollIndicators);
+  window.addEventListener('resize', updateScrollIndicators);
+  // Initial check after content is likely rendered
+  setTimeout(updateScrollIndicators, 1000);
+}

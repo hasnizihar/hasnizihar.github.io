@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — HzGPD Gallery</title>
+    <link rel="icon" href="../Src/hzgpdfavicin.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Atmospheric background layers -->
+    <div class="bg-layer bg-particles" id="particles"></div>
+    <div class="bg-layer bg-flares"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand">
+                <h1 class="site-title">HzGPD Gallery</h1>
+                <p class="tagline">Explore Beauty in Every Frame</p>
+            </div>
+            <nav class="site-nav">
+                <a href="index.html" class="nav-link">Gallery</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <header class="page-header">
+            <h1 class="page-title">Get in Touch</h1>
+            <p class="page-subtitle">Have a question or want to collaborate? We'd love to hear from you.</p>
+        </header>
+
+        <div class="content-grid" style="max-width: 600px;">
+            <div class="content-card">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+
+        <section class="content-grid mt-40" style="max-width: 600px;">
+            <div class="content-card text-center instagram-box">
+                <div class="insta-icon-wrap">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Quick DM on Instagram</h3>
+                <p>For faster responses or to just say hi, feel free to drop a message on our Instagram.</p>
+                <a href="https://instagram.com" target="_blank" class="submit-btn insta-btn">
+                    <i class="fab fa-instagram"></i> Follow & Message
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <h2 class="footer-title">HzGPD Gallery</h2>
+            <div class="footer-socials">
+                <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <p class="footer-copyright">© 2025 Hz Gallery • Explore Beauty in Every Frame</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form.');
+        });
+    </script>
+</body>
+
+</html>

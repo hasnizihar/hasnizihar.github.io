@@ -5,7 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stellar Gallery — Explore Beauty in Every Frame</title>
+  <link rel="icon" href="../Src/hzgpdfavicin.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -25,6 +27,11 @@
         <h1 class="site-title">HzGPD Gallery</h1>
         <p class="tagline">Explore Beauty in Every Frame</p>
       </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link active">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
       <div class="header-controls">
         <div class="search-wrap">
           <input id="search" type="search" placeholder="Search images or keywords..." aria-label="Search images">
@@ -34,7 +41,6 @@
           <option value="oldest">Sort: Oldest</option>
           <option value="category">Sort: Category</option>
         </select>
-        <button id="themeToggle" class="icon-btn" aria-pressed="false" title="Toggle theme">🌗</button>
       </div>
     </div>
 
@@ -80,12 +86,14 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>© 2025 Hz Gallery</p>
-      <div class="socials">
-        <a href="#" aria-label="Facebook">f</a>
-        <a href="#" aria-label="Instagram">ig</a>
-        <a href="#" aria-label="LinkedIn">in</a>
+      <h2 class="footer-title">HzGPD Gallery</h2>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
       </div>
+      <p class="footer-copyright">© 2025 Hz Gallery • Explore Beauty in Every Frame</p>
     </div>
   </footer>
 
