@@ -355,6 +355,29 @@ lbPrev.addEventListener('click', () => showNext(-1));
 lbNext.addEventListener('click', () => showNext(1));
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
+// Swipe support for lightbox
+let touchstartX = 0;
+let touchendX = 0;
+
+lightbox.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+lightbox.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  if (touchendX < touchstartX - swipeThreshold) {
+    showNext(1); // Swipe left -> Next
+  }
+  if (touchendX > touchstartX + swipeThreshold) {
+    showNext(-1); // Swipe right -> Prev
+  }
+}
+
 document.addEventListener('keydown', e => {
   if (lightbox.getAttribute('aria-hidden') === 'false') {
     if (e.key === 'Escape') closeLightbox();
