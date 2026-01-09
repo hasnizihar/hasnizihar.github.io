@@ -1333,3 +1333,111 @@ select:hover {
   transform: translateY(-3px) scale(1.02) !important;
   box-shadow: 0 12px 20px rgba(225, 48, 108, 0.4) !important;
 }
+
+
+@media (max-width: 768px) {
+  /* Close Button - Safe Zone Top Right */
+  .lb-close {
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    background: rgba(10, 12, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 1010;
+  }
+
+  /* Nav Buttons - Vertically Centered, Edges */
+  .lb-nav {
+    top: 50% !important;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    opacity: 1;
+    background: rgba(10, 12, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .lb-prev {
+    left: 12px;
+  }
+
+  .lb-next {
+    right: 12px;
+  }
+
+  .lb-content {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    padding-top: 80px; /* Safe zone for close button */
+    gap: 0;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lb-content img {
+    flex: 0 1 auto;
+    max-height: 50dvh;
+    width: auto;
+    max-width: calc(100% - 110px); /* Ensure no overlap with nav buttons */
+    object-fit: contain;
+    border-radius: 12px;
+    margin: auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+  }
+
+  .lb-caption {
+    padding: 16px 24px 32px;
+    border-radius: 24px 24px 0 0;
+    border: 1px solid var(--glass-border);
+    border-bottom: 0;
+    background: rgba(10, 12, 20, 0.95);
+    margin-top: auto;
+    flex-shrink: 0;
+    text-align: center; /* Center align everything initially */
+  }
+
+  /* Counter - Centered Below Image */
+  .lb-counter {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--neon-cyan);
+    margin: 0 auto 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+  }
+
+  .lb-caption h3 {
+    font-size: 18px;
+    margin: 4px 0 6px;
+    text-align: left; /* Reset text align for content */
+  }
+
+  .lb-category {
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .lb-description {
+    font-size: 13px;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+  }
+}
+
