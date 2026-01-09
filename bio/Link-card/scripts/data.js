@@ -20,7 +20,8 @@ const pageData = {
             title: "Projects",
             links: [
                 { label: "HzGPD Gallery", url: "https://hasnizihar.github.io/hzgpd/", icon: "fa-solid fa-palette" },
-                { label: "Useful Tools Dashboard", url: "https://hasnizihar.github.io/List-of-links/", icon: "fa-solid fa-link" }
+                { label: "Useful Tools Dashboard", url: "https://hasnizihar.github.io/List-of-links/", icon: "fa-solid fa-link" },
+                { label: "Presonal portfolio", url: "https://hasnizihar.github.io/", icon: "fa-solid fa-laptop" }
             ]
         }
     ],
