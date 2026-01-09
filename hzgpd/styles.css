@@ -1385,7 +1385,7 @@ select:hover {
     flex: 0 1 auto;
     max-height: 50dvh;
     width: auto;
-    max-width: calc(100% - 110px); /* Ensure no overlap with nav buttons */
+    max-width: calc(100% - 120px); /* Increased gap: 60px per side vs 56px button area */
     object-fit: contain;
     border-radius: 12px;
     margin: auto;
@@ -1401,7 +1401,7 @@ select:hover {
     background: rgba(10, 12, 20, 0.95);
     margin-top: auto;
     flex-shrink: 0;
-    text-align: center; /* Center align everything initially */
+    text-align: center;
   }
 
   /* Counter - Centered Below Image */
@@ -1421,7 +1421,7 @@ select:hover {
   .lb-caption h3 {
     font-size: 18px;
     margin: 4px 0 6px;
-    text-align: left; /* Reset text align for content */
+    text-align: left;
   }
 
   .lb-category {
