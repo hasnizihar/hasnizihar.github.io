@@ -200,14 +200,14 @@ const PROJECTS = [
         tags: ['Photography', 'Flowers', 'Butterfly'],
         date: '2025-01-05',
         images: [
-            { id: 1201, src: 'images/Photography/Beautiful Blossom/1.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1202, src: 'images/Photography/Beautiful Blossom/2.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1203, src: 'images/Photography/Beautiful Blossom/3.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1204, src: 'images/Photography/Beautiful Blossom/4.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1205, src: 'images/Photography/Beautiful Blossom/5.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1206, src: 'images/Photography/Beautiful Blossom/6.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1207, src: 'images/Photography/Beautiful Blossom/7.jpg', alt: 'Beautiful Blossom — Photography' },
-            { id: 1208, src: 'images/Photography/Beautiful Blossom/8.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1201, src: 'images/Photography/beautiful blossom/1.jpg', alt: 'beautiful blossom — Photography' },
+            { id: 1202, src: 'images/Photography/beautiful blossom/2.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1203, src: 'images/Photography/beautiful blossom/3.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1204, src: 'images/Photography/beautiful blossom/4.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1205, src: 'images/Photography/beautiful blossom/5.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1206, src: 'images/Photography/beautiful blossom/6.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1207, src: 'images/Photography/beautiful blossom/7.jpg', alt: 'Beautiful Blossom — Photography' },
+            { id: 1208, src: 'images/Photography/beautiful blossom/8.jpg', alt: 'Beautiful Blossom — Photography' },
         ]
     },
     {
@@ -218,12 +218,12 @@ const PROJECTS = [
         tags: ['Photography', 'Mountains', 'Waterfalls'],
         date: '2025-01-05',
         images: [
-            { id: 1201, src: 'images/Photography/Landscape/1.jpg', alt: 'Landscape — Photography' },
-            { id: 1202, src: 'images/Photography/Landscape/2.jpg', alt: 'Landscape — Photography' },
-            { id: 1203, src: 'images/Photography/Landscape/3.jpg', alt: 'Landscape — Photography' },
-            { id: 1204, src: 'images/Photography/Landscape/4.jpg', alt: 'Landscape — Photography' },
-            { id: 1205, src: 'images/Photography/Landscape/5.jpg', alt: 'Landscape — Photography' },
-            { id: 1206, src: 'images/Photography/Landscape/6.jpg', alt: 'Landscape — Photography' },
+            { id: 1201, src: 'images/Photography/landscape/1.jpg', alt: 'Landscape — Photography' },
+            { id: 1202, src: 'images/Photography/landscape/2.jpg', alt: 'Landscape — Photography' },
+            { id: 1203, src: 'images/Photography/landscape/3.jpg', alt: 'Landscape — Photography' },
+            { id: 1204, src: 'images/Photography/landscape/4.jpg', alt: 'Landscape — Photography' },
+            { id: 1205, src: 'images/Photography/landscape/5.jpg', alt: 'Landscape — Photography' },
+            { id: 1206, src: 'images/Photography/landscape/6.jpg', alt: 'Landscape — Photography' },
         ]
     },
     {
