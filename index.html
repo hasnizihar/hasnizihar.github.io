@@ -2,1051 +2,454 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - KR Hasni ZIhar</title>
-  <meta name="description"
-    content="Hasni Zihar - Civil Engineering undergraduate at University of Moratuwa. Portfolio showcasing engineering projects, 
-                                    structural designs, water supply analysis, architectural concepts, and creative works in graphic design and branding.">
-  <meta name="keywords"
-    content="Hasni Zihar, Civil Engineering, Structural Engineering, Engineering Portfolio, University of Moratuwa, Water Supply Design, Structural Analysis, Architecture, Civil Projects, Graphic Design, Logo Design, Branding">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="KR Hasni Zihar - Civil Engineering Student at University of Moratuwa. Portfolio showcasing projects, skills, and academic achievements.">
+    <title>KR Hasni Zihar | Civil Engineering Student</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="bio/assets/img/favicon.png" rel="icon">
-  <link href="bio/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="bio/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bio/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="bio/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="bio/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="bio/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="bio/assets/css/main.css" rel="stylesheet">
-
-  <!-- Liquid Glass Theme CSS -->
-  <link href="bio/assets/css/liquid-glass.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="bio/assets/css/styles.css">
 </head>
 
-<body class="index-page">
+<body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="bio/assets/image/hero/hero.jpeg" alt="KR Hasni Zihar">
+                </div>
+                <h2 class="profile-name">KR Hasni Zihar</h2>
 
-    <div class="profile-img">
-      <img src="bio/assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/kr-hasni-zihar-840208269/" target="_blank" class="social-icon"
+                        aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/HasniZihar" target="_blank" class="social-icon" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/ziharhasni" target="_blank" class="social-icon"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <a href="https://web.facebook.com/people/Hasni-Zihar/pfbid02X95tu83BQP6KxsSvCbJktmLyLRxThqiTiH1deKGU9piTsJz2mbK4DBrNNcm6LgxEl/"
+                        target="_blank" class="social-icon" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <a href="#home" class="nav-item active">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>About</span>
+                </a>
+                <a href="#skills" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>Projects</span>
+                </a>
+                <a href="#education" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    <span>Education</span>
+                </a>
+                <a href="#contact" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Contact</span>
+                </a>
+            </nav>
+        </div>
+
+    </aside>
+
+    <!-- Mobile Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="glass hero-glass">
+                    <h1 class="hero-title">
+                        <span class="greeting">Hello, I'm</span>
+                        <span class="name">KR Hasni Zihar</span>
+                    </h1>
+                    <p class="hero-subtitle">Civil Engineering Student</p>
+                    <p class="hero-university">University of Moratuwa</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="glass-btn primary">View Projects</a>
+                        <a href="#contact" class="glass-btn secondary">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="glass about-content">
+                    <p class="about-text">
+                        I'm a passionate civil engineering student at the University of Moratuwa,
+                        dedicated to designing sustainable infrastructure and innovative solutions
+                        for modern construction challenges. With a strong foundation in structural
+                        analysis, project management, and cutting-edge design software, I strive to
+                        contribute to projects that make a lasting impact on communities.
+                    </p>
+                    <p class="about-text">
+                        My interests span across structural engineering, sustainable construction,
+                        and smart city development. I believe in combining traditional engineering
+                        principles with modern technology to create efficient, eco-friendly, and
+                        resilient structures.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid-new">
+                    <!-- BIM -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">BIM (Building Information Modeling)</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/revit.png" alt="Revit">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CAD & Drafting -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">CAD & Drafting</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/autocad.png" alt="AutoCAD">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Structural Analysis & Design -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Structural Analysis & Design</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/sap2000.png" alt="SAP2000">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/prokon.png" alt="Prokon">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hydraulics, Hydrology & Water Systems -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Hydraulics, Hydrology & Water Systems</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/epanet.png" alt="EPANET">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/hecras.png" alt="HEC-RAS">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Planning & Management -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Project Planning & Management</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/project.png" alt="MS Project">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/excel.png" alt="Excel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Computational & Numerical Tools -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Computational & Numerical Tools</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/matlab.png" alt="MATLAB">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/colab.png" alt="Google Colab">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/python.png" alt="Python">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning & AI -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Machine Learning & AI</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/jupyter.png" alt="Jupyter">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graphic Designing -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Graphic Designing</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/PS.png" alt="Photoshop">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/AI.png" alt="Illustrator">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/FIGMA.png" alt="Figma">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="glass skill-card-new">
+                        <h3 class="skill-category">Web Development</h3>
+                        <div class="skill-icons">
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/HTML.png" alt="HTML">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/CSS.png" alt="CSS">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/JS.png" alt="JavaScript">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/PHP.png" alt="PHP">
+                            </div>
+                            <div class="icon-wrapper">
+                                <img src="bio/assets/image/software-icon/MYSQL.png" alt="MySQL">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <!-- Projects will be dynamically loaded from projects-data.js -->
+                <div class="projects-grid"></div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+
+                <div class="glass education-card">
+                    <div class="education-header">
+                        <h3 class="education-degree">Bachelor of Science in Civil Engineering</h3>
+                        <span class="education-year">2024 - Present</span>
+                    </div>
+                    <p class="education-institution">University of Moratuwa, Sri Lanka</p>
+                    <p class="education-description">
+                        Pursuing a comprehensive civil engineering degree with focus on structural
+                        engineering, geotechnical engineering, and sustainable construction practices.
+                        Active participant in engineering societies and technical workshops.
+                    </p>
+
+                    <div class="education-highlights">
+                        <h4>Academic Performance:</h4>
+                        <ul>
+                            <li>Current GPA: 2.89/4.0</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass education-card">
+                    <div class="education-header">
+                        <h3 class="education-degree">G.C.E. Advanced Level (A/L)</h3>
+                        <span class="education-year">2020 - 2022</span>
+                    </div>
+                    <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
+                    <p class="education-description">
+                        Completed Advanced Level studies with a strong emphasis on mathematics
+                        and physical sciences, forming the academic foundation for
+                        undergraduate civil engineering studies.
+                    </p>
+                    <div class="education-highlights">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Test Score: 3A</li>
+                            <li>District Rank: 18th</li>
+                            <li>Island Rank: 724th</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass education-card">
+                    <div class="education-header">
+                        <h3 class="education-degree">G.C.E. Ordinary Level (O/L)</h3>
+                        <span class="education-year">2018 - 2019</span>
+                    </div>
+                    <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
+                    <p class="education-description">
+                        Successfully completed Ordinary Level education with strong overall
+                        academic performance, demonstrating competence across science,
+                        mathematics, and language subjects.
+                    </p>
+                    <div class="education-highlights">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Test score: 9A</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="glass contact-content">
+                    <p class="contact-intro">
+                        I'm always open to discussing new projects, opportunities, or collaborations.
+                        Feel free to reach out!
+                    </p>
+
+                    <!-- Contact Form -->
+                    <form id="form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Your message..."></textarea>
+                        </div>
+
+                        <button type="submit" class="glass-btn primary submit-btn">Send Message</button>
+                    </form>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info-alt">
+                        <div class="contact-item-alt">
+                            <svg class="contact-icon-alt" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:hasnizihar751@gmail.com">hasnizihar751@gmail.com</a>
+                        </div>
+
+                        <div class="contact-item-alt">
+                            <svg class="contact-icon-alt" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Batticaloa, Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 KR Hasni Zihar. All rights reserved.</p>
+            </div>
+        </footer>
+
     </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="bio/assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">KR Hasni Zihar</h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/kr-hasni-zihar-840208269/" class="linkedin"><i
-          class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/HasniZihar" class="google-plus"><i class="bi bi-github"></i></a>
-      <a href="https://www.instagram.com/ziharhasni" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://x.com/HasniZihar" class="twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="https://web.facebook.com/people/Hasni-Zihar/pfbid02X95tu83BQP6KxsSvCbJktmLyLRxThqiTiH1deKGU9piTsJz2mbK4DBrNNcm6LgxEl/"
-        class="facebook"><i class="bi bi-facebook"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#project"><i class="bi bi-file-earmark-bar-graph navicon"></i> project</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Others</span> <i
-              class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="hzgpd/index.html">HzGPD</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-          </ul>
-        </li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-      </ul>
-    </nav>
-
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="bio/assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>KR Hasni Zihar</h2>
-        <p><span class="typed"
-            data-typed-items="Civil Engineering Undergraduate, University of Moratuwa, B.Sc.Eng (R) (Civil) @UoM"></span><span
-            class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-            class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>I'm a Second-year Undergraduate Engineer at the University of Moratuwa, laying a solid foundation for a
-          bright future in engineering.
-          With a passion for solving complex problems, I combine academic rigor with a flair for creativity,
-          demonstrated through exceptional graphic designing skills.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="bio/assets/img/my-profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Civil Engineering Undergraduate.</h2>
-            <p class="fst-italic py-3">
-              Aspiring Engineer and Creative Innovator.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>06 March 2003</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a
-                        href="https://www.hasnizihar.com">hasnizihar.com</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Batticaloa, Sri Lanka</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Sc.Eng (R) (Civil)</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>ziharhasni@gmail.com</span></li>
-                </ul>
-              </div>
-            </div>
-            <p class="py-3">
-              In addition to excelling in engineering principles, I am known for a friendly demeanor, collaborative
-              spirit, and a keen interest in innovative solutions. Always wearing a touch of sparkle, my dedication to
-              growth and adaptability stands out, whether diving into the intricacies of engineering or crafting
-              visually stunning designs.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Academic Projects</strong> <span>completed as part of coursework & design challenges</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-diagram-3"></i>
-              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Team Collaborations</strong> <span>in engineering and research projects</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-building"></i>
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Design Studies</strong> <span>in structures & water supply systems</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Awards & Recognition</strong> <span>for academic or project excellence</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>
-          A blend of technical expertise, creativity, and problem-solving skills developed through academic projects,
-          fieldwork, and teamwork as a Civil Engineering undergraduate.
-        </p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Problem Solving & Analytical Thinking</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Design & Creativity</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Technical Knowledge & Application</span> <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Teamwork & Collaboration</span> <i class="val">78%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Communication & Presentation</span> <i class="val">72%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Time Management & Organization</span> <i class="val">68%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-        </div><!-- End Skills Item -->
-
-        <div>
-
-        </div>
-
-      </div>
-
-      </div>
-
-    </section><!-- /Skills Section -->
-
-
-    <!-- ======= Software Proficiency Section ======= -->
-    <section id="skills" class="skills section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Software Proficiency</h2>
-      </div><!-- End Section Title -->
-
-
-      <!-- Skills Categories -->
-      <div class="softcontainer" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Category Box -->
-        <div class="skill-category">
-          <p>BIM (Building Information Modeling)</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/revit.png" alt="Revit" class="skillimg">
-            <!-- <img src="bio/assets/img/software-icon/navisworks.png" alt="Navisworks" class="skillimg"> -->
-            <!-- <img src="bio/assets/img/software-icon/aecosim.png" alt="AECOsim" class="skillimg"> -->
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <p>CAD & Drafting</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/autocad.png" alt="AutoCAD" class="skillimg">
-            <!-- <img src="bio/assets/img/software-icon/civil3d.png" alt="Civil 3D" class="skillimg"> -->
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <p>Structural Analysis & Design</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/sap2000.png" alt="SAP2000" class="skillimg">
-            <img src="bio/assets/img/software-icon/prokon.png" alt="Prokon" class="skillimg">
-            <!-- <img src="bio/assets/img/software-icon/staadpro.png" alt="STAAD.Pro" class="skillimg"> -->
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <p>Hydraulics, Hydrology & Water Systems</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/epanet.png" alt="EPANET" class="skillimg">
-            <img src="bio/assets/img/software-icon/hecras.png" alt="HEC-RAS" class="skillimg">
-            <!-- <img src="bio/assets/img/software-icon/hechms.png" alt="HEC-HMS" class="skillimg"> -->
-          </div>
-        </div>
-
-        <!-- <div class="skill-category">
-      <p>Geotechnical Analysis</p>
-      <div class="skillimgbox">
-        <img src="bio/assets/img/software-icon/plaxis.png" alt="PLAXIS" class="skillimg">
-        <img src="bio/assets/img/software-icon/geostudio.png" alt="GeoStudio" class="skillimg">
-      </div>
-    </div> -->
-
-        <div class="skill-category">
-          <p>Project Planning & Management</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/project.png" alt="MS Project" class="skillimg">
-            <!-- <img src="bio/assets/img/software-icon/primavera.png" alt="Primavera" class="skillimg"> -->
-            <img src="bio/assets/img/software-icon/excel.png" alt="Excel" class="skillimg">
-          </div>
-        </div>
-
-        <!-- <div class="skill-category">
-      <p>Surveying & Mapping</p>
-      <div class="skillimgbox">
-        <img src="bio/assets/img/software-icon/arcgis.png" alt="ArcGIS" class="skillimg">
-        <img src="bio/assets/img/software-icon/qgis.png" alt="QGIS" class="skillimg">
-        <img src="bio/assets/img/software-icon/googleearth.png" alt="Google Earth" class="skillimg">
-      </div>
-    </div> -->
-
-        <div class="skill-category">
-          <p>Computational & Numerical Tools</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/matlab.png" alt="MATLAB" class="skillimg">
-            <img src="bio/assets/img/software-icon/colab.png" alt="Google Colab" class="skillimg">
-            <img src="bio/assets/img/software-icon/python.png" alt="Python" class="skillimg">
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <p>Machine Learning & AI</p>
-          <div class="skillimgbox">
-            <!-- <img src="bio/assets/img/software-icon/tensorflow.png" alt="TensorFlow" class="skillimg"> -->
-            <!-- <img src="bio/assets/img/software-icon/sklearn.png" alt="Scikit-learn" class="skillimg"> -->
-            <img src="bio/assets/img/software-icon/jupyter.png" alt="Jupyter Notebook" class="skillimg">
-          </div>
-        </div>
-
-        <!-- Graphic Designing -->
-        <div class="skill-category">
-          <p>Graphic Designing</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/PS.png" alt="Adobe Photoshop" class="skillimg">
-            <img src="bio/assets/img/software-icon/AI.png" alt="Adobe Illustrator" class="skillimg">
-            <img src="bio/assets/img/software-icon/FIGMA.png" alt="Figma" class="skillimg">
-          </div>
-        </div>
-
-        <!-- Web Development -->
-        <div class="skill-category">
-          <p>Web Development</p>
-          <div class="skillimgbox">
-            <img src="bio/assets/img/software-icon/HTML.png" alt="HTML" class="skillimg">
-            <img src="bio/assets/img/software-icon/CSS.png" alt="CSS" class="skillimg">
-            <img src="bio/assets/img/software-icon/JS.png" alt="JavaScript" class="skillimg">
-            <img src="bio/assets/img/software-icon/PHP.png" alt="PHP" class="skillimg">
-            <img src="bio/assets/img/software-icon/MYSQL.png" alt="MySQL" class="skillimg">
-          </div>
-        </div>
-
-
-
-      </div><!-- End Container -->
-    </section>
-    <!-- ======= End Software Proficiency Section ======= -->
-
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Sumary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>Brandon Johnson</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and
-                  developing user-centered digital/print marketing material from initial concept to final, polished
-                  deliverable.</em></p>
-              <ul>
-                <li>Portland par 127,Orlando, FL</li>
-                <li>(123) 456-7891</li>
-                <li>alice.barkley@example.com</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui
-                ut dignissimos deleniti nerada porti sand markend</p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius
-                unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart
-                dila</p>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production
-                  communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the
-                  project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the
-                  design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                  advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-    <!-- project Section -->
-    <section id="project" class="project section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>project</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="project-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
-          </ul><!-- End project Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-app">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/app-1.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>App 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/app-1.jpg" title="App 1" data-gallery="project-gallery-app"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-product">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/product-1.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Product 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/product-1.jpg" title="Product 1"
-                    data-gallery="project-gallery-product" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-branding">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/branding-1.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Branding 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/branding-1.jpg" title="Branding 1"
-                    data-gallery="project-gallery-branding" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-books">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/books-1.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Books 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/books-1.jpg" title="Branding 1" data-gallery="project-gallery-book"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-app">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/app-2.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>App 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/app-2.jpg" title="App 2" data-gallery="project-gallery-app"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-product">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/product-2.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Product 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/product-2.jpg" title="Product 2"
-                    data-gallery="project-gallery-product" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-branding">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/branding-2.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Branding 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/branding-2.jpg" title="Branding 2"
-                    data-gallery="project-gallery-branding" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-books">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/books-2.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Books 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/books-2.jpg" title="Branding 2" data-gallery="project-gallery-book"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-app">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/app-3.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>App 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/app-3.jpg" title="App 3" data-gallery="project-gallery-app"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-product">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/product-3.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Product 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/product-3.jpg" title="Product 3"
-                    data-gallery="project-gallery-product" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-branding">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/branding-3.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Branding 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/branding-3.jpg" title="Branding 2"
-                    data-gallery="project-gallery-branding" class="glightbox preview-link"><i
-                      class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-            <div class="col-lg-4 col-md-6 project-item isotope-item filter-books">
-              <div class="project-content h-100">
-                <img src="bio/assets/img/project/books-3.jpg" class="img-fluid" alt="">
-                <div class="project-info">
-                  <h4>Books 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="bio/assets/img/project/books-3.jpg" title="Branding 3" data-gallery="project-gallery-book"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i
-                      class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End project Item -->
-
-          </div><!-- End project Container -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /project Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                occaecati cupiditate non provident</p>
-            </div>
-          </div>
-          <!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat tarad limino ata</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                praesentium voluptatum deleniti atque</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                soluta nobis est eligendi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                    Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="bio/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum
-                    velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="bio/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
-                    minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="bio/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim
-                    duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="bio/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt
-                    culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="bio/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
-                frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-              data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iproject</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="bio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="bio/assets/vendor/php-email-form/validate.js"></script>
-  <script src="bio/assets/vendor/aos/aos.js"></script>
-  <script src="bio/assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="bio/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="bio/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="bio/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="bio/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="bio/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="bio/assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="bio/assets/js/main.js"></script>
-
+    <!-- End Main Wrapper -->
+
+    <!-- JavaScript -->
+    <script src="bio/project/projects-data.js"></script>
+    <script src="bio/assets/js/script.js"></script>
 </body>
 
 </html>
