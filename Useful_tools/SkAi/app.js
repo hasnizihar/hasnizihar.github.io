@@ -79,6 +79,36 @@ function setupEventListeners() {
     });
     el.askBtn.addEventListener('click', handleAsk);
 
+    // Mobile Menu Handlers
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    if (menuToggle && sidebar && overlay) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            overlay.classList.remove('hidden');
+        });
+
+        const hideMenu = () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            overlay.classList.add('hidden');
+        };
+
+        if (closeMenu) closeMenu.addEventListener('click', hideMenu);
+        overlay.addEventListener('click', hideMenu);
+
+        // Hide menu on link click or search
+        sidebar.addEventListener('click', (e) => {
+            if (e.target.classList.contains('search-item') || e.target.classList.contains('saved-item')) {
+                hideMenu();
+            }
+        });
+    }
+
     // Explain Toggle
     const explainBtn = document.getElementById('toggleExplain');
     const explainContent = document.getElementById('explainContent');
