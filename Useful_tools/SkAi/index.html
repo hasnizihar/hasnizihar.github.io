@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSense | AI Weather Summary</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">✨</span>
+                <h1>SkAi</h1>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="search-box">
+                    <input type="text" id="citySearch" placeholder="Search city...">
+                    <button id="searchBtn">🔍</button>
+                    <div id="searchResults" class="search-dropdown hidden"></div>
+                </div>
+
+                <button id="locateBtn" class="btn-secondary">📍 Use My Location</button>
+
+                <div class="sidebar-map-container">
+                    <h3>Select on Map</h3>
+                    <div id="map" style="height: 250px; border-radius: 12px; background: var(--glass);"></div>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Recent</h3>
+                    <div id="savedLocations" class="saved-list">
+                        <!-- Saved cities go here -->
+                    </div>
+                </div>
+
+                <div class="settings">
+                    <div class="toggle-group">
+                        <label>Units</label>
+                        <select id="unitToggle">
+                            <option value="metric">°C, km/h</option>
+                            <option value="imperial">°F, mph</option>
+                        </select>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <header class="dash-header">
+                <div class="location-info">
+                    <h2 id="currentLocation">Select a Location</h2>
+                    <p id="updatedTime"></p>
+                </div>
+                <div class="activity-selector">
+                    <label>Activity Mode:</label>
+                    <select id="activityMode">
+                        <option value="general">General</option>
+                        <option value="running">Running</option>
+                        <option value="picnic">Picnic</option>
+                        <option value="travel">Travel</option>
+                        <option value="work">Work Commute</option>
+                        <option value="photography">Photography</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="dash-content">
+                <!-- Row 1: Core Status -->
+                <div class="dash-row hero-row">
+                    <!-- Current Weather -->
+                    <div class="card current-card">
+                        <div class="card-header">
+                            <span class="status-dot"></span>
+                            <span id="updatedTime" class="time-stamp">Updated: Just now</span>
+                        </div>
+                        <div class="temp-display">
+                            <span id="currentTemp">--</span><span class="unit">°</span>
+                            <span id="currentIcon" class="main-icon">☀️</span>
+                        </div>
+                        <div id="currentDesc" class="weather-desc">Loading...</div>
+                        <div class="weather-stats">
+                            <div class="stat">
+                                <span class="label">Wind</span>
+                                <span id="currentWind" class="value">-- km/h</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Humidity</span>
+                                <span id="currentHum" class="value">--%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Analysis & Risks -->
+                    <div class="card ai-card">
+                        <div class="ai-header">
+                            <div class="ai-title">
+                                <span class="sparkle">✨</span>
+                                <h3>Deep Insight</h3>
+                            </div>
+                            <button id="toggleExplain" class="btn-text">Why this?</button>
+                        </div>
+
+                        <div id="riskBadges" class="risk-badges"></div>
+
+                        <div class="ai-content">
+                            <div id="aiLoader" class="loader-small hidden"></div>
+                            <p id="aiSummaryText">Select a location to generate analysis...</p>
+                            <ul id="aiHighlights" class="highlights"></ul>
+                        </div>
+
+                        <div id="explainContent" class="explain-info hidden">
+                            <p>Analysis based on 24h precip totals, peak wind gusts, and temperature deviations compared
+                                to seasonal norms.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: 24-Hour Forecast -->
+                <div class="dash-row">
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3>24-Hour Forecast</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="weatherChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: AI Interaction -->
+                <div class="dash-row">
+                    <div class="card ask-card">
+                        <div class="card-header">
+                            <h3>Ask the Weather</h3>
+                        </div>
+                        <div class="ask-box">
+                            <input type="text" id="askInput" placeholder="Is it good for a picnic today?">
+                            <button id="askBtn" class="btn-primary">Ask AI</button>
+                        </div>
+                        <div id="askResponse" class="ask-response"></div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Long-term Planning -->
+                <div class="dash-row">
+                    <div class="card forecast-card">
+                        <div class="card-header">
+                            <h3>7-Day Forecast</h3>
+                        </div>
+                        <div id="dailyForecast" class="forecast-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Row 4: Engagement & Interactions -->
+                <div class="dash-row engagement-row">
+                    <div class="card scores-card">
+                        <div class="card-header">
+                            <h3>Activity Impact</h3>
+                        </div>
+                        <div class="scores-container">
+                            <div class="score-item">
+                                <div class="score-info">
+                                    <span>Outdoor Activity</span>
+                                    <span id="valOutdoor" class="score-val">--</span>
+                                </div>
+                                <div class="progress-bg">
+                                    <div id="scoreOutdoor" class="progress-bar"></div>
+                                </div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-info">
+                                    <span>Travel & Commute</span>
+                                    <span id="valTravel" class="score-val">--</span>
+                                </div>
+                                <div class="progress-bg">
+                                    <div id="scoreTravel" class="progress-bar"></div>
+                                </div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-info">
+                                    <span>General Comfort</span>
+                                    <span id="valComfort" class="score-val">--</span>
+                                </div>
+                                <div class="progress-bg">
+                                    <div id="scoreComfort" class="progress-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card windows-card">
+                        <div class="card-header">
+                            <h3>Best Windows</h3>
+                        </div>
+                        <div id="bestWindows" class="best-windows">
+                            <p class="placeholder-text">Analyzing optimal outdoor times...</p>
+                        </div>
+                        <div class="advice-box">
+                            <p id="activityAdvice"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals / Overlays -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
