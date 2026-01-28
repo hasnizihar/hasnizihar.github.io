@@ -6,7 +6,8 @@ const linkHubData = [
         links: [
             { name: "PDF to PPTX", url: "https://hasnizihar.github.io/Useful_tools/pdf-to-pptx/", desc: "Convert PDF files to editable PowerPoint presentations.", icon: "fa-solid fa-file-powerpoint" },
             { name: "QR Code Generator", url: "https://hasnizihar.github.io/Useful_tools/QR-code-generator/", desc: "Create custom QR codes with premium design.", icon: "fa-solid fa-qrcode" },
-            { name: "Unicode to Bamini", url: "https://hasnizihar.github.io/Useful_tools/Unicode-to-bamini/", desc: "Convert Unicode Tamil text to Bamini format.", icon: "fa-solid fa-language" }
+            { name: "Unicode to Bamini", url: "https://hasnizihar.github.io/Useful_tools/Unicode-to-bamini/", desc: "Convert Unicode Tamil text to Bamini format.", icon: "fa-solid fa-language" },
+            { name: "SkAi", url: "https://hasnizihar.github.io/Useful_tools/SkAi/", desc: "modern AI-powered weather dashboard.", icon: "fa-solid fa-cloud-sun" }
         ]
     },
     // {
