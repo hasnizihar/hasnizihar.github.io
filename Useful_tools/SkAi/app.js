@@ -90,12 +90,14 @@ function setupEventListeners() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
             overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Stop body scroll
         });
 
         const hideMenu = () => {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
             overlay.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore body scroll
         };
 
         if (closeMenu) closeMenu.addEventListener('click', hideMenu);
