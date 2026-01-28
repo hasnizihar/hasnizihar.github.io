@@ -943,10 +943,12 @@ select:focus {
         grid-template-columns: 280px 1fr;
     }
 
-    .hero-row, .planning-row, .engagement-row {
+    .hero-row,
+    .planning-row,
+    .engagement-row {
         grid-template-columns: 1fr !important;
     }
-    
+
     .dashboard {
         padding: 2rem;
         gap: 2rem;
@@ -976,8 +978,8 @@ select:focus {
         width: 300px;
         z-index: 2000;
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border-right: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 20px 0 50px rgba(0,0,0,0.5);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
     }
 
     .sidebar.active {
@@ -989,9 +991,10 @@ select:focus {
     }
 
     .dashboard {
-        padding: 1.5rem;
+        padding: 1rem;
         width: 100%;
         overflow: visible;
+        gap: 1.5rem;
     }
 
     .dash-header {
@@ -1005,12 +1008,19 @@ select:focus {
     }
 
     .dash-row {
+        grid-template-columns: 1fr !important;
         gap: 1.5rem;
     }
 
     .card {
-        padding: 1.5rem;
+        padding: 1.25rem;
         margin-bottom: 0;
+        border-radius: 20px;
+    }
+
+    .chart-container {
+        height: 250px;
+        /* Shorter on mobile to fit screen better */
     }
 
     .temp-display {
@@ -1025,7 +1035,18 @@ select:focus {
         display: block;
         z-index: 1500;
     }
+
+    .ask-box {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .ask-box button {
+        width: 100%;
+        padding: 0.875rem;
+    }
 }
+
 
 @media (max-width: 480px) {
     .temp-display {
