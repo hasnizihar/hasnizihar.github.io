@@ -140,6 +140,24 @@ body {
     justify-content: center;
 }
 
+.btn-text {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-text:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
 .search-box button:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
@@ -219,19 +237,30 @@ body {
 }
 
 .saved-item {
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    /* Standardized pro-touch padding */
+    border-radius: 14px;
     background: var(--glass);
     cursor: pointer;
     font-size: 0.95rem;
     transition: var(--transition);
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
 }
 
-.saved-item:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: rgba(99, 102, 241, 0.2);
-    transform: translateX(5px);
+.saved-item:active {
+    transform: scale(0.96);
+    /* Instant tap feedback */
+    background: rgba(99, 102, 241, 0.2);
+}
+
+@media (hover: hover) {
+    .saved-item:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: rgba(99, 102, 241, 0.3);
+        transform: translateX(5px);
+    }
 }
 
 .settings {
@@ -680,6 +709,59 @@ body {
     transition: var(--transition);
 }
 
+.ask-response {
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border-left: 3px solid var(--primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.ask-response:empty {
+    display: none;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+}
+
+/* Card Loaders */
+.card.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.card.loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--card-bg);
+    backdrop-filter: blur(4px);
+    border-radius: inherit;
+    z-index: 5;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
 .ask-box button:hover {
     background: var(--primary-dark);
 }
@@ -748,11 +830,13 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0.5rem 0.5rem 2rem 0.5rem;
-    /* Increased side & bottom padding */
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
     -webkit-overflow-scrolling: touch;
     width: 100%;
+    /* UX: Subtle mask hint to show scrollability */
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
 }
 
 .forecast-grid::-webkit-scrollbar {
@@ -990,8 +1074,9 @@ select:focus {
     }
 
     .dashboard {
-        padding: 2rem;
-        gap: 2rem;
+        padding: 3rem;
+        /* Increased padding to give cards breathing room */
+        gap: 2.5rem;
     }
 }
 
@@ -1034,41 +1119,43 @@ select:focus {
     }
 
     .dashboard {
-        padding: 1rem 1rem 5rem 1rem;
+        padding: 1rem 1rem env(safe-area-inset-bottom, 5rem) 1rem;
+        /* Support modern mobile safe areas */
         width: 100%;
+        max-width: 100vw;
         overflow-y: auto;
+        overflow-x: hidden;
         gap: 2rem;
     }
 
     .location-info h2 {
         font-size: 1.75rem !important;
-        /* Force smaller on mobile */
-    }
-
-    .dash-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-    }
-
-    .location-info h2 {
-        font-size: 2rem;
+        /* Unified smaller size for mobile */
+        word-break: break-word;
     }
 
     .dash-row {
         grid-template-columns: 1fr !important;
         gap: 1.5rem;
+        min-width: 0;
     }
 
     .card {
         padding: 1.25rem;
-        margin-bottom: 0;
+        margin: 1rem 0;
+        /* Added spacing between cards */
         border-radius: 20px;
+        min-width: 0;
+        width: 100%;
     }
 
     .chart-container {
-        height: 250px;
-        /* Shorter on mobile to fit screen better */
+        height: 220px;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        overflow: hidden;
+        /* Prevent chart labels from causing overflow */
     }
 
     .temp-display {
@@ -1077,7 +1164,18 @@ select:focus {
 
     .forecast-grid {
         display: flex;
-        /* Keep flex from base class */
+        width: 100%;
+        overflow-x: auto;
+        min-width: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    /* Ensure the card containing the grid doesn't expand */
+    .card:has(.forecast-grid),
+    .card:has(.chart-container) {
+        min-width: 0;
+        overflow: hidden;
     }
 
     .overlay.active {
@@ -1104,7 +1202,14 @@ select:focus {
 
     .forecast-grid {
         justify-content: flex-start;
-        /* Ensure scroll starts from left */
+        gap: 0.75rem;
+        /* Tighter gap on very small screens */
+    }
+
+    .daily-card {
+        flex: 0 0 120px;
+        /* Slightly narrower cards for very small devices */
+        padding: 1.25rem 0.75rem;
     }
 
     .main-icon {

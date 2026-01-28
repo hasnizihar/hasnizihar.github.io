@@ -223,6 +223,7 @@ async function refreshData() {
     // Show Loaders
     el.aiLoader.classList.remove('hidden');
     el.aiHighlights.innerHTML = '';
+    setDashboardLoading(true);
 
     const payload = {
         lat: state.lat,
@@ -253,7 +254,16 @@ async function refreshData() {
         el.aiHighlights.innerHTML = '<li class="text-danger">Failed to connect to backend or weather service.</li>';
     } finally {
         el.aiLoader.classList.add('hidden');
+        setDashboardLoading(false);
     }
+}
+
+function setDashboardLoading(isLoading) {
+    const cards = document.querySelectorAll('.dashboard .card');
+    cards.forEach(card => {
+        if (isLoading) card.classList.add('loading');
+        else card.classList.remove('loading');
+    });
 }
 
 // Rendering Logic
@@ -333,7 +343,8 @@ async function handleAsk() {
     const question = el.askInput.value.trim();
     if (!question || !state.lat) return;
 
-    el.askResponse.innerHTML = '<p>Thinking...</p>';
+    setAskLoading(true);
+    el.askResponse.textContent = ''; // Clear previous
 
     try {
         const res = await fetch(`${API_BASE}/ask`, {
@@ -351,6 +362,19 @@ async function handleAsk() {
         el.askResponse.innerHTML = `<p>${data.answer}</p> <small>Confidence: ${Math.round(data.confidence * 100)}%</small>`;
     } catch (err) {
         el.askResponse.innerHTML = `<p>Error: ${err.message}</p>`;
+    } finally {
+        setAskLoading(false);
+    }
+}
+
+function setAskLoading(isLoading) {
+    if (isLoading) {
+        el.askResponse.innerHTML = '<div class="loader-small" style="margin: 0"></div>';
+        el.askBtn.disabled = true;
+        el.askBtn.opacity = 0.5;
+    } else {
+        el.askBtn.disabled = false;
+        el.askBtn.opacity = 1;
     }
 }
 
