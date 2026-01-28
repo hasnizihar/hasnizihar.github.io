@@ -42,14 +42,15 @@ body {
     width: 320px;
     background-color: var(--card-bg);
     border-right: 1px solid var(--border);
-    padding: 2rem;
+    padding: 2rem 1.5rem 4rem 1.5rem;
+    /* More space at bottom for scroll safety */
     display: flex;
     flex-direction: column;
     gap: 2rem;
     backdrop-filter: blur(20px);
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
+    scrollbar-gutter: stable;
+    /* Keeps layout stable when scrollbar appears */
 }
 
 .sidebar::-webkit-scrollbar {
@@ -96,11 +97,14 @@ body {
     position: relative;
     display: flex;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .search-box input {
-    width: 100%;
-    padding: 0.875rem 1.25rem;
+    flex: 1;
+    min-width: 0;
+    /* Important for flex squishing */
+    padding: 0.875rem 1rem;
     background: var(--glass);
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -109,21 +113,31 @@ body {
     transition: var(--transition);
 }
 
-.search-box input:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.875rem 1rem;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: white;
+    font-family: inherit;
+    transition: var(--transition);
 }
 
 .search-box button {
-    padding: 0.875rem;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
     background: var(--primary);
     border: none;
     border-radius: 16px;
     cursor: pointer;
     transition: var(--transition);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .search-box button:hover {
@@ -136,14 +150,11 @@ body {
     top: calc(100% + 0.5rem);
     left: 0;
     right: 0;
-    background: #0f172a;
+    background: #1e293b;
     border: 1px solid var(--border);
     border-radius: 16px;
-    z-index: 100;
+    z-index: 1000;
     max-height: 250px;
-    overflow-y: auto;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-    animation: slideInDown 0.3s ease;
 }
 
 @keyframes slideInDown {
@@ -255,13 +266,15 @@ body {
 /* Dashboard Layout */
 .dashboard {
     flex: 1;
-    padding: 3rem;
+    padding: 3rem 2rem 5rem 3rem;
+    /* Extra right & bottom padding for scrollbar safety */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 3.5rem;
     position: relative;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
 .dash-header {
@@ -271,11 +284,12 @@ body {
     margin-bottom: 1.5rem;
 }
 
-@media (max-width: 900px) {
-    .location-info h2 {
-        font-size: 1.75rem;
-        word-break: break-word;
-    }
+.location-info h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    /* Fluid font size */
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
 }
 
 .location-info p {
@@ -309,20 +323,18 @@ body {
 
 .dash-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .hero-row {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.planning-row {
-    grid-template-columns: 2fr 1fr;
-}
-
-.engagement-row {
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 1400px) {
+    .hero-row {
+        grid-template-columns: 1fr 2fr;
+    }
 }
 
 .lg-span {
@@ -638,12 +650,14 @@ body {
 /* Ask Box */
 .ask-box {
     display: flex;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
 .ask-box input {
     flex: 1;
+    min-width: 250px;
     padding: 1rem 1.25rem;
     background: var(--glass);
     border: 1px solid var(--border);
@@ -653,13 +667,10 @@ body {
     transition: var(--transition);
 }
 
-.ask-box input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
 .ask-box button {
-    padding: 0 1.5rem;
+    flex-shrink: 0;
+    min-width: 100px;
+    padding: 0.8rem 1.5rem;
     background: var(--primary);
     color: white;
     border: none;
@@ -732,18 +743,39 @@ body {
 
 /* Forecast Grid */
 .forecast-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1rem;
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0.5rem 2rem 0.5rem;
+    /* Increased side & bottom padding */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+.forecast-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.forecast-grid::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
 }
 
 .daily-card {
+    flex: 0 0 140px;
+    /* Fixed width for consistency */
     background: rgba(255, 255, 255, 0.03);
-    padding: 2rem 1rem;
-    border-radius: 20px;
+    padding: 1.5rem 1rem;
+    border-radius: 24px;
     text-align: center;
     border: 1px solid var(--border);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .daily-card .day {
@@ -769,11 +801,7 @@ body {
     color: var(--text-muted);
 }
 
-@media (max-width: 1000px) {
-    .forecast-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-}
+/* Removed redundant media query for grid - unified with flex scroll above */
 
 .chart-container {
     height: 300px;
@@ -1006,10 +1034,15 @@ select:focus {
     }
 
     .dashboard {
-        padding: 1rem;
+        padding: 1rem 1rem 5rem 1rem;
         width: 100%;
-        overflow: visible;
-        gap: 1.5rem;
+        overflow-y: auto;
+        gap: 2rem;
+    }
+
+    .location-info h2 {
+        font-size: 1.75rem !important;
+        /* Force smaller on mobile */
     }
 
     .dash-header {
@@ -1043,7 +1076,8 @@ select:focus {
     }
 
     .forecast-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        display: flex;
+        /* Keep flex from base class */
     }
 
     .overlay.active {
@@ -1069,7 +1103,8 @@ select:focus {
     }
 
     .forecast-grid {
-        grid-template-columns: 1fr 1fr;
+        justify-content: flex-start;
+        /* Ensure scroll starts from left */
     }
 
     .main-icon {
