@@ -714,3 +714,45 @@ input[type="range"] {
     opacity: 1;
     text-decoration: underline;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+        height: auto;
+    }
+
+    .app-container {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        padding: 1.5rem;
+        gap: 1.5rem;
+        position: relative;
+        overflow: visible;
+    }
+
+    .topic-list {
+        height: 200px;
+        /* Reduce height on mobile */
+    }
+
+    .content {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        padding: 1.5rem;
+    }
+
+    /* Adjust level selector for smaller screens if needed */
+    .level-selector {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
