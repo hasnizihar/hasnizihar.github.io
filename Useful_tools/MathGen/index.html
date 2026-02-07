@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGen - Ultimate Math Question Generator</title>
+    <link rel="shortcut icon" href="../../Src/favicon-HzGPD.png" type="image/x-icon">
+    <meta name="description"
+        content="Generate custom math practice questions instantly. Choose topics, difficulty, and export for students.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- MathsBot Core Scripts -->
+    <script src="Js/utilities.js"></script>
+    <script src="Js/objectMaths.js"></script>
+    <script src="Js/questionBank.js"></script>
+    <script src="Js/language.js"></script>
+    <script src="Js/differentiator.js"></script>
+    <script>
+        // Global variables required by the local scripts
+        var question = []; 
+    </script>
+
+    <!-- MathJax for rendering equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady();
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-icon">Σ</div>
+                    <h1>MathGen</h1>
+                </div>
+                <div class="lang-container">
+                    <button id="lang-toggle" class="lang-btn" title="Switch Language">தமிழ்</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="search-header">
+                    <label for="topic-search" data-i18n="search">Search Topics</label>
+                    <button id="clear-topics-btn" class="clear-btn" data-i18n="clear">Clear All</button>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" id="topic-search" placeholder="Type to filter..."
+                        data-i18n-placeholder="searchPlaceholder">
+                </div>
+                <div id="topic-list" class="topic-list">
+                    <!-- Categories and Topics will be injected here -->
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label data-i18n="difficulty">Difficulty Levels (Select multiple)</label>
+                <div class="level-selector" id="level-selector">
+                    <button class="level-btn active" data-level="1">1</button>
+                    <button class="level-btn" data-level="2">2</button>
+                    <button class="level-btn" data-level="3">3</button>
+                    <button class="level-btn" data-level="4">4</button>
+                    <button class="level-btn" data-level="5">5</button>
+                    <button class="level-btn" data-level="6">6</button>
+                    <button class="level-btn" data-level="7">7</button>
+                    <button class="level-btn" data-level="8">8</button>
+                    <button class="level-btn" data-level="9">9</button>
+                    <button class="level-btn" data-level="10">10</button>
+                </div>
+                <div class="level-actions">
+                    <button id="select-all-levels" class="text-btn">Select All</button>
+                    <button id="clear-levels" class="text-btn">Clear</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="question-count" data-i18n="count">Number of Questions</label>
+                <input type="number" id="question-count" min="1" max="100" value="10">
+            </div>
+
+            <div class="actions">
+                <button id="generate-btn" class="btn btn-primary">
+                    <span class="icon">🔄</span> <span data-i18n="newQuestions">New Questions</span>
+                </button>
+                <button id="toggle-answers" class="btn btn-secondary">
+                    <span class="icon">👁️</span> <span data-i18n="showAnswers">Show Answers</span>
+                </button>
+                <button id="print-btn" class="btn btn-outline">
+                    <span class="icon">🖨️</span> <span data-i18n="print">Print PDF</span>
+                </button>
+            </div>
+
+            <div class="footer">
+                <p data-i18n="footer">Inspired by MathsBot</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="content-header">
+                <h2 id="current-topic-title">Arithmetic Practice</h2>
+                <div class="stats">
+                    <span id="q-count-badge">10 Questions</span>
+                    <span id="difficulty-badge">Level 3</span>
+                </div>
+            </header>
+
+            <div class="document-container">
+                <div id="questions-grid" class="questions-grid">
+                    <!-- Questions will be injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="Js/app.js"></script>
+</body>
+
+</html>
