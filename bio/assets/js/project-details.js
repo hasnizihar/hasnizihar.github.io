@@ -172,6 +172,11 @@ function renderFiles() {
     const filesGrid = document.querySelector('.files-grid');
     if (!filesGrid) return;
 
+    if (!projectData.files || projectData.files.length === 0) {
+        filesGrid.innerHTML = '<p class="no-files">No files available</p>';
+        return;
+    }
+
     filesGrid.innerHTML = '';
 
     projectData.files.forEach(file => {

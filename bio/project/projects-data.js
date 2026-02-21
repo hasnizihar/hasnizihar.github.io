@@ -11,7 +11,17 @@ const projectsData = [
         description: 'Comprehensive conceptual design and analysis of a multi-purpose sports complex including gymnasium, swimming pool, and outdoor facilities. Utilized ETABS for structural modeling and AutoCAD for detailed drawings.',
         coverImage: 'bio/project/mora-sports-complex/image/Cover-img.png',
         technologies: ['AutoCAD', 'Revit'],
-        link: 'bio/project/mora-sports-complex/project-template.html'
+        link: 'bio/project/mora-sports-complex/'
+    },
+    {
+        id: 'community-green-space',
+        title: 'Community Green Space Design',
+        category: 'Design Project',
+        tag: 'Design Project',
+        description: 'Comprehensive conceptual design and analysis of a community green space including park, playground, and outdoor facilities. Utilized ETABS for structural modeling and AutoCAD for detailed drawings.',
+        coverImage: 'bio/project/Community Green Space Design/image/Cover-img.png',
+        technologies: ['Sweet Home 3D'],
+        link: 'bio/project/Community Green Space Design/'
     }
 ];
 

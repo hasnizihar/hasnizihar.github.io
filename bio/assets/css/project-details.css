@@ -405,6 +405,18 @@
     gap: var(--spacing-sm);
 }
 
+.no-files {
+    grid-column: 1 / -1;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: var(--spacing-lg);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    opacity: 0.8;
+}
+
 .file-card {
     display: flex;
     align-items: center;
