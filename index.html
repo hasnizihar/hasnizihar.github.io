@@ -147,13 +147,13 @@
                     </svg>
                     <span>Projects</span>
                 </a>
-                <a href="#education" class="nav-item">
+                <a href="#experience-education" class="nav-item">
                     <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                     </svg>
-                    <span>Education</span>
+                    <span>Experience</span>
                 </a>
                 <a href="#contact" class="nav-item">
                     <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -213,17 +213,18 @@
                         </div>
                         <div class="about-text-content">
                             <p class="about-text">
-                                I'm a passionate civil engineering student at the University of Moratuwa,
-                                dedicated to designing sustainable infrastructure and innovative solutions
-                                for modern construction challenges. With a strong foundation in structural
-                                analysis, project management, and cutting-edge design software, I strive to
-                                contribute to projects that make a lasting impact on communities.
+                                I’m KR Hasni Zihar, a civil engineering undergraduate at the University of Moratuwa.
+                                I have a broad interest in the main areas of civil engineering and like understanding
+                                how different disciplines connect in real engineering projects.
+                                I learn best by doing. I try to apply what I learn through small projects, practical
+                                experiments, and hands-on problem solving, which helps me understand concepts beyond
+                                theory.
+
                             </p>
                             <p class="about-text">
-                                My interests span across structural engineering, sustainable construction,
-                                and smart city development. I believe in combining traditional engineering
-                                principles with modern technology to create efficient, eco-friendly, and
-                                resilient structures.
+                                I focus on consistent learning, adaptability, and responsible engineering practice,
+                                with the goal of developing into a well-rounded civil engineer who can contribute
+                                effectively to real-world infrastructure and society.
                             </p>
                         </div>
                     </div>
@@ -371,70 +372,165 @@
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="section">
+        <!-- Experience, Education & Volunteering Section -->
+        <section id="experience-education" class="section">
             <div class="container">
-                <h2 class="section-title">Education</h2>
-
-                <div class="glass education-card">
-                    <div class="education-header">
-                        <h3 class="education-degree">Bachelor of Science in Civil Engineering</h3>
-                        <span class="education-year">2024 - Present</span>
+                <div class="tab-container">
+                    <!-- Tab Navigation -->
+                    <div class="glass tab-nav">
+                        <button class="tab-btn active" onclick="openTab(event, 'education-tab')">Education</button>
+                        <button class="tab-btn" onclick="openTab(event, 'experience-tab')">Experience</button>
+                        <button class="tab-btn" onclick="openTab(event, 'volunteering-tab')">Volunteering</button>
                     </div>
-                    <p class="education-institution">University of Moratuwa, Sri Lanka</p>
-                    <p class="education-description">
-                        Pursuing a comprehensive civil engineering degree with focus on structural
-                        engineering, geotechnical engineering, and sustainable construction practices.
-                        Active participant in engineering societies and technical workshops.
-                    </p>
 
-                    <div class="education-highlights">
-                        <h4>Academic Performance:</h4>
-                        <ul>
-                            <li>Current GPA: 2.89/4.0</li>
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Education Tab -->
+                        <div id="education-tab" class="tab-pane active">
+                            <h2 class="section-title">Education</h2>
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">Bachelor of Science in Civil Engineering</h3>
+                                    <span class="education-year">2024 - Present</span>
+                                </div>
+                                <p class="education-institution">University of Moratuwa, Sri Lanka</p>
+                                <p class="education-description">
+                                    Pursuing a comprehensive civil engineering degree with focus on structural
+                                    engineering, geotechnical engineering, and sustainable construction practices.
+                                </p>
+                                <div class="education-highlights">
+                                    <h4>Academic Performance:</h4>
+                                    <ul>
+                                        <li>Current GPA: 2.89/4.0</li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                        </ul>
-                    </div>
-                </div>
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">G.C.E. Advanced Level (A/L)</h3>
+                                    <span class="education-year">2020 - 2022</span>
+                                </div>
+                                <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
+                                <p class="education-description">
+                                    Completed Advanced Level studies with a strong emphasis on mathematics
+                                    and physical sciences.
+                                </p>
+                                <div class="education-highlights">
+                                    <h4>Key Achievements:</h4>
+                                    <ul>
+                                        <li>Test Score: 3A</li>
+                                        <li>District Rank: 18th</li>
+                                        <li>Island Rank: 724th</li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                <div class="glass education-card">
-                    <div class="education-header">
-                        <h3 class="education-degree">G.C.E. Advanced Level (A/L)</h3>
-                        <span class="education-year">2020 - 2022</span>
-                    </div>
-                    <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
-                    <p class="education-description">
-                        Completed Advanced Level studies with a strong emphasis on mathematics
-                        and physical sciences, forming the academic foundation for
-                        undergraduate civil engineering studies.
-                    </p>
-                    <div class="education-highlights">
-                        <h4>Key Achievements:</h4>
-                        <ul>
-                            <li>Test Score: 3A</li>
-                            <li>District Rank: 18th</li>
-                            <li>Island Rank: 724th</li>
-                        </ul>
-                    </div>
-                </div>
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">G.C.E. Ordinary Level (O/L)</h3>
+                                    <span class="education-year">2018 - 2019</span>
+                                </div>
+                                <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
+                                <p class="education-description">
+                                    Successfully completed Ordinary Level education with strong overall academic
+                                    performance.
+                                </p>
+                                <div class="education-highlights">
+                                    <h4>Key Achievements:</h4>
+                                    <ul>
+                                        <li>Test score: 9A</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="glass education-card">
-                    <div class="education-header">
-                        <h3 class="education-degree">G.C.E. Ordinary Level (O/L)</h3>
-                        <span class="education-year">2018 - 2019</span>
-                    </div>
-                    <p class="education-institution">BT/BC/Kattankudy Centrel College</p>
-                    <p class="education-description">
-                        Successfully completed Ordinary Level education with strong overall
-                        academic performance, demonstrating competence across science,
-                        mathematics, and language subjects.
-                    </p>
-                    <div class="education-highlights">
-                        <h4>Key Achievements:</h4>
-                        <ul>
-                            <li>Test score: 9A</li>
+                        <!-- Experience Tab -->
+                        <div id="experience-tab" class="tab-pane">
+                            <h2 class="section-title">Experience</h2>
+                            <div class="glass education-card">
+                                <p class="education-description" style="text-align: center; font-style: italic;">
+                                    Experience will be added in the future.
+                                </p>
+                            </div>
 
-                        </ul>
+
+
+                            <!-- <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">Civil Engineering Projects</h3>
+                                    <span class="education-year">2024 - Present</span>
+                                </div>
+                                <p class="education-institution">University of Moratuwa</p>
+                                <ul class="education-description"
+                                    style="list-style-type: disc; padding-left: 20px; color: var(--text-secondary);">
+                                    <li>Conducted site visits and structural analysis for conceptual designs.</li>
+                                    <li>Implemented BIM workflows in modeling sports complexes and community spaces.
+                                    </li>
+                                    <li>Worked on hydrological modeling using HEC-RAS and EPANET.</li>
+                                </ul>
+                            </div> -->
+                        </div>
+
+                        <!-- Volunteering Tab -->
+                        <div id="volunteering-tab" class="tab-pane">
+                            <h2 class="section-title">Volunteering</h2>
+
+
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">IGV- MAR COM Member</h3>
+                                    <span class="education-year">2024</span>
+                                </div>
+                                <p class="education-institution">AIESEC</p>
+                                <p class="education-description">
+                                    Worked as a team member in the MarCom panel of AIESEC iGV during Winter 2024,
+                                    contributing to marketing and communication efforts to support programs.
+                                </p>
+                            </div>
+
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">VICE SECRETARY</h3>
+                                    <span class="education-year">2024 - Present</span>
+                                </div>
+                                <p class="education-institution">GOGREEN MOVEMENT</p>
+                                <p class="education-description">
+                                    Serving as Vice Secretary of the Go Green Movement, an environmental society
+                                    registered under the Central Environmental Authority of Sri Lanka, supporting
+                                    sustainable initiatives and administrative coordination
+                                </p>
+                            </div>
+
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">SECRETARY</h3>
+                                    <span class="education-year">2024 - Present</span>
+                                </div>
+                                <p class="education-institution">UMEK </p>
+                                <p class="education-description">
+                                    taking a role as Secretary of UMEK (Undergraduates of Medicine and Engineering –
+                                    Kattankudy), a local student-led society focused on academic collaboration and
+                                    community engagement.
+                                </p>
+                            </div>
+
+                            <div class="glass education-card">
+                                <div class="education-header">
+                                    <h3 class="education-degree">MEDIA COMMITTEE - MEMBER</h3>
+                                    <span class="education-year">2025 - Present</span>
+                                </div>
+                                <p class="education-institution">CES</p>
+                                <p class="education-description">
+                                    Working as Media Committee - Member of CES (Civil Engineering Society of
+                                    University of Moratuwa), a Non Academic society focused on Social collaboration
+                                    and community engagement.
+                                </p>
+                            </div>
+
+
+
+                        </div>
                     </div>
                 </div>
             </div>

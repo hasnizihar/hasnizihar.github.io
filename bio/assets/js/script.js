@@ -91,7 +91,7 @@ window.addEventListener('scroll', () => {
 // ===================================
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -99,6 +99,8 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            // Stop observing once animated
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
@@ -110,8 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     glassElements.forEach((el, index) => {
         // Initial state
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`;
+        el.style.transform = 'translateY(20px)';
+        // Reduced staggered delay and capped it to prevent long delays on deep elements
+        const delay = Math.min((index % 5) * 0.05, 0.3);
+        el.style.transition = `opacity 0.5s ease-out ${delay}s, transform 0.5s ease-out ${delay}s`;
 
         // Observe for intersection
         observer.observe(el);
@@ -169,4 +173,28 @@ if (form) {
             submitBtn.disabled = false;
         }
     });
+}
+
+// ===================================
+// Tab Functionality
+// ===================================
+function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tab-pane" and hide them
+    tabcontent = document.getElementsByClassName("tab-pane");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+    }
+
+    // Get all elements with class="tab-btn" and remove the class "active"
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
 }

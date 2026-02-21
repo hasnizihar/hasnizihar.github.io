@@ -76,6 +76,16 @@ const projectData = {
             src: 'image/5.jpeg',
             alt: 'Name Board',
             caption: 'Name Board'
+        },
+        {
+            src: 'image/6.png',
+            alt: 'Real image',
+            caption: 'Real image'
+        },
+        {
+            src: 'image/7.png',
+            alt: 'Real image',
+            caption: 'Real image'
         }
 
     ],
