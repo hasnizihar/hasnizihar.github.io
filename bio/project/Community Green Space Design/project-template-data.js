@@ -91,38 +91,7 @@ const projectData = {
     ],
 
     // Project Files
-    files: [
-        // {
-        //     name: 'Project Report 1',
-        //     type: 'PDF',
-        //     size: '2.5 MB',
-        //     path: 'files/D5 Mora Sports Complex.pdf'
-        // },
-        // {
-        //     name: 'Project Report 2',
-        //     type: 'PDF',
-        //     size: '2.5 MB',
-        //     path: 'files/D5 MSC V1.pdf'
-        // },
-        // {
-        //     name: 'AutoCAD Drawings',
-        //     type: 'DWG',
-        //     size: '296 KB',
-        //     path: 'files/Mora Sports Complex.dwg'
-        // },
-        // {
-        //     name: 'Revit Model',
-        //     type: 'RVT',
-        //     size: '47 MB',
-        //     path: 'files/Mora Sports Complex.rvt'
-        // },
-        // {
-        //     name: 'Images',
-        //     type: 'ZIP',
-        //     size: '5.74 MB',
-        //     path: 'files/images.zip'
-        // }
-    ],
+    files: [],
 
     // Results & Conclusion
     conclusion: {
