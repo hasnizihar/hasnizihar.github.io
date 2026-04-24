@@ -12,6 +12,13 @@ const linkHubData = [
             { name: "Chatter", url: "https://hasnizihar.github.io/Useful_tools/HzChat/frontend/index.html", desc: "Chat with AI", icon: "fa-solid fa-robot" }
         ]
     },
+        {
+        category: "Civil Engineering",
+        icon: "fa-solid fa-building",
+        links: [
+            { name: "Quick Mix Pro", url: "https://quickmixpro.vercel.app/", desc: "Concrete Mix Design Calculator", icon: "fa-solid fa-calculator" },
+        ]
+    }
     // {
     //     category: "Study Resources",
     //     icon: "fa-solid fa-book-open",
