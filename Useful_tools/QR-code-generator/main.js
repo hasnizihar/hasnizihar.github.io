@@ -28,10 +28,25 @@
     email: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`
   };
 
+  const PRELOADED_ICONS = {};
+  if (typeof Image !== 'undefined') {
+    try {
+      Object.keys(PRESET_ICONS).forEach(key => {
+        const img = new Image();
+        const svg64 = btoa(unescape(encodeURIComponent(PRESET_ICONS[key])));
+        img.src = 'data:image/svg+xml;base64,' + svg64;
+        PRELOADED_ICONS[key] = img;
+      });
+    } catch (e) {
+      // Fallback
+    }
+  }
+
   // --- 4. Curated Design Templates ---
   const TEMPLATES = [
     {
       id: 'restaurant-menu',
+      category: 'Dining & Menu',
       name: 'Coffee & Bistro Menu',
       desc: 'Warm amber tones with rounded dot modules and a "VIEW MENU" frame.',
       config: {
@@ -54,6 +69,7 @@
     },
     {
       id: 'executive-card',
+      category: 'Business Card',
       name: 'Executive Business Card',
       desc: 'Obsidian slate with classy diamond-cut modules and a "SAVE CONTACT" frame.',
       config: {
@@ -82,6 +98,7 @@
     },
     {
       id: 'guest-wifi',
+      category: 'Wi-Fi Access',
       name: 'High-Speed Guest Wi-Fi',
       desc: 'Mint to Cyan gradient with Wi-Fi center badge and "CONNECT WI-FI" CTA.',
       config: {
@@ -105,6 +122,7 @@
     },
     {
       id: 'creative-portfolio',
+      category: 'Portfolio',
       name: 'Creative Portfolio',
       desc: 'Royal violet with organic leaf patterns and full card display frame.',
       config: {
@@ -127,6 +145,7 @@
     },
     {
       id: 'instagram-social',
+      category: 'Social Media',
       name: 'Instagram & Social Hub',
       desc: 'Vibrant sunset rose gradient with rounded frames and social CTA.',
       config: {
@@ -149,6 +168,7 @@
     },
     {
       id: 'crypto-payment',
+      category: 'Web3 & Crypto',
       name: 'Crypto & Web3 Payment',
       desc: 'Indigo gradient with modern circle frames and "PAY HERE" prompt.',
       config: {
@@ -171,6 +191,7 @@
     },
     {
       id: 'product-packaging',
+      category: 'Packaging',
       name: 'Eco Packaging Label',
       desc: 'Deep forest green high-contrast standard QR for labels and boxes.',
       config: {
@@ -190,6 +211,7 @@
     },
     {
       id: 'liquid-night',
+      category: 'Midnight Glass',
       name: 'Liquid Dark Minimalist',
       desc: 'Pure crisp white dots over deep midnight slate with soft cyan accent.',
       config: {
@@ -1113,6 +1135,8 @@
         if (hzgpdLogoImg.complete && hzgpdLogoImg.naturalWidth > 0) {
           ctx.drawImage(hzgpdLogoImg, logoX, logoY, logoPixelSize, logoPixelSize);
         }
+      } else if (PRELOADED_ICONS[state.presetLogo] && PRELOADED_ICONS[state.presetLogo].complete) {
+        ctx.drawImage(PRELOADED_ICONS[state.presetLogo], logoX, logoY, logoPixelSize, logoPixelSize);
       } else if (PRESET_ICONS[state.presetLogo]) {
         drawSvgStringToCanvas(ctx, PRESET_ICONS[state.presetLogo], logoX, logoY, logoPixelSize);
       }
@@ -1471,6 +1495,9 @@
     }
     el.moreMenuItems.forEach(m => m.classList.toggle('active', m.getAttribute('data-type') === state.type));
     el.tabPanels.forEach(p => p.classList.toggle('active', p.id === `panel-${state.type}`));
+    if (el.logoPresets) {
+      el.logoPresets.forEach(b => b.classList.toggle('active', b.getAttribute('data-logo') === state.presetLogo));
+    }
   }
 
   // --- 17. Batch Generation (JSZip) ---
@@ -1790,28 +1817,159 @@
     showToast('Imported decoded content into Studio!', 'success');
   });
 
-  // --- 20. Template Gallery Initialization ---
+  // --- 20. Template Gallery & Real Live Previews ---
+  function createTemplatePreviewCanvas(tpl, targetSize = 240) {
+    if (tpl._cachedPreview) return tpl._cachedPreview;
+
+    const canvas = document.createElement('canvas');
+
+    let payload = 'https://hasnizihar.github.io/';
+    if (tpl.config.url) payload = tpl.config.url;
+    else if (tpl.config.type === 'wifi') {
+      payload = `WIFI:S:${tpl.config.wifiSsid || 'HzGPD_Guest'};T:WPA;P:${tpl.config.wifiPass || 'Welcome2026!'};;`;
+    } else if (tpl.config.type === 'vcard') {
+      payload = `BEGIN:VCARD\nVERSION:3.0\nN:${tpl.config.vcardLn || 'Zihar'};${tpl.config.vcardFn || 'Hasni'};;;\nFN:${tpl.config.vcardFn || 'Hasni'} ${tpl.config.vcardLn || 'Zihar'}\nORG:${tpl.config.vcardOrg || 'HzGPD'}\nTITLE:${tpl.config.vcardTitle || 'Civil Engineer'}\nEND:VCARD`;
+    } else if (tpl.config.type === 'social') {
+      payload = `https://instagram.com/${tpl.config.socialHandle || 'ziharhasni'}`;
+    } else if (tpl.config.type === 'crypto') {
+      payload = `bitcoin:${tpl.config.cryptoAddress || '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'}`;
+    }
+
+    try {
+      const hasLogo = (tpl.config.presetLogo && tpl.config.presetLogo !== 'none');
+      const ecLevel = hasLogo ? 'H' : 'M';
+      const qr = window.qrcode(0, ecLevel);
+      qr.addData(payload);
+      qr.make();
+
+      // Temporarily swap state properties for isolated preview drawing
+      const prevQrMatrix = state.qrMatrix;
+      const prevFg = state.fgColor;
+      const prevBg = state.bgColor;
+      const prevTrans = state.isTransparentBg;
+      const prevGrad = state.isGradient;
+      const prevGradColor = state.gradColor;
+      const prevGradDir = state.gradDir;
+      const prevBody = state.bodyShape;
+      const prevEye = state.eyeShape;
+      const prevCustomEye = state.customEyeColors;
+      const prevEyeOuter = state.eyeOuterColor;
+      const prevEyeInner = state.eyeInnerColor;
+      const prevFrameStyle = state.frameStyle;
+      const prevFrameLabel = state.frameLabel;
+      const prevFrameBg = state.frameBgColor;
+      const prevFrameText = state.frameTextColor;
+      const prevPresetLogo = state.presetLogo;
+      const prevCustomLogo = state.customLogoImg;
+      const prevMargin = state.margin;
+      const prevLogoSize = state.logoSize;
+      const prevLogoBadgeBg = state.logoBadgeBg;
+
+      state.qrMatrix = qr;
+      state.fgColor = tpl.config.fgColor || '#0f172a';
+      state.bgColor = tpl.config.bgColor || '#ffffff';
+      state.isTransparentBg = !!tpl.config.isTransparentBg;
+      state.isGradient = !!tpl.config.isGradient;
+      state.gradColor = tpl.config.gradColor || '#6ee7f9';
+      state.gradDir = tpl.config.gradDir || '135';
+      state.bodyShape = tpl.config.bodyShape || 'square';
+      state.eyeShape = tpl.config.eyeShape || 'square';
+      state.customEyeColors = !!tpl.config.customEyeColors;
+      state.eyeOuterColor = tpl.config.eyeOuterColor || state.fgColor;
+      state.eyeInnerColor = tpl.config.eyeInnerColor || state.fgColor;
+      state.frameStyle = tpl.config.frameStyle || 'none';
+      state.frameLabel = tpl.config.frameLabel || 'SCAN ME';
+      state.frameBgColor = tpl.config.frameBgColor || '#0f172a';
+      state.frameTextColor = tpl.config.frameTextColor || '#ffffff';
+      state.presetLogo = tpl.config.presetLogo || 'none';
+      state.customLogoImg = null;
+      state.margin = 2;
+      state.logoSize = 0.22;
+      state.logoBadgeBg = true;
+
+      drawQRWithFrame(canvas, targetSize);
+
+      // Restore original studio state
+      state.qrMatrix = prevQrMatrix;
+      state.fgColor = prevFg;
+      state.bgColor = prevBg;
+      state.isTransparentBg = prevTrans;
+      state.isGradient = prevGrad;
+      state.gradColor = prevGradColor;
+      state.gradDir = prevGradDir;
+      state.bodyShape = prevBody;
+      state.eyeShape = prevEye;
+      state.customEyeColors = prevCustomEye;
+      state.eyeOuterColor = prevEyeOuter;
+      state.eyeInnerColor = prevEyeInner;
+      state.frameStyle = prevFrameStyle;
+      state.frameLabel = prevFrameLabel;
+      state.frameBgColor = prevFrameBg;
+      state.frameTextColor = prevFrameText;
+      state.presetLogo = prevPresetLogo;
+      state.customLogoImg = prevCustomLogo;
+      state.margin = prevMargin;
+      state.logoSize = prevLogoSize;
+      state.logoBadgeBg = prevLogoBadgeBg;
+
+      tpl._cachedPreview = canvas.toDataURL('image/png');
+      return tpl._cachedPreview;
+    } catch (err) {
+      console.warn('Template preview render error:', err);
+      return '';
+    }
+  }
+
   function initTemplateGallery() {
     el.templateGalleryGrid.innerHTML = '';
     TEMPLATES.forEach(tpl => {
+      const previewDataUrl = createTemplatePreviewCanvas(tpl, 240);
       const card = document.createElement('div');
       card.className = 'template-card';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Apply ${tpl.name} template`);
+
       card.innerHTML = `
-        <div class="template-thumb" style="background: ${tpl.config.bgColor}; border: 1px solid rgba(0,0,0,0.08);">
-          <div style="width: 50px; height: 50px; background: ${tpl.config.fgColor}; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.68rem; font-weight: bold;">
-            QR
-          </div>
+        <div class="template-thumb">
+          ${previewDataUrl 
+            ? `<img src="${previewDataUrl}" class="template-preview-img" alt="${tpl.name} QR Preview" loading="lazy">` 
+            : `<div style="width: 50px; height: 50px; background: ${tpl.config.fgColor}; border-radius: 8px;"></div>`
+          }
         </div>
         <div class="template-info">
+          <div class="template-category-row">
+            <span class="template-category-tag">${tpl.category || 'Preset'}</span>
+            <div class="template-swatches" title="Theme Palette">
+              <span class="tpl-swatch" style="background: ${tpl.config.fgColor};" title="Foreground: ${tpl.config.fgColor}"></span>
+              ${tpl.config.isGradient ? `<span class="tpl-swatch" style="background: ${tpl.config.gradColor};" title="Gradient: ${tpl.config.gradColor}"></span>` : ''}
+              <span class="tpl-swatch" style="background: ${tpl.config.bgColor}; border: 1px solid rgba(255,255,255,0.25);" title="Background: ${tpl.config.bgColor}"></span>
+              ${tpl.config.frameStyle !== 'none' ? `<span class="tpl-swatch" style="background: ${tpl.config.frameBgColor};" title="Frame: ${tpl.config.frameBgColor}"></span>` : ''}
+            </div>
+          </div>
           <h4>${tpl.name}</h4>
           <p>${tpl.desc}</p>
+          <div class="template-action-row">
+            <span>Apply Template</span>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
       `;
-      card.addEventListener('click', () => {
+
+      function selectTpl() {
         applyTemplate(tpl);
         closeAllModals();
         showToast(`Applied "${tpl.name}" template!`, 'success');
+      }
+
+      card.addEventListener('click', selectTpl);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectTpl();
+        }
       });
+
       el.templateGalleryGrid.appendChild(card);
     });
   }
@@ -1831,6 +1989,11 @@
     if (tpl.config.socialHandle && el.socialHandle) el.socialHandle.value = tpl.config.socialHandle;
     if (tpl.config.cryptoCoin && el.cryptoCoin) el.cryptoCoin.value = tpl.config.cryptoCoin;
     if (tpl.config.cryptoAddress && el.cryptoAddress) el.cryptoAddress.value = tpl.config.cryptoAddress;
+
+    // Reset custom logo if template uses a preset logo
+    if (tpl.config.presetLogo) {
+      state.customLogoImg = null;
+    }
 
     syncStateToDOM();
     generateAndDrawQR();

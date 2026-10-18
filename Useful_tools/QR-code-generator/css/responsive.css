@@ -131,14 +131,15 @@
   }
 
   .drawer-template-grid .template-card {
-    grid-template-columns: 85px 1fr;
+    grid-template-columns: 88px 1fr;
     gap: 12px;
     padding: 10px;
   }
 
   .drawer-template-grid .template-thumb {
-    width: 85px;
-    height: 80px;
+    width: 88px;
+    height: 88px;
+    padding: 4px;
   }
 
   #qr-canvas {
