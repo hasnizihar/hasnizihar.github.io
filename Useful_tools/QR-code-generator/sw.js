@@ -1,5 +1,5 @@
 // Liquid QR Studio Service Worker - Offline Cache
-const CACHE_NAME = 'liquid-qr-v2.1';
+const CACHE_NAME = 'liquid-qr-v2.2';
 
 const ASSETS = [
   './',
@@ -12,14 +12,19 @@ const ASSETS = [
   './jsQR.min.js',
   './jszip.min.js',
   './jspdf.umd.min.js',
-  './manifest.webmanifest',
-  '../../Src/favicon-HzGPD.png'
+  './manifest.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS).catch((err) => console.warn('PWA precache warning:', err));
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn('Precache skip for:', asset, err);
+        }
+      }
     })
   );
   self.skipWaiting();
@@ -41,12 +46,13 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Stale-while-revalidate for local assets
+  // Stale-while-revalidate for local GET requests
+  if (event.request.method !== 'GET') return;
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       const fetchPromise = fetch(event.request)
         .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
+          if (networkResponse && networkResponse.status === 200) {
             const clone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, clone);

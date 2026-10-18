@@ -162,12 +162,19 @@
     padding: 14px 12px;
   }
 
+  .modal-overlay {
+    padding: 8px;
+  }
+
   .modal-card {
     border-radius: 14px;
+    max-height: 94vh;
   }
 
   .modal-body {
     padding: 14px;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(94vh - 110px);
   }
 
   .type-pill {

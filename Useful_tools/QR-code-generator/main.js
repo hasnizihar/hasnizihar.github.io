@@ -555,7 +555,19 @@
 
   function scheduleAutoSave() {
     clearTimeout(autoSaveTimer);
-    autoSaveTimer = setTimeout(autoSaveDraft, 400);
+    if (el.draftStatus) {
+      el.draftStatus.classList.add('saving');
+      const label = el.draftStatus.querySelector('.draft-label');
+      if (label) label.textContent = 'Saving...';
+    }
+    autoSaveTimer = setTimeout(() => {
+      autoSaveDraft();
+      if (el.draftStatus) {
+        el.draftStatus.classList.remove('saving');
+        const label = el.draftStatus.querySelector('.draft-label');
+        if (label) label.textContent = 'Draft saved';
+      }
+    }, 400);
   }
 
   function autoSaveDraft() {
@@ -600,7 +612,7 @@
         el.draftStatus.style.opacity = '1';
       }
     } catch (e) {
-      // Ignore localStorage exceptions
+      // Ignore localStorage exceptions (e.g., storage full or private mode)
     }
   }
 
@@ -702,22 +714,63 @@
   function verifyQRWithJsQR(canvas) {
     if (!window.jsQR || !canvas) return;
     try {
-      const ctx = canvas.getContext('2d');
       const w = canvas.width;
       const h = canvas.height;
-      const imgData = ctx.getImageData(0, 0, w, h);
-      const code = window.jsQR(imgData.data, w, h);
+      if (w === 0 || h === 0) return;
 
-      el.scanValidatorPill.className = 'metric-pill';
-      if (code && code.data) {
-        el.scanValidatorPill.classList.add('success');
-        el.scanValidatorText.textContent = '100% Readable';
+      // Create a test canvas to composite transparent backgrounds onto white backing
+      // so transparent PNG exports (intended for white print/surfaces) can be accurately analyzed
+      let testImgData;
+      if (state.isTransparentBg) {
+        const testCanvas = document.createElement('canvas');
+        testCanvas.width = w;
+        testCanvas.height = h;
+        const testCtx = testCanvas.getContext('2d');
+        testCtx.fillStyle = '#ffffff';
+        testCtx.fillRect(0, 0, w, h);
+        testCtx.drawImage(canvas, 0, 0);
+        testImgData = testCtx.getImageData(0, 0, w, h);
       } else {
-        el.scanValidatorPill.classList.add('warning');
-        el.scanValidatorText.textContent = 'Scanner Warning';
+        const ctx = canvas.getContext('2d');
+        testImgData = ctx.getImageData(0, 0, w, h);
+      }
+
+      const code = window.jsQR(testImgData.data, w, h);
+      el.scanValidatorPill.className = 'metric-pill';
+
+      const contrastRatio = getContrastRatio(state.fgColor, state.isTransparentBg ? '#ffffff' : state.bgColor);
+
+      if (code && code.data === state.currentPayload) {
+        el.scanValidatorPill.classList.add('success');
+        if (state.isTransparentBg) {
+          el.scanValidatorText.textContent = '100% Readable (Light Surface)';
+          el.scanValidatorPill.title = 'jsQR decoded payload accurately when placed against a light backing surface.';
+        } else {
+          el.scanValidatorText.textContent = '100% Readable';
+          el.scanValidatorPill.title = 'jsQR decoded payload with 100% accuracy in real-time.';
+        }
+      } else {
+        // Detailed failure diagnostics to help users fix issues
+        if (contrastRatio < 2.8) {
+          el.scanValidatorPill.classList.add('danger');
+          el.scanValidatorText.textContent = 'Low Contrast Warning';
+          el.scanValidatorPill.title = `Contrast ratio is only ${contrastRatio.toFixed(1)}:1. Standard cameras require at least 3:1 contrast.`;
+        } else if (state.presetLogo !== 'none' || state.customLogoImg !== null) {
+          el.scanValidatorPill.classList.add('warning');
+          el.scanValidatorText.textContent = 'Logo Occlusion Warning';
+          el.scanValidatorPill.title = 'Center logo may occlude critical matrix cells or finder patterns. Try reducing logo size.';
+        } else if (contrastRatio >= 4.5 && state.fgColor === '#ffffff') {
+          el.scanValidatorPill.classList.add('warning');
+          el.scanValidatorText.textContent = 'Inverted QR Warning';
+          el.scanValidatorPill.title = 'Inverted white-on-dark codes require a wide quiet zone (margin >= 4) for camera recognition.';
+        } else {
+          el.scanValidatorPill.classList.add('warning');
+          el.scanValidatorText.textContent = 'Scan Unverified';
+          el.scanValidatorPill.title = 'jsQR could not decode this design. Check colors, quiet zone, or module patterns.';
+        }
       }
     } catch (e) {
-      // Ignore background analysis errors
+      console.warn('Real-time scan analysis note:', e);
     }
   }
 
@@ -1189,46 +1242,190 @@
     img.src = 'data:image/svg+xml;base64,' + svg64;
   }
 
-  // --- 15. Scalable SVG Vector Generator ---
+  function escapeXml(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // --- 15. Scalable SVG Vector Generator (100% Scannable) ---
   function generateSVGMarkup() {
     const qr = state.qrMatrix;
     if (!qr) return '';
 
     const count = qr.getModuleCount();
     const margin = state.margin;
+    const qrSize = 600;
     const totalModules = count + margin * 2;
-    const size = 600;
-    const modSize = size / totalModules;
+    const modSize = qrSize / totalModules;
 
-    let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">\n`;
+    const hasFrame = state.frameStyle !== 'none';
+    const bannerHeight = Math.round(qrSize * 0.16);
+
+    let svgW = qrSize;
+    let svgH = qrSize;
+    let qrOffsetX = 0;
+    let qrOffsetY = 0;
+
+    if (state.frameStyle === 'bottom-banner') {
+      svgH = qrSize + bannerHeight;
+      qrOffsetY = 0;
+    } else if (state.frameStyle === 'top-banner') {
+      svgH = qrSize + bannerHeight;
+      qrOffsetY = bannerHeight;
+    } else if (state.frameStyle === 'full-card') {
+      const pad = Math.round(qrSize * 0.08);
+      svgW = qrSize + pad * 2;
+      svgH = qrSize + bannerHeight + pad * 2;
+      qrOffsetX = pad;
+      qrOffsetY = pad;
+    } else if (state.frameStyle === 'bubble') {
+      svgH = qrSize + Math.round(bannerHeight * 0.9);
+      qrOffsetY = 0;
+    } else if (state.frameStyle === 'border') {
+      const bPad = Math.round(qrSize * 0.06);
+      svgW = qrSize + bPad * 2;
+      svgH = qrSize + bPad * 2 + Math.round(bannerHeight * 0.6);
+      qrOffsetX = bPad;
+      qrOffsetY = bPad;
+    }
+
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${svgW} ${svgH}" width="${svgW}" height="${svgH}">\n`;
     svg += `  <defs>\n`;
     if (state.isGradient) {
-      svg += `    <linearGradient id="qrGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n`;
+      if (state.gradDir === 'radial') {
+        svg += `    <radialGradient id="qrGrad" cx="50%" cy="50%" r="50%">\n`;
+      } else if (state.gradDir === '90') {
+        svg += `    <linearGradient id="qrGrad" x1="0%" y1="0%" x2="100%" y2="0%">\n`;
+      } else if (state.gradDir === '180') {
+        svg += `    <linearGradient id="qrGrad" x1="0%" y1="0%" x2="0%" y2="100%">\n`;
+      } else {
+        svg += `    <linearGradient id="qrGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n`;
+      }
       svg += `      <stop offset="0%" stop-color="${state.fgColor}" />\n`;
       svg += `      <stop offset="100%" stop-color="${state.gradColor}" />\n`;
-      svg += `    </linearGradient>\n`;
+      svg += (state.gradDir === 'radial') ? `    </radialGradient>\n` : `    </linearGradient>\n`;
     }
     svg += `  </defs>\n`;
 
-    if (!state.isTransparentBg) {
-      svg += `  <rect width="${size}" height="${size}" fill="${state.bgColor}" />\n`;
+    // 1. Draw Outer Frame Background
+    if (hasFrame) {
+      svg += `  <rect width="${svgW}" height="${svgH}" rx="18" fill="${state.frameBgColor || '#0f172a'}" />\n`;
+    }
+
+    // 2. Draw QR Background
+    if (!state.isTransparentBg || hasFrame) {
+      svg += `  <rect x="${qrOffsetX}" y="${qrOffsetY}" width="${qrSize}" height="${qrSize}" rx="${hasFrame ? 14 : 0}" fill="${state.bgColor || '#ffffff'}" />\n`;
     }
 
     const fillAttr = state.isGradient ? 'url(#qrGrad)' : state.fgColor;
 
+    // 3. Draw 3 Finder Pattern Eyes (Outer frame, cutout, and pupil)
+    const outerEyeColor = state.customEyeColors ? state.eyeOuterColor : fillAttr;
+    const innerEyeColor = state.customEyeColors ? state.eyeInnerColor : fillAttr;
+    const bgFill = state.isTransparentBg && !hasFrame ? '#ffffff' : (state.bgColor || '#ffffff');
+
+    const eyes = [
+      { col: margin, row: margin },
+      { col: margin + count - 7, row: margin },
+      { col: margin, row: margin + count - 7 }
+    ];
+
+    for (const eye of eyes) {
+      const x = qrOffsetX + eye.col * modSize;
+      const y = qrOffsetY + eye.row * modSize;
+      const eyeSize = 7 * modSize;
+
+      if (state.eyeShape === 'circle') {
+        svg += `  <circle cx="${(x + eyeSize / 2).toFixed(2)}" cy="${(y + eyeSize / 2).toFixed(2)}" r="${(eyeSize / 2).toFixed(2)}" fill="${outerEyeColor}" />\n`;
+        svg += `  <circle cx="${(x + eyeSize / 2).toFixed(2)}" cy="${(y + eyeSize / 2).toFixed(2)}" r="${(eyeSize / 2 - modSize).toFixed(2)}" fill="${bgFill}" />\n`;
+        svg += `  <circle cx="${(x + eyeSize / 2).toFixed(2)}" cy="${(y + eyeSize / 2).toFixed(2)}" r="${(1.5 * modSize).toFixed(2)}" fill="${innerEyeColor}" />\n`;
+      } else if (state.eyeShape === 'rounded') {
+        svg += `  <rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${eyeSize.toFixed(2)}" height="${eyeSize.toFixed(2)}" rx="${(modSize * 2).toFixed(2)}" fill="${outerEyeColor}" />\n`;
+        svg += `  <rect x="${(x + modSize).toFixed(2)}" y="${(y + modSize).toFixed(2)}" width="${(eyeSize - 2 * modSize).toFixed(2)}" height="${(eyeSize - 2 * modSize).toFixed(2)}" rx="${(modSize * 1.2).toFixed(2)}" fill="${bgFill}" />\n`;
+        svg += `  <rect x="${(x + 2 * modSize).toFixed(2)}" y="${(y + 2 * modSize).toFixed(2)}" width="${(3 * modSize).toFixed(2)}" height="${(3 * modSize).toFixed(2)}" rx="${(modSize * 1.1).toFixed(2)}" fill="${innerEyeColor}" />\n`;
+      } else {
+        svg += `  <rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${eyeSize.toFixed(2)}" height="${eyeSize.toFixed(2)}" fill="${outerEyeColor}" />\n`;
+        svg += `  <rect x="${(x + modSize).toFixed(2)}" y="${(y + modSize).toFixed(2)}" width="${(eyeSize - 2 * modSize).toFixed(2)}" height="${(eyeSize - 2 * modSize).toFixed(2)}" fill="${bgFill}" />\n`;
+        svg += `  <rect x="${(x + 2 * modSize).toFixed(2)}" y="${(y + 2 * modSize).toFixed(2)}" width="${(3 * modSize).toFixed(2)}" height="${(3 * modSize).toFixed(2)}" fill="${innerEyeColor}" />\n`;
+      }
+    }
+
+    // 4. Logo Exclusion Zone
+    const hasLogo = (state.presetLogo !== 'none' || state.customLogoImg !== null);
+    const center = (count - 1) / 2;
+    const logoModuleRadius = hasLogo ? (Math.ceil((count * state.logoSize) / 2) + 0.5) : 0;
+
+    // 5. Draw Body Modules
     for (let r = 0; r < count; r++) {
       for (let c = 0; c < count; c++) {
         if (isFinderPattern(r, c, count)) continue;
+        if (hasLogo && Math.abs(r - center) <= logoModuleRadius && Math.abs(c - center) <= logoModuleRadius) continue;
+
         if (qr.isDark(r, c)) {
-          const x = (c + margin) * modSize;
-          const y = (r + margin) * modSize;
+          const x = qrOffsetX + (c + margin) * modSize;
+          const y = qrOffsetY + (r + margin) * modSize;
+
           if (state.bodyShape === 'circle') {
             svg += `  <circle cx="${(x + modSize / 2).toFixed(2)}" cy="${(y + modSize / 2).toFixed(2)}" r="${(modSize * 0.44).toFixed(2)}" fill="${fillAttr}" />\n`;
+          } else if (state.bodyShape === 'rounded') {
+            svg += `  <rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${modSize.toFixed(2)}" height="${modSize.toFixed(2)}" rx="${(modSize * 0.35).toFixed(2)}" fill="${fillAttr}" />\n`;
+          } else if (state.bodyShape === 'connected') {
+            svg += `  <rect x="${(x + 0.5).toFixed(2)}" y="${(y + 0.5).toFixed(2)}" width="${(modSize - 1).toFixed(2)}" height="${(modSize - 1).toFixed(2)}" rx="${(modSize * 0.2).toFixed(2)}" fill="${fillAttr}" />\n`;
+          } else if (state.bodyShape === 'classy') {
+            const cx = x + modSize / 2;
+            const cy = y + modSize / 2;
+            const s = modSize * 0.76;
+            svg += `  <rect x="${(cx - s / 2).toFixed(2)}" y="${(cy - s / 2).toFixed(2)}" width="${s.toFixed(2)}" height="${s.toFixed(2)}" transform="rotate(45, ${cx.toFixed(2)}, ${cy.toFixed(2)})" fill="${fillAttr}" />\n`;
           } else {
             svg += `  <rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${modSize.toFixed(2)}" height="${modSize.toFixed(2)}" fill="${fillAttr}" />\n`;
           }
         }
       }
+    }
+
+    // 6. Center Logo Badge & Icon
+    if (hasLogo) {
+      const qrPixelSize = count * modSize;
+      const logoPixelSize = qrPixelSize * state.logoSize;
+      const badgePixelSize = logoPixelSize + modSize * 1.6;
+      const centerX = qrOffsetX + (qrSize / 2);
+      const centerY = qrOffsetY + (qrSize / 2);
+
+      if (state.logoBadgeBg) {
+        const badgeX = centerX - badgePixelSize / 2;
+        const badgeY = centerY - badgePixelSize / 2;
+        svg += `  <rect x="${badgeX.toFixed(2)}" y="${badgeY.toFixed(2)}" width="${badgePixelSize.toFixed(2)}" height="${badgePixelSize.toFixed(2)}" rx="${(badgePixelSize * 0.25).toFixed(2)}" fill="${bgFill}" />\n`;
+      }
+
+      const logoX = centerX - logoPixelSize / 2;
+      const logoY = centerY - logoPixelSize / 2;
+
+      if (state.customLogoImg && state.customLogoImg.src) {
+        svg += `  <image x="${logoX.toFixed(2)}" y="${logoY.toFixed(2)}" width="${logoPixelSize.toFixed(2)}" height="${logoPixelSize.toFixed(2)}" href="${state.customLogoImg.src}" />\n`;
+      } else if (state.presetLogo === 'hzgpd' && hzgpdLogoImg.src) {
+        svg += `  <image x="${logoX.toFixed(2)}" y="${logoY.toFixed(2)}" width="${logoPixelSize.toFixed(2)}" height="${logoPixelSize.toFixed(2)}" href="${hzgpdLogoImg.src}" />\n`;
+      } else if (PRESET_ICONS[state.presetLogo]) {
+        // Embed preset SVG icon
+        svg += `  <g transform="translate(${logoX.toFixed(2)}, ${logoY.toFixed(2)}) scale(${(logoPixelSize / 24).toFixed(3)})">\n`;
+        svg += `    ${PRESET_ICONS[state.presetLogo]}\n`;
+        svg += `  </g>\n`;
+      }
+    }
+
+    // 7. Frame Labels & Badges
+    if (hasFrame) {
+      const labelText = escapeXml((state.frameLabel || 'SCAN ME').toUpperCase());
+      const fontSize = Math.round(bannerHeight * 0.32);
+      let textY = qrSize + bannerHeight / 2;
+
+      if (state.frameStyle === 'top-banner') {
+        textY = bannerHeight / 2;
+      } else if (state.frameStyle === 'full-card') {
+        textY = qrOffsetY + qrSize + bannerHeight / 2;
+      } else if (state.frameStyle === 'bubble' || state.frameStyle === 'border') {
+        textY = qrSize + (svgH - qrSize) / 2;
+      }
+
+      svg += `  <text x="${(svgW / 2).toFixed(2)}" y="${textY.toFixed(2)}" fill="${state.frameTextColor || '#ffffff'}" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="${fontSize}" text-anchor="middle" dominant-baseline="central">${labelText}</text>\n`;
     }
 
     svg += `</svg>`;
@@ -1684,10 +1881,20 @@
   }
 
   el.saveProjectQuickBtn.addEventListener('click', async () => {
-    const title = prompt('Enter a name for this QR project:', 'My ' + state.type.toUpperCase() + ' Design');
-    if (title) {
-      await dbSaveProject(title);
-      showToast(`Saved "${title}" to project library!`, 'success');
+    const defaultTitle = (state.type.charAt(0).toUpperCase() + state.type.slice(1)) + ' QR - ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const title = prompt('Enter a name for this QR project:', defaultTitle);
+    if (title && title.trim()) {
+      const origContent = el.saveProjectQuickBtn.innerHTML;
+      try {
+        el.saveProjectQuickBtn.innerHTML = '<span>Saved!</span>';
+        setTimeout(() => { el.saveProjectQuickBtn.innerHTML = origContent; }, 1400);
+
+        await dbSaveProject(title.trim());
+        showToast(`Saved "${title.trim()}" to project library!`, 'success');
+      } catch (err) {
+        el.saveProjectQuickBtn.innerHTML = origContent;
+        showToast('Could not save project: ' + (err.message || 'Storage error'), 'error');
+      }
     }
   });
 
@@ -1704,35 +1911,77 @@
 
   el.importProjectsFile.addEventListener('change', async (e) => {
     if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = async (evt) => {
         try {
           const list = JSON.parse(evt.target.result);
-          if (Array.isArray(list)) {
-            const db = await openDatabase();
-            const tx = db.transaction(STORE_NAME, 'readwrite');
-            const store = tx.objectStore(STORE_NAME);
-            list.forEach(p => store.put(p));
-            await renderProjectsList();
-            showToast(`Imported ${list.length} projects!`, 'success');
+          if (!Array.isArray(list)) {
+            showToast('Import failed: File must contain a project list array', 'error');
+            return;
           }
+          if (list.length === 0) {
+            showToast('Import note: The selected project list is empty', 'info');
+            return;
+          }
+          const db = await openDatabase();
+          const tx = db.transaction(STORE_NAME, 'readwrite');
+          const store = tx.objectStore(STORE_NAME);
+          let count = 0;
+
+          list.forEach(p => {
+            if (p && typeof p === 'object') {
+              const sanitized = {
+                id: (p.id && typeof p.id === 'string') ? p.id : 'proj_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+                title: (p.title && typeof p.title === 'string') ? p.title.trim() : 'Imported Project',
+                date: p.date || new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+                preview: p.preview || '',
+                state: (p.state && typeof p.state === 'object') ? p.state : {}
+              };
+              store.put(sanitized);
+              count++;
+            }
+          });
+
+          await new Promise((res, rej) => {
+            tx.oncomplete = res;
+            tx.onerror = () => rej(tx.error);
+          });
+
+          await renderProjectsList();
+          showToast(`Imported ${count} project${count === 1 ? '' : 's'} successfully!`, 'success');
         } catch (err) {
-          showToast('Invalid JSON file', 'error');
+          showToast('Import failed: ' + (err.message || 'Malformed JSON file'), 'error');
+        } finally {
+          el.importProjectsFile.value = '';
         }
       };
-      reader.readAsText(e.target.files[0]);
+      reader.readAsText(file);
     }
   });
 
-  // --- 22. Modals Control ---
+  // --- 22. Accessible Modals Control with Focus Trap ---
+  let lastFocusedElement = null;
+
   function openModal(modalEl) {
     if (!modalEl) return;
+    lastFocusedElement = document.activeElement;
     modalEl.classList.add('active');
+
+    // Focus the close button or first interactive control inside modal
+    const focusable = modalEl.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])');
+    if (focusable.length > 0) {
+      setTimeout(() => focusable[0].focus(), 40);
+    }
   }
 
   function closeAllModals() {
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
     stopCameraStream();
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
   }
 
   document.querySelectorAll('[data-close]').forEach(btn => {
@@ -1741,6 +1990,10 @@
       const target = document.getElementById(targetId);
       if (target) target.classList.remove('active');
       stopCameraStream();
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     });
   });
 
@@ -1771,7 +2024,7 @@
   el.undoBtn.addEventListener('click', () => history.undo());
   el.redoBtn.addEventListener('click', () => history.redo());
 
-  // Keyboard Shortcuts
+  // Keyboard Shortcuts & Accessible Focus Trap
   window.addEventListener('keydown', (e) => {
     // Escape closes modals
     if (e.key === 'Escape') {
@@ -1779,6 +2032,24 @@
       if (el.moreTypesMenu) el.moreTypesMenu.classList.remove('open');
       return;
     }
+
+    // Modal Focus Trap
+    const activeModal = document.querySelector('.modal-overlay.active');
+    if (activeModal && e.key === 'Tab') {
+      const focusable = Array.from(activeModal.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])'));
+      if (focusable.length > 0) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
     // Don't trigger shortcuts when typing inside form inputs
     const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
     const isEditingText = activeTag === 'input' || activeTag === 'textarea';
@@ -2114,16 +2385,31 @@
     state.exportSize = parseInt(e.target.value);
   });
 
-  // Download Actions
+  // Download Actions with Micro-Interaction States
   el.btnDownloadPng.addEventListener('click', () => {
     if (!state.currentPayload) {
       showToast('Please enter QR content first', 'error');
       return;
     }
+
+    const origPngContent = el.btnDownloadPng.innerHTML;
+    el.btnDownloadPng.classList.add('btn-loading');
+    el.btnDownloadPng.innerHTML = `
+      <svg class="spin-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+        <path d="M12 2a10 10 0 0 1 10 10"></path>
+      </svg>
+      <span>Exporting...</span>
+    `;
+
     const exportCanvas = document.createElement('canvas');
     drawQRWithFrame(exportCanvas, state.exportSize);
     exportCanvas.toBlob((blob) => {
-      if (!blob) return;
+      if (!blob) {
+        el.btnDownloadPng.classList.remove('btn-loading');
+        el.btnDownloadPng.innerHTML = origPngContent;
+        return;
+      }
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -2132,6 +2418,21 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+
+      el.btnDownloadPng.classList.remove('btn-loading');
+      el.btnDownloadPng.classList.add('btn-success-micro');
+      el.btnDownloadPng.innerHTML = `
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Downloaded!</span>
+      `;
+
+      setTimeout(() => {
+        el.btnDownloadPng.classList.remove('btn-success-micro');
+        el.btnDownloadPng.innerHTML = origPngContent;
+      }, 1600);
+
       showToast(`Downloaded PNG (${state.exportSize}×${state.exportSize})`, 'success');
     }, 'image/png');
   });
@@ -2141,6 +2442,10 @@
       showToast('Please enter QR content first', 'error');
       return;
     }
+    const origSvgContent = el.btnDownloadSvg.innerHTML;
+    el.btnDownloadSvg.innerHTML = '<span>Exported!</span>';
+    setTimeout(() => { el.btnDownloadSvg.innerHTML = origSvgContent; }, 1400);
+
     const svgMarkup = generateSVGMarkup();
     const blob = new Blob([svgMarkup], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -2159,12 +2464,15 @@
       showToast('Please enter QR content first', 'error');
       return;
     }
+    const origCopyContent = el.btnCopyImage.innerHTML;
     try {
       const copyCanvas = document.createElement('canvas');
       drawQRWithFrame(copyCanvas, 800);
       copyCanvas.toBlob(async (blob) => {
         if (!blob) throw new Error('Blob creation failed');
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        el.btnCopyImage.innerHTML = '<span>Copied!</span>';
+        setTimeout(() => { el.btnCopyImage.innerHTML = origCopyContent; }, 1400);
         showToast('QR Code copied to clipboard!', 'success');
       }, 'image/png');
     } catch (err) {

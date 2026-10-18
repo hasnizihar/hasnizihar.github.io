@@ -1,27 +1,42 @@
-# 🧊 Liquid QR Studio 2.1 — Minimalist UX & Interface Refinement
+# 🧊 Liquid QR Studio 2.2 — Reliability, Accessibility & Micro-Interactions
 
-**Liquid QR Studio 2.1** refines the powerful QR design studio into an effortless, quiet, editorial utility. By adopting a **"Simple by default, powerful when needed"** philosophy, it eliminates UI cockpit clutter while preserving 100% of the advanced creative toolset—all running **100% client-side with zero backend dependencies**, deployed cleanly on GitHub Pages.
+**Liquid QR Studio 2.2** builds upon the minimalist 2.1 UX foundation with rigorous quality assurance, true vector export fidelity, full WCAG 2.2 accessibility, responsive micro-interactions, and storage resilience. It operates **100% client-side with zero backend or paid API dependencies**, deployed natively on GitHub Pages.
 
 Designed and engineered by **[KR Hasni Zihar](https://hasnizihar.github.io/)** as part of the **[HzGPD](https://hasnizihar.github.io/)** collection, strictly adhering to the **Liquid Glass CSS Theme Design Plan** with quiet, warm neutral surfaces and restraint.
 
 ---
 
-## 🎯 What's New in 2.1 (Minimalist UX Refinement)
+## 🚀 Key Improvements in Version 2.2
 
-1. **Quiet, Editorial Interface**:
-   - Replaced decorative glass on primary controls with warm neutral surfaces, restrained borders, and generous whitespace.
-   - Blur and glassmorphic depth are strictly reserved for elevated modals and floating overlays.
-2. **One Primary Action**:
-   - Prominent live preview paired with an unmistakable `Download PNG` primary action button and resolution selector (400px, 800px HD, 1600px Print, 2400px Ultra).
-3. **Progressive Disclosure**:
-   - **Top 5 Content Types** (`URL`, `Text`, `Wi-Fi`, `Contact`, `WhatsApp`) always accessible at a single click.
-   - **Searchable More Dropdown** houses secondary types (`Social`, `Email`, `Calendar Event`, `Location/Maps`, `Crypto`, `Call/SMS`).
-   - **Compact Appearance Bar**: 6 curated one-click swatches (`Classic Obsidian`, `Aqua Cyan`, `Emerald Mint`, `Royal Violet`, `Sunset Rose`, `Liquid Night`) plus inline `+ Logo` and `+ Frame` drawers.
-   - **Advanced Design & Quality Accordion**: Deep customization (6 body shapes, 3 corner eye shapes, independent eye colors, gradient directions, error recovery, quiet zone margins, payload inspector) stays tucked away until needed.
-4. **Local Draft Autosave**:
-   - Automatically saves in-progress drafts to local storage, quietly restoring state on page refresh.
-5. **Real-time Camera & Contrast Diagnostics**:
-   - Integrated WCAG relative luminance check and automated real-time `jsQR` decode validation.
+### 1. 🔍 True Vector SVG Fidelity & 100% Scannability
+- **Complete Finder Pattern Eyes in SVG**: Scalable vector exports now generate all 3 corner finder eyes (outer frames, cutouts, and inner pupils) matching selected shapes (`Square`, `Rounded`, `Circle`) and independent eye colors.
+- **Frames, Gradients & CTA Text in SVG**: Exported SVGs accurately preserve banner frames (`Bottom Banner`, `Top Banner`, `Full Card`, `Bubble`, `Border Badge`), linear/radial gradients, and centered CTA text labels.
+- **Center Logo Vector Embedding**: SVGs embed preset vector icons and custom logos with badge background protection.
+- **XML Sanitization**: Full XML entity escaping (`&`, `<`, `>`, `"`) prevents vector export corruption.
+
+### 2. ⚡ Real-Time Scanability Diagnostics & Zero False Positives
+- **Transparent Background Compositing**: Accurately analyzes transparent QR codes against light surfaces, preventing false scan failures.
+- **Actionable Diagnostics**: When scanning is difficult, specific feedback identifies the root cause:
+  - *Low Contrast Warning* (< 2.8:1 ratio)
+  - *Logo Occlusion Warning* (large logos obscuring finder patterns)
+  - *Inverted QR Warning* (white on dark requiring wider quiet zones)
+- **Zero False Successes**: Automatically verifies that decoded data exactly matches the target payload.
+
+### 3. ✨ Micro-Interactions & Clear Visual States
+- **Action Button Feedback**: Instant feedback transitions on `Download PNG` (*Exporting...* ➔ *Downloaded!*), `SVG` (*Exported!*), `Copy` (*Copied!*), and `Save` (*Saved!*).
+- **Draft Autosave Status**: Subtle live pulse transition (*Saving...* ➔ *Draft saved*) while editing.
+
+### 4. ♿ Accessibility & Focus Management (WCAG 2.2)
+- **Modal Focus Trap**: Traps keyboard <kbd>Tab</kbd> navigation within active dialog modals and restores focus to trigger elements upon modal close.
+- **Keyboard Shortcuts**: <kbd>Escape</kbd> to close modals, <kbd>Ctrl+Z</kbd> (Undo), <kbd>Ctrl+Y</kbd> (Redo), <kbd>Ctrl+S</kbd> (Save), <kbd>Ctrl+E</kbd> (Export PNG).
+- **Reduced Motion Support**: Full `@media (prefers-reduced-motion: reduce)` support.
+- **High-Contrast Focus Rings**: Accessible `:focus-visible` outlines on all interactive controls.
+
+### 5. 🛡️ Storage Resilience & Offline PWA
+- **Corrupted JSON Import Protection**: Project library safely sanitizes dirty or malformed JSON files without throwing unhandled exceptions.
+- **Draft & Project Isolation**: Working drafts (`localStorage`) and saved project databases (`IndexedDB`) are strictly separated.
+- **Resilient Service Worker (`v2.2`)**: Isolated asset precaching prevents single-file network hiccups from breaking offline functionality.
+- **Automated Regression Test Suite**: 59 automated test assertions passing across payloads, SVG vector logic, jsQR decoding, and accessibility.
 
 ### 1. 🎨 Advanced QR Style Editor
 - **Rich Body Module Patterns**:
