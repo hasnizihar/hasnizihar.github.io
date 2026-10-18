@@ -2157,25 +2157,48 @@
     });
   }
 
-  // --- 24. Progressive Appearance & Expandable Toggles ---
-  el.toggleLogoSectionBtn.addEventListener('click', () => {
-    const isVisible = el.inlineLogoPanel.style.display !== 'none';
-    el.inlineLogoPanel.style.display = isVisible ? 'none' : 'block';
-    el.toggleLogoSectionBtn.classList.toggle('active', !isVisible);
-  });
+  // --- 24. Progressive Appearance & Customization Tabs ---
+  function setActiveAppearanceTab(tabBtn, targetPanel) {
+    const isCurrentlyActive = tabBtn && tabBtn.classList.contains('active');
 
-  el.toggleFrameSectionBtn.addEventListener('click', () => {
-    const isVisible = el.inlineFramePanel.style.display !== 'none';
-    el.inlineFramePanel.style.display = isVisible ? 'none' : 'block';
-    el.toggleFrameSectionBtn.classList.toggle('active', !isVisible);
-  });
+    // Deactivate all 3 tabs and hide all 3 panels
+    [el.toggleLogoSectionBtn, el.toggleFrameSectionBtn, el.toggleAdvancedBtn].forEach(b => {
+      if (b) {
+        b.classList.remove('active', 'open');
+        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('aria-expanded', 'false');
+      }
+    });
+    [el.inlineLogoPanel, el.inlineFramePanel, el.advancedAccordionBody].forEach(p => {
+      if (p) p.style.display = 'none';
+    });
 
-  el.toggleAdvancedBtn.addEventListener('click', () => {
-    const isVisible = el.advancedAccordionBody.style.display !== 'none';
-    el.advancedAccordionBody.style.display = isVisible ? 'none' : 'block';
-    el.toggleAdvancedBtn.classList.toggle('open', !isVisible);
-    el.toggleAdvancedBtn.setAttribute('aria-expanded', !isVisible);
-  });
+    // If it wasn't active, activate it now
+    if (!isCurrentlyActive && targetPanel) {
+      tabBtn.classList.add('active', 'open');
+      tabBtn.setAttribute('aria-selected', 'true');
+      tabBtn.setAttribute('aria-expanded', 'true');
+      targetPanel.style.display = 'block';
+    }
+  }
+
+  if (el.toggleLogoSectionBtn) {
+    el.toggleLogoSectionBtn.addEventListener('click', () => {
+      setActiveAppearanceTab(el.toggleLogoSectionBtn, el.inlineLogoPanel);
+    });
+  }
+
+  if (el.toggleFrameSectionBtn) {
+    el.toggleFrameSectionBtn.addEventListener('click', () => {
+      setActiveAppearanceTab(el.toggleFrameSectionBtn, el.inlineFramePanel);
+    });
+  }
+
+  if (el.toggleAdvancedBtn) {
+    el.toggleAdvancedBtn.addEventListener('click', () => {
+      setActiveAppearanceTab(el.toggleAdvancedBtn, el.advancedAccordionBody);
+    });
+  }
 
   // Swatches
   el.swatchBtns.forEach(btn => {

@@ -382,26 +382,30 @@
           <!-- Compact Appearance Summary Row -->
           <div class="appearance-header-row">
             <span class="section-label">Appearance</span>
-            <div class="appearance-controls-bar">
-              <div class="swatches-compact-row">
-                <button type="button" class="swatch-btn" data-fg="#0f172a" data-bg="#ffffff" title="Classic Obsidian"><span style="background: #0f172a;"></span></button>
-                <button type="button" class="swatch-btn" data-fg="#0284c7" data-bg="#f0f9ff" title="Aqua Cyan"><span style="background: #0284c7;"></span></button>
-                <button type="button" class="swatch-btn" data-fg="#059669" data-bg="#f0fdf4" title="Emerald Mint"><span style="background: #059669;"></span></button>
-                <button type="button" class="swatch-btn" data-fg="#7c3aed" data-bg="#faf5ff" title="Royal Violet"><span style="background: #7c3aed;"></span></button>
-                <button type="button" class="swatch-btn" data-fg="#e11d48" data-bg="#fff1f2" title="Sunset Rose"><span style="background: #e11d48;"></span></button>
-                <button type="button" class="swatch-btn" data-fg="#ffffff" data-bg="#0f2027" title="Liquid Night"><span style="background: #ffffff; border: 1px solid #6ee7f9;"></span></button>
-              </div>
-
-              <!-- Quick Add Toggles -->
-              <div class="quick-add-toggles">
-                <button type="button" class="toggle-chip" id="toggle-logo-section-btn">
-                  <span>+ Logo</span>
-                </button>
-                <button type="button" class="toggle-chip" id="toggle-frame-section-btn">
-                  <span>+ Frame</span>
-                </button>
-              </div>
+            <div class="swatches-compact-row">
+              <button type="button" class="swatch-btn" data-fg="#0f172a" data-bg="#ffffff" title="Classic Obsidian"><span style="background: #0f172a;"></span></button>
+              <button type="button" class="swatch-btn" data-fg="#0284c7" data-bg="#f0f9ff" title="Aqua Cyan"><span style="background: #0284c7;"></span></button>
+              <button type="button" class="swatch-btn" data-fg="#059669" data-bg="#f0fdf4" title="Emerald Mint"><span style="background: #059669;"></span></button>
+              <button type="button" class="swatch-btn" data-fg="#7c3aed" data-bg="#faf5ff" title="Royal Violet"><span style="background: #7c3aed;"></span></button>
+              <button type="button" class="swatch-btn" data-fg="#e11d48" data-bg="#fff1f2" title="Sunset Rose"><span style="background: #e11d48;"></span></button>
+              <button type="button" class="swatch-btn" data-fg="#ffffff" data-bg="#0f2027" title="Liquid Night"><span style="background: #ffffff; border: 1px solid #6ee7f9;"></span></button>
             </div>
+          </div>
+
+          <!-- Appearance Customization Tabs Bar -->
+          <div class="appearance-tabs-bar" role="tablist" aria-label="Appearance Customization Tabs">
+            <button type="button" class="appearance-tab-btn" id="toggle-logo-section-btn" role="tab" aria-selected="false" aria-controls="inline-logo-panel">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>+ Logo</span>
+            </button>
+            <button type="button" class="appearance-tab-btn" id="toggle-frame-section-btn" role="tab" aria-selected="false" aria-controls="inline-frame-panel">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+              <span>+ Frame</span>
+            </button>
+            <button type="button" class="appearance-tab-btn" id="toggle-advanced-btn" role="tab" aria-selected="false" aria-controls="advanced-accordion-body">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>Advanced Design & Quality</span>
+            </button>
           </div>
 
           <!-- Inline Expandable: Logo Section -->
@@ -502,17 +506,8 @@
             </div>
           </div>
 
-          <!-- Progressive Disclosure: Advanced Settings Accordion -->
-          <div class="advanced-accordion-wrapper">
-            <button type="button" class="accordion-toggle-btn" id="toggle-advanced-btn" aria-expanded="false">
-              <div class="toggle-btn-left">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                <span>Advanced Design & Quality</span>
-              </div>
-              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-
-            <div class="advanced-accordion-body" id="advanced-accordion-body" style="display: none;">
+          <!-- 3. Advanced Design & Quality Panel -->
+          <div class="expandable-panel advanced-accordion-body" id="advanced-accordion-body" style="display: none;">
               <!-- 1. Custom Colors & Gradients -->
               <div class="sub-section">
                 <span class="sub-label">Custom Colors & Gradients</span>
@@ -647,7 +642,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
 

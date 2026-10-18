@@ -393,48 +393,75 @@ label {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
-.quick-add-toggles {
+/* --- Appearance Customization Tabs Bar --- */
+.appearance-tabs-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  background: var(--surface-input);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  margin-top: 14px;
 }
 
-.toggle-chip {
-  padding: 7px 14px;
-  border-radius: 9px;
-  background: var(--surface-chip);
-  border: 1px solid var(--border-card);
-  color: var(--text-muted);
-  font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
+.appearance-tab-btn {
+  flex: 1 1 0;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.81rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: all var(--transition-smooth);
+  white-space: nowrap;
 }
 
-.toggle-chip:hover {
+.appearance-tab-btn svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity var(--transition-smooth);
+}
+
+.appearance-tab-btn:hover {
   background: var(--surface-chip-hover);
   color: var(--text-main);
+}
+
+.appearance-tab-btn:hover svg {
+  opacity: 1;
+}
+
+.appearance-tab-btn.active,
+.appearance-tab-btn.open {
+  background: var(--surface-card);
   border-color: var(--border-card);
-}
-
-.toggle-chip.active {
-  background: var(--accent-subtle);
   color: var(--accent-text);
-  border-color: var(--accent);
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Expandable Panels (Inline Logo & Frame) */
+.appearance-tab-btn.active svg,
+.appearance-tab-btn.open svg {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Expandable Tab Panels (Logo, Frame, Advanced) */
 .expandable-panel {
-  padding: 16px;
+  padding: 18px;
   background: var(--surface-input);
   border-radius: 14px;
   border: 1px solid var(--border-subtle);
-  margin-top: 14px;
+  margin-top: 12px;
   animation: fadeIn 200ms ease;
 }
 
@@ -444,55 +471,12 @@ label {
   gap: 12px;
 }
 
-/* --- Advanced Accordion Component --- */
-.advanced-accordion-wrapper {
-  margin-top: 18px;
-}
-
-.accordion-toggle-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 13px 18px;
-  border-radius: 12px;
-  background: var(--surface-input);
-  border: 1px solid var(--border-card);
-  color: var(--text-muted);
-  font-family: inherit;
-  font-size: 0.83rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-smooth);
-}
-
-.accordion-toggle-btn:hover {
-  background: var(--surface-chip-hover);
-  color: var(--text-main);
-  border-color: var(--border-card);
-}
-
-.toggle-btn-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.chevron-icon {
-  color: var(--text-dim);
-  transition: transform var(--transition-smooth);
-}
-
-.accordion-toggle-btn.open .chevron-icon {
-  transform: rotate(180deg);
-}
-
 .advanced-accordion-body {
   padding: 18px;
   background: var(--surface-input);
   border-radius: 14px;
   border: 1px solid var(--border-subtle);
-  margin-top: 8px;
+  margin-top: 12px;
   animation: fadeIn 200ms ease;
 }
 

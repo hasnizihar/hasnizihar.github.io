@@ -111,6 +111,21 @@
     padding: 12px;
   }
 
+  .appearance-tabs-bar {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .appearance-tab-btn {
+    flex: 1 1 45%;
+    font-size: 0.78rem;
+    padding: 8px 10px;
+  }
+
+  .appearance-tab-btn:last-child {
+    flex: 1 1 100%;
+  }
+
   #qr-canvas {
     max-height: 270px;
   }
@@ -160,6 +175,11 @@
   .preview-card,
   .appearance-card {
     padding: 14px 12px;
+  }
+
+  .appearance-tab-btn {
+    padding: 7px 8px;
+    font-size: 0.74rem;
   }
 
   .modal-overlay {
