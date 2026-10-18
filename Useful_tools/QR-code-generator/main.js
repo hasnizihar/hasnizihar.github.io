@@ -2159,7 +2159,7 @@
 
   // --- 24. Progressive Appearance & Customization Tabs ---
   function setActiveAppearanceTab(tabBtn, targetPanel) {
-    const isCurrentlyActive = tabBtn && tabBtn.classList.contains('active');
+    if (!tabBtn || !targetPanel) return;
 
     // Deactivate all 3 tabs and hide all 3 panels
     [el.toggleLogoSectionBtn, el.toggleFrameSectionBtn, el.toggleAdvancedBtn].forEach(b => {
@@ -2173,13 +2173,11 @@
       if (p) p.style.display = 'none';
     });
 
-    // If it wasn't active, activate it now
-    if (!isCurrentlyActive && targetPanel) {
-      tabBtn.classList.add('active', 'open');
-      tabBtn.setAttribute('aria-selected', 'true');
-      tabBtn.setAttribute('aria-expanded', 'true');
-      targetPanel.style.display = 'block';
-    }
+    // Exactly 1 tab is always active and visible at a time
+    tabBtn.classList.add('active', 'open');
+    tabBtn.setAttribute('aria-selected', 'true');
+    tabBtn.setAttribute('aria-expanded', 'true');
+    targetPanel.style.display = 'block';
   }
 
   if (el.toggleLogoSectionBtn) {
