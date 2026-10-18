@@ -12,7 +12,8 @@ const ASSETS = [
   './jsQR.min.js',
   './jszip.min.js',
   './jspdf.umd.min.js',
-  './manifest.webmanifest'
+  './manifest.webmanifest',
+  './hzgpdfavicin.png'
 ];
 
 self.addEventListener('install', (event) => {

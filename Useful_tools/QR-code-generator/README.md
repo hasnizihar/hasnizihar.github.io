@@ -92,13 +92,12 @@ Designed and engineered by **[KR Hasni Zihar](https://hasnizihar.github.io/)** a
   7. 🛍️ *Eco Packaging Label* (Deep forest green, high contrast)
   8. 🌙 *Liquid Night Minimalist* (White dots on deep dark gradient)
 
-### 5. 💾 Local Project Library (IndexedDB)
-- **Zero Cloud / No Login Needed**: Stores designs privately in your browser's IndexedDB.
+### 5. 💾 Automatic Draft Persistence & Design State
+- **Zero Cloud / No Login Needed**: Your active work is saved automatically in local storage (`liquid_qr_draft_v2`).
 - **Features**:
-  - Save project with custom title and live thumbnail preview.
-  - Load, duplicate, and delete saved projects.
-  - 📤 **Export JSON**: Download your entire project library as a `.json` backup file.
-  - 📥 **Import JSON**: Restore or transfer your designs across browsers.
+  - Automatically restores your customized QR state (content type, colors, patterns, frames, and logo) upon page reload.
+  - Reset confirmation safeguards against accidental loss of customizations.
+  - Seamless memory optimization with bounded undo/redo history.
 
 ### 6. 📦 QR Batch Generator (ZIP Export)
 - Generate dozens or hundreds of QR codes at once from a list of URLs or CSV entries.

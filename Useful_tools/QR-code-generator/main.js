@@ -264,8 +264,24 @@
     socialPlatform: 'instagram'
   };
 
+  const HZGPD_LOGO_DATA_URI = 'data:image/png;base64,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';
+  let hzgpdLogoDataUrl = HZGPD_LOGO_DATA_URI;
   let hzgpdLogoImg = new Image();
-  hzgpdLogoImg.src = '../../Src/favicon-HzGPD.png';
+  hzgpdLogoImg.crossOrigin = 'anonymous';
+  hzgpdLogoImg.onload = () => {
+    try {
+      const c = document.createElement('canvas');
+      c.width = hzgpdLogoImg.naturalWidth || 64;
+      c.height = hzgpdLogoImg.naturalHeight || 64;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(hzgpdLogoImg, 0, 0);
+      hzgpdLogoDataUrl = c.toDataURL('image/png');
+    } catch (e) {
+      console.warn('HzGPD logo data URI cache note:', e);
+    }
+    if (state.presetLogo === 'hzgpd') triggerRender();
+  };
+  hzgpdLogoImg.src = HZGPD_LOGO_DATA_URI;
 
   // --- 6. Undo / Redo History Stack ---
   const history = {
@@ -1014,7 +1030,7 @@
               break;
             case 'circle':
               ctx.beginPath();
-              ctx.arc(x + modSize / 2, y + modSize / 2, modSize * 0.44, 0, Math.PI * 2);
+              ctx.arc(x + modSize / 2, y + modSize / 2, modSize * 0.5, 0, Math.PI * 2);
               ctx.fill();
               break;
             case 'classy':
@@ -1315,7 +1331,7 @@
           const y = qrOffsetY + (r + margin) * modSize;
 
           if (state.bodyShape === 'circle') {
-            svg += `  <circle cx="${(x + modSize / 2).toFixed(2)}" cy="${(y + modSize / 2).toFixed(2)}" r="${(modSize * 0.44).toFixed(2)}" fill="${fillAttr}" />\n`;
+            svg += `  <circle cx="${(x + modSize / 2).toFixed(2)}" cy="${(y + modSize / 2).toFixed(2)}" r="${(modSize * 0.5).toFixed(2)}" fill="${fillAttr}" />\n`;
           } else if (state.bodyShape === 'rounded') {
             svg += `  <rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${modSize.toFixed(2)}" height="${modSize.toFixed(2)}" rx="${(modSize * 0.35).toFixed(2)}" fill="${fillAttr}" />\n`;
           } else if (state.bodyShape === 'connected') {
@@ -1351,8 +1367,11 @@
 
       if (state.customLogoImg && state.customLogoImg.src) {
         svg += `  <image x="${logoX.toFixed(2)}" y="${logoY.toFixed(2)}" width="${logoPixelSize.toFixed(2)}" height="${logoPixelSize.toFixed(2)}" href="${state.customLogoImg.src}" />\n`;
-      } else if (state.presetLogo === 'hzgpd' && hzgpdLogoImg.src) {
-        svg += `  <image x="${logoX.toFixed(2)}" y="${logoY.toFixed(2)}" width="${logoPixelSize.toFixed(2)}" height="${logoPixelSize.toFixed(2)}" href="${hzgpdLogoImg.src}" />\n`;
+      } else if (state.presetLogo === 'hzgpd') {
+        const logoHref = hzgpdLogoDataUrl || HZGPD_LOGO_DATA_URI;
+        if (logoHref) {
+          svg += `  <image x="${logoX.toFixed(2)}" y="${logoY.toFixed(2)}" width="${logoPixelSize.toFixed(2)}" height="${logoPixelSize.toFixed(2)}" href="${logoHref}" />\n`;
+        }
       } else if (PRESET_ICONS[state.presetLogo]) {
         // Embed preset SVG icon
         svg += `  <g transform="translate(${logoX.toFixed(2)}, ${logoY.toFixed(2)}) scale(${(logoPixelSize / 24).toFixed(3)})">\n`;
@@ -2562,7 +2581,10 @@
     } else {
       iconSvg = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
     }
-    toast.innerHTML = `${iconSvg}<span>${msg}</span>`;
+    toast.innerHTML = iconSvg;
+    const textSpan = document.createElement('span');
+    textSpan.textContent = msg;
+    toast.appendChild(textSpan);
     el.toastContainer.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
