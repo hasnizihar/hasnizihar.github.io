@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Liquid QR Studio 2.1 - Responsive Breakpoints & Print Stylesheet
+   Audited for 320px, 375px, 768px, 1024px, 1440px
+   ========================================================================== */
+
+/* --- 1440px & Above: Large Displays --- */
+@media (min-width: 1440px) {
+  .main-wrapper {
+    max-width: 1260px;
+    padding: 44px 32px 80px;
+  }
+
+  .studio-layout {
+    gap: 36px;
+  }
+}
+
+/* --- 1024px to 1439px: Standard Desktop --- */
+@media (max-width: 1200px) {
+  .main-wrapper {
+    padding: 28px 20px 60px;
+  }
+
+  .studio-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 22px;
+  }
+}
+
+/* --- 768px to 1023px: Tablet --- */
+@media (max-width: 960px) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .preview-column {
+    position: static;
+    order: -1; /* Display preview prominently at the top on tablets */
+  }
+
+  .canvas-stage {
+    min-height: 320px;
+    padding: 18px;
+  }
+
+  #qr-canvas {
+    max-height: 320px;
+  }
+
+  .header-tools-nav {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-tools-nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* --- 640px and below: Small Tablets & Phablets --- */
+@media (max-width: 640px) {
+  .header-container {
+    padding: 10px 16px;
+  }
+
+  .header-tools-nav {
+    display: none; /* Accessible through clean quick drawer or in-studio modal buttons */
+  }
+
+  .intro-headline {
+    font-size: 1.75rem;
+  }
+
+  .intro-tagline {
+    font-size: 0.88rem;
+  }
+
+  .main-wrapper {
+    padding: 18px 14px 44px;
+  }
+
+  .quiet-card {
+    border-radius: 16px;
+  }
+
+  .creation-card,
+  .preview-card,
+  .appearance-card {
+    padding: 18px 16px;
+  }
+
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .pdf-layout-options,
+  .frame-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .template-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-stage {
+    min-height: 270px;
+    padding: 12px;
+  }
+
+  #qr-canvas {
+    max-height: 270px;
+  }
+}
+
+/* --- 375px: Standard Mobile --- */
+@media (max-width: 375px) {
+  .type-pill {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  .swatch-btn span {
+    width: 18px;
+    height: 18px;
+  }
+
+  .shape-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .primary-action-btn {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
+
+  .secondary-actions-row {
+    flex-wrap: wrap;
+  }
+
+  .secondary-btn {
+    flex: 1 1 40%;
+  }
+}
+
+/* --- 320px: Ultra-Compact Mobile --- */
+@media (max-width: 320px) {
+  .main-wrapper {
+    padding: 12px 10px 36px;
+  }
+
+  .intro-headline {
+    font-size: 1.5rem;
+  }
+
+  .creation-card,
+  .preview-card,
+  .appearance-card {
+    padding: 14px 12px;
+  }
+
+  .modal-card {
+    border-radius: 14px;
+  }
+
+  .modal-body {
+    padding: 14px;
+  }
+
+  .type-pill {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .canvas-stage {
+    min-height: 220px;
+  }
+
+  #qr-canvas {
+    max-height: 220px;
+  }
+}
+
+/* --- Print Stylesheet --- */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .glass-header,
+  .ambient-glow,
+  .creation-column,
+  .preview-header-row,
+  .primary-download-box,
+  .secondary-actions-row,
+  .app-footer,
+  .toast-container {
+    display: none !important;
+  }
+
+  .main-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .studio-layout {
+    display: block !important;
+  }
+
+  .preview-column,
+  .preview-card,
+  .canvas-stage {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  #qr-canvas {
+    box-shadow: none !important;
+    border: none !important;
+    display: block;
+    margin: 40px auto;
+  }
+}
