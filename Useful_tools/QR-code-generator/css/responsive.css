@@ -144,6 +144,51 @@
   #qr-canvas {
     max-height: 270px;
   }
+
+  /* Fullscreen Views Mobile Overrides */
+  .fullscreen-topbar {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .fullscreen-topbar-left {
+    gap: 10px;
+  }
+
+  .fullscreen-back-btn {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+
+  .fullscreen-title-wrap h2 {
+    font-size: 0.98rem;
+  }
+
+  .fullscreen-subtitle {
+    display: none;
+  }
+
+  .fullscreen-body {
+    padding: 18px 14px 44px;
+  }
+
+  .batch-fullscreen-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .batch-left-col textarea {
+    min-height: 220px !important;
+  }
+
+  .scanner-fullscreen-container {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .scanner-fullscreen-container .scanner-camera-box {
+    height: 250px;
+  }
 }
 
 /* --- 375px: Standard Mobile --- */

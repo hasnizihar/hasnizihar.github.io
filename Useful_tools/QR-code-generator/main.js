@@ -1474,6 +1474,16 @@
   }
 
   // --- 17. Batch Generation (JSZip) ---
+  if (el.batchItemsInput) {
+    el.batchItemsInput.addEventListener('input', () => {
+      const count = el.batchItemsInput.value.split('\n').map(l => l.trim()).filter(Boolean).length;
+      const countEl = document.getElementById('batch-entries-count');
+      if (countEl) {
+        countEl.textContent = `${count} ${count === 1 ? 'entry' : 'entries'}`;
+      }
+    });
+  }
+
   el.startBatchBtn.addEventListener('click', async () => {
     const rawLines = el.batchItemsInput.value.split('\n').map(l => l.trim()).filter(Boolean);
     if (!rawLines.length) {
@@ -1992,6 +2002,7 @@
         lastFocusedElement = null;
       }
     });
+  });
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {

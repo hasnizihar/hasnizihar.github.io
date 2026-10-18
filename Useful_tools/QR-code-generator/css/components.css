@@ -1121,6 +1121,190 @@ input[type="color"]::-webkit-color-swatch { border: 1px solid var(--border-card)
   gap: 10px;
 }
 
+/* --- Fullscreen Views (Scanner, Batch ZIP, Project Library) --- */
+.modal-overlay.fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-fallback);
+  background: var(--bg-gradient);
+  z-index: 300;
+  display: none;
+  align-items: stretch;
+  justify-content: stretch;
+  animation: fadeIn 220ms ease-out;
+  overflow: hidden;
+}
+
+.modal-overlay.fullscreen-overlay.active {
+  display: flex;
+}
+
+.modal-card.fullscreen-card {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fullscreen-topbar {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(12, 22, 28, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-card);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+[data-theme="light"] .fullscreen-topbar {
+  background: rgba(248, 250, 252, 0.92);
+}
+
+.fullscreen-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.fullscreen-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-input);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.fullscreen-back-btn:hover {
+  background: var(--surface-chip-hover);
+  border-color: var(--border-card-hover);
+  transform: translateX(-2px);
+}
+
+.fullscreen-back-btn svg {
+  transition: transform var(--transition-smooth);
+}
+
+.fullscreen-back-btn:hover svg {
+  transform: translateX(-2px);
+}
+
+.fullscreen-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fullscreen-title-wrap h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.fullscreen-subtitle {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.fullscreen-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 32px 32px 64px;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Scanner Fullscreen Container */
+.scanner-fullscreen-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scanner-fullscreen-container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 28px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.scanner-fullscreen-container .scanner-camera-box {
+  height: 340px;
+}
+
+/* Batch Fullscreen Layout */
+.batch-fullscreen-body {
+  max-width: 1180px;
+}
+
+.batch-fullscreen-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.95fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.batch-left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.batch-left-col .field-group {
+  margin-bottom: 0;
+}
+
+.batch-settings-card {
+  padding: 24px;
+  border-radius: 18px;
+}
+
+.batch-info-box {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-input);
+  border: 1px solid var(--border-card);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.fullscreen-body .projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
 /* --- Right-Side Drawer (Templates) --- */
 .drawer-overlay.drawer-right {
   padding: 0;

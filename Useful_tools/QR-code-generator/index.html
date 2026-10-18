@@ -711,50 +711,61 @@
     </div>
   </main>
 
-  <!-- MODAL 1: QR SCANNER & DECODER -->
-  <div class="modal-overlay" id="scanner-modal" role="dialog" aria-modal="true" aria-labelledby="scanner-modal-title">
-    <div class="quiet-card modal-card">
-      <div class="modal-header">
-        <h3 id="scanner-modal-title">QR Scanner & Decoder</h3>
+  <!-- FULLSCREEN VIEW 1: QR SCANNER & DECODER -->
+  <div class="modal-overlay fullscreen-overlay" id="scanner-modal" role="dialog" aria-modal="true" aria-labelledby="scanner-modal-title">
+    <div class="modal-card fullscreen-card">
+      <header class="fullscreen-topbar">
+        <div class="fullscreen-topbar-left">
+          <button type="button" class="fullscreen-back-btn" data-close="scanner-modal">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Studio</span>
+          </button>
+          <div class="fullscreen-title-wrap">
+            <h2 id="scanner-modal-title">QR Scanner & Decoder</h2>
+            <span class="fullscreen-subtitle">Camera & Image Decoder</span>
+          </div>
+        </div>
         <button class="modal-close-btn" data-close="scanner-modal" aria-label="Close scanner">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="scanner-modes">
-          <button type="button" id="scan-camera-tab-btn" class="type-pill active" style="flex: 1;">Camera Scanner</button>
-          <button type="button" id="scan-upload-tab-btn" class="type-pill" style="flex: 1;">Upload Image</button>
-        </div>
-
-        <div id="camera-scanner-section">
-          <div class="scanner-camera-box">
-            <video id="camera-video" playsinline></video>
-            <div class="scanner-reticle"></div>
+      </header>
+      <div class="fullscreen-body scanner-fullscreen-body">
+        <div class="scanner-fullscreen-container">
+          <div class="scanner-modes">
+            <button type="button" id="scan-camera-tab-btn" class="type-pill active" style="flex: 1;">Camera Scanner</button>
+            <button type="button" id="scan-upload-tab-btn" class="type-pill" style="flex: 1;">Upload Image</button>
           </div>
-          <div style="text-align: center; margin-top: 12px;">
-            <button type="button" id="start-camera-btn" class="primary-action-btn" style="display: inline-flex; width: auto; padding: 10px 22px;">Start Camera</button>
-            <button type="button" id="stop-camera-btn" class="secondary-btn" style="display: none;">Stop Camera</button>
-          </div>
-        </div>
 
-        <div id="upload-scanner-section" style="display: none;">
-          <div class="file-upload-area" id="scan-drop-zone" style="padding: 40px 20px;">
-            <input type="file" id="scan-file-input" accept="image/*" class="file-hidden">
-            <div class="file-prompt">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              <span>Click or drop QR image to decode</span>
+          <div id="camera-scanner-section">
+            <div class="scanner-camera-box">
+              <video id="camera-video" playsinline></video>
+              <div class="scanner-reticle"></div>
+            </div>
+            <div style="text-align: center; margin-top: 14px;">
+              <button type="button" id="start-camera-btn" class="primary-action-btn" style="display: inline-flex; width: auto; padding: 11px 26px;">Start Camera</button>
+              <button type="button" id="stop-camera-btn" class="secondary-btn" style="display: none; padding: 11px 26px;">Stop Camera</button>
             </div>
           </div>
-        </div>
 
-        <div class="scan-result-card" id="scan-result-card" style="display: none;">
-          <div class="field-label-row">
-            <span style="font-size: 0.72rem; text-transform: uppercase; color: var(--accent); font-weight: 600;">Decoded Content</span>
-            <span class="metric-pill success">Verified</span>
+          <div id="upload-scanner-section" style="display: none;">
+            <div class="file-upload-area" id="scan-drop-zone" style="padding: 50px 24px;">
+              <input type="file" id="scan-file-input" accept="image/*" class="file-hidden">
+              <div class="file-prompt">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <span style="font-size: 0.95rem; margin-top: 6px;">Click or drop QR image file here to decode</span>
+              </div>
+            </div>
           </div>
-          <div class="scan-result-content" id="scan-decoded-text"></div>
-          <div style="display: flex; gap: 8px; margin-top: 14px;">
-            <button type="button" id="copy-scan-result-btn" class="primary-action-btn" style="flex: 1;">Copy Text</button>
-            <button type="button" id="import-scan-result-btn" class="secondary-btn" style="flex: 1;">Load into Studio</button>
-            <a id="open-scan-link-btn" href="#" target="_blank" rel="noopener noreferrer" class="secondary-btn" style="display: none;">Open Link</a>
+
+          <div class="scan-result-card" id="scan-result-card" style="display: none; margin-top: 20px;">
+            <div class="field-label-row">
+              <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: 600;">Decoded Payload</span>
+              <span class="metric-pill success">Verified</span>
+            </div>
+            <div class="scan-result-content" id="scan-decoded-text"></div>
+            <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
+              <button type="button" id="copy-scan-result-btn" class="primary-action-btn" style="flex: 1 1 160px;">Copy Text</button>
+              <button type="button" id="import-scan-result-btn" class="secondary-btn" style="flex: 1 1 160px;">Load into Studio</button>
+              <a id="open-scan-link-btn" href="#" target="_blank" rel="noopener noreferrer" class="secondary-btn" style="display: none; flex: 1 1 160px;">Open Link</a>
+            </div>
           </div>
         </div>
       </div>
@@ -780,68 +791,99 @@
     </div>
   </div>
 
-  <!-- MODAL 3: PROJECT LIBRARY (IndexedDB) -->
-  <div class="modal-overlay" id="projects-modal" role="dialog" aria-modal="true" aria-labelledby="projects-modal-title">
-    <div class="quiet-card modal-card" style="max-width: 780px;">
-      <div class="modal-header">
-        <h3 id="projects-modal-title">Saved Projects</h3>
-        <button class="modal-close-btn" data-close="projects-modal" aria-label="Close projects">✕</button>
-      </div>
-      <div class="modal-body">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Stored privately in your browser storage (IndexedDB). No cloud or login required.</p>
-          <div style="display: flex; gap: 6px;">
-            <button type="button" id="export-projects-json-btn" class="chip-btn">Export JSON</button>
-            <label class="chip-btn" style="cursor: pointer;">Import JSON<input type="file" id="import-projects-file" accept=".json" style="display: none;"></label>
+  <!-- FULLSCREEN VIEW 2: PROJECT LIBRARY -->
+  <div class="modal-overlay fullscreen-overlay" id="projects-modal" role="dialog" aria-modal="true" aria-labelledby="projects-modal-title">
+    <div class="modal-card fullscreen-card">
+      <header class="fullscreen-topbar">
+        <div class="fullscreen-topbar-left">
+          <button type="button" class="fullscreen-back-btn" data-close="projects-modal">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Studio</span>
+          </button>
+          <div class="fullscreen-title-wrap">
+            <h2 id="projects-modal-title">Project Library</h2>
+            <span class="fullscreen-subtitle">Private Browser Storage (IndexedDB)</span>
           </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" id="export-projects-json-btn" class="header-tool-btn">Export JSON</button>
+          <label class="header-tool-btn" style="cursor: pointer; margin-bottom: 0;">Import JSON<input type="file" id="import-projects-file" accept=".json" style="display: none;"></label>
+          <button class="modal-close-btn" data-close="projects-modal" aria-label="Close projects">✕</button>
+        </div>
+      </header>
+      <div class="fullscreen-body">
+        <div style="margin-bottom: 22px;">
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            All projects are stored privately on your device. Easily load previous designs back into the studio or export backups.
+          </p>
         </div>
         <div class="projects-grid" id="projects-list-grid"></div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 4: QR BATCH GENERATOR -->
-  <div class="modal-overlay" id="batch-modal" role="dialog" aria-modal="true" aria-labelledby="batch-modal-title">
-    <div class="quiet-card modal-card">
-      <div class="modal-header">
-        <h3 id="batch-modal-title">Batch QR Generator</h3>
+  <!-- FULLSCREEN VIEW 3: QR BATCH GENERATOR -->
+  <div class="modal-overlay fullscreen-overlay" id="batch-modal" role="dialog" aria-modal="true" aria-labelledby="batch-modal-title">
+    <div class="modal-card fullscreen-card">
+      <header class="fullscreen-topbar">
+        <div class="fullscreen-topbar-left">
+          <button type="button" class="fullscreen-back-btn" data-close="batch-modal">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Studio</span>
+          </button>
+          <div class="fullscreen-title-wrap">
+            <h2 id="batch-modal-title">Batch QR Generator</h2>
+            <span class="fullscreen-subtitle">Bulk QR Package Creator</span>
+          </div>
+        </div>
         <button class="modal-close-btn" data-close="batch-modal" aria-label="Close batch">✕</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
-          Generate multiple custom QR codes applying your active design.
-        </p>
-        <div class="field-group">
-          <label for="batch-items-input">Entries (One URL or text per line)</label>
-          <textarea id="batch-items-input" class="minimal-textarea" style="min-height: 110px;" placeholder="https://example.com/item-1&#10;https://example.com/item-2&#10;https://example.com/item-3"></textarea>
+      </header>
+      <div class="fullscreen-body batch-fullscreen-body">
+        <div class="batch-fullscreen-layout">
+          <div class="batch-left-col">
+            <div class="field-group">
+              <div class="field-label-row">
+                <label for="batch-items-input" style="font-size: 0.85rem; font-weight: 600;">Entries (One URL or text per line)</label>
+                <span id="batch-entries-count" style="font-size: 0.75rem; color: var(--text-dim); padding: 2px 8px; border-radius: 6px; background: var(--surface-chip);">0 entries</span>
+              </div>
+              <textarea id="batch-items-input" class="minimal-textarea" style="min-height: 340px; font-family: monospace; font-size: 0.84rem; line-height: 1.6;" placeholder="https://example.com/item-1&#10;https://example.com/item-2&#10;https://example.com/item-3&#10;https://example.com/item-4"></textarea>
+            </div>
+          </div>
+          <div class="batch-right-col">
+            <div class="quiet-card batch-settings-card">
+              <h4 style="font-size: 0.98rem; font-weight: 600; margin-bottom: 16px; color: var(--text-main);">Package Settings</h4>
+              <div class="field-group">
+                <label for="batch-prefix-input">File Name Prefix</label>
+                <input type="text" id="batch-prefix-input" class="minimal-input" value="qr-code">
+              </div>
+              <div class="field-group">
+                <label for="batch-res-select">Image Resolution</label>
+                <select id="batch-res-select" class="minimal-select">
+                  <option value="600" selected>Standard (600 × 600 px)</option>
+                  <option value="1200">High-Res Print (1200 × 1200 px)</option>
+                  <option value="2000">Ultra High-Res (2000 × 2000 px)</option>
+                </select>
+              </div>
+              <div class="batch-info-box">
+                <p>Every generated QR code automatically applies your currently active colors, patterns, center logo, and decorative frame.</p>
+              </div>
+              <div id="batch-progress-box" style="display: none; margin-top: 16px;">
+                <div class="field-label-row">
+                  <span id="batch-progress-label">Generating package...</span>
+                  <span id="batch-progress-num">0%</span>
+                </div>
+                <div class="batch-progress-bar-wrap">
+                  <div class="batch-progress-fill" id="batch-progress-fill"></div>
+                </div>
+              </div>
+              <div style="margin-top: 24px;">
+                <button type="button" id="start-batch-btn" class="primary-action-btn" style="width: 100%; padding: 13px 20px;">
+                  Generate & Download ZIP
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid-2col">
-          <div class="field-group">
-            <label for="batch-prefix-input">File Prefix</label>
-            <input type="text" id="batch-prefix-input" class="minimal-input" value="qr-code">
-          </div>
-          <div class="field-group">
-            <label for="batch-res-select">Resolution</label>
-            <select id="batch-res-select" class="minimal-select">
-              <option value="600" selected>600 × 600</option>
-              <option value="1200">1200 × 1200</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="batch-progress-box" style="display: none; margin-top: 10px;">
-          <div class="field-label-row">
-            <span id="batch-progress-label">Generating...</span>
-            <span id="batch-progress-num">0%</span>
-          </div>
-          <div class="batch-progress-bar-wrap">
-            <div class="batch-progress-fill" id="batch-progress-fill"></div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="secondary-btn" data-close="batch-modal">Cancel</button>
-        <button type="button" id="start-batch-btn" class="primary-action-btn" style="width: auto; padding: 10px 22px;">Generate & Download ZIP</button>
       </div>
     </div>
   </div>
