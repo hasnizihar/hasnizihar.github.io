@@ -1992,6 +1992,12 @@
         lastFocusedElement = null;
       }
     });
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeAllModals();
+      }
+    });
   });
 
   // Top Nav Modal Triggers

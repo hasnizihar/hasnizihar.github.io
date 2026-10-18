@@ -126,6 +126,21 @@
     flex: 1 1 100%;
   }
 
+  .drawer-overlay.drawer-right .drawer-card {
+    max-width: 100%;
+  }
+
+  .drawer-template-grid .template-card {
+    grid-template-columns: 85px 1fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .drawer-template-grid .template-thumb {
+    width: 85px;
+    height: 80px;
+  }
+
   #qr-canvas {
     max-height: 270px;
   }

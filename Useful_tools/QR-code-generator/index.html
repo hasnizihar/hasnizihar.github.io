@@ -761,18 +761,21 @@
     </div>
   </div>
 
-  <!-- MODAL 2: TEMPLATE GALLERY -->
-  <div class="modal-overlay" id="templates-modal" role="dialog" aria-modal="true" aria-labelledby="templates-modal-title">
-    <div class="quiet-card modal-card" style="max-width: 820px;">
-      <div class="modal-header">
-        <h3 id="templates-modal-title">Curated Templates</h3>
+  <!-- DRAWER: TEMPLATE GALLERY (Right-Side Drawer) -->
+  <div class="modal-overlay drawer-overlay drawer-right" id="templates-modal" role="dialog" aria-modal="true" aria-labelledby="templates-modal-title">
+    <div class="quiet-card modal-card drawer-card" style="max-width: 440px;">
+      <div class="modal-header drawer-header">
+        <div class="drawer-title-wrap">
+          <h3 id="templates-modal-title">Curated Templates</h3>
+          <span class="drawer-badge">Presets</span>
+        </div>
         <button class="modal-close-btn" data-close="templates-modal" aria-label="Close templates">✕</button>
       </div>
-      <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-          Choose a ready-made style. Clicking any template applies its colors, patterns, and frame while keeping your entered content safe.
+      <div class="modal-body drawer-body">
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.45;">
+          Select a ready-made style. Clicking any template applies tailored colors, patterns, and frame in real time.
         </p>
-        <div class="template-grid" id="template-gallery-grid"></div>
+        <div class="template-grid drawer-template-grid" id="template-gallery-grid"></div>
       </div>
     </div>
   </div>
