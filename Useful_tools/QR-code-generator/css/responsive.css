@@ -101,8 +101,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .template-grid,
-  .projects-grid {
+  .template-grid {
     grid-template-columns: 1fr;
   }
 

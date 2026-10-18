@@ -327,72 +327,7 @@
     }
   };
 
-  // --- 7. IndexedDB Project Storage ---
-  const DB_NAME = 'LiquidQR_DB';
-  const DB_VERSION = 1;
-  const STORE_NAME = 'projects';
-
-  function openDatabase() {
-    return new Promise((resolve, reject) => {
-      const req = indexedDB.open(DB_NAME, DB_VERSION);
-      req.onupgradeneeded = (e) => {
-        const db = e.target.result;
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-        }
-      };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  async function dbSaveProject(title) {
-    const db = await openDatabase();
-    const canvas = document.getElementById('qr-canvas');
-    const previewDataUrl = canvas ? canvas.toDataURL('image/png', 0.6) : '';
-    const project = {
-      id: 'proj_' + Date.now(),
-      title: title || 'Untitled Project',
-      date: new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
-      preview: previewDataUrl,
-      state: {
-        ...state,
-        customLogoImg: null
-      }
-    };
-
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(STORE_NAME, 'readwrite');
-      const store = tx.objectStore(STORE_NAME);
-      const req = store.put(project);
-      req.onsuccess = () => resolve(project);
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  async function dbGetAllProjects() {
-    const db = await openDatabase();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(STORE_NAME, 'readonly');
-      const store = tx.objectStore(STORE_NAME);
-      const req = store.getAll();
-      req.onsuccess = () => resolve(req.result || []);
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  async function dbDeleteProject(id) {
-    const db = await openDatabase();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(STORE_NAME, 'readwrite');
-      const store = tx.objectStore(STORE_NAME);
-      const req = store.delete(id);
-      req.onsuccess = () => resolve();
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  // --- 8. DOM Elements ---
+  // --- 7. DOM Elements ---
   const el = {
     navbar: document.getElementById('navbar'),
     themeToggle: document.getElementById('theme-toggle'),
@@ -410,8 +345,6 @@
     openScannerBtn: document.getElementById('open-scanner-btn'),
     openBatchBtn: document.getElementById('open-batch-btn'),
     openPdfBtn: document.getElementById('open-pdf-btn'),
-    openProjectsBtn: document.getElementById('open-projects-btn'),
-    saveProjectQuickBtn: document.getElementById('save-project-quick-btn'),
     undoBtn: document.getElementById('undo-btn'),
     redoBtn: document.getElementById('redo-btn'),
 
@@ -521,13 +454,9 @@
     // Modals
     scannerModal: document.getElementById('scanner-modal'),
     templatesModal: document.getElementById('templates-modal'),
-    projectsModal: document.getElementById('projects-modal'),
     batchModal: document.getElementById('batch-modal'),
     pdfModal: document.getElementById('pdf-modal'),
     templateGalleryGrid: document.getElementById('template-gallery-grid'),
-    projectsListGrid: document.getElementById('projects-list-grid'),
-    exportProjectsJsonBtn: document.getElementById('export-projects-json-btn'),
-    importProjectsFile: document.getElementById('import-projects-file'),
 
     // Scanner Elements
     scanCameraTabBtn: document.getElementById('scan-camera-tab-btn'),
@@ -1999,138 +1928,7 @@
     generateAndDrawQR();
   }
 
-  // --- 21. Project Library UI ---
-  async function renderProjectsList() {
-    const list = await dbGetAllProjects();
-    el.projectsListGrid.innerHTML = '';
-
-    if (!list.length) {
-      el.projectsListGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 36px; color: var(--text-dim);">
-          <p>No saved projects yet. Click "Save" below the preview to store your designs locally.</p>
-        </div>
-      `;
-      return;
-    }
-
-    list.reverse().forEach(proj => {
-      const card = document.createElement('div');
-      card.className = 'project-item-card';
-      card.innerHTML = `
-        <div class="project-thumb-wrap">
-          <img src="${proj.preview}" class="project-thumb-img" alt="${proj.title}">
-        </div>
-        <div>
-          <h4 style="font-size: 0.88rem; font-weight: 600; color: var(--text-main);">${proj.title}</h4>
-          <span style="font-size: 0.7rem; color: var(--text-dim);">${proj.date}</span>
-        </div>
-        <div class="project-actions-row">
-          <button class="primary-action-btn btn-load-proj" style="flex: 1; padding: 6px 10px; font-size: 0.75rem;">Load</button>
-          <button class="secondary-btn btn-del-proj" style="padding: 6px 10px; font-size: 0.75rem; color: #ef4444;">Delete</button>
-        </div>
-      `;
-
-      card.querySelector('.btn-load-proj').addEventListener('click', () => {
-        Object.assign(state, proj.state);
-        syncStateToDOM();
-        generateAndDrawQR();
-        closeAllModals();
-        showToast(`Loaded: "${proj.title}"`, 'success');
-      });
-
-      card.querySelector('.btn-del-proj').addEventListener('click', async () => {
-        if (confirm(`Delete project "${proj.title}"?`)) {
-          await dbDeleteProject(proj.id);
-          renderProjectsList();
-          showToast('Project deleted', 'info');
-        }
-      });
-
-      el.projectsListGrid.appendChild(card);
-    });
-  }
-
-  el.saveProjectQuickBtn.addEventListener('click', async () => {
-    const defaultTitle = (state.type.charAt(0).toUpperCase() + state.type.slice(1)) + ' QR - ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const title = prompt('Enter a name for this QR project:', defaultTitle);
-    if (title && title.trim()) {
-      const origContent = el.saveProjectQuickBtn.innerHTML;
-      try {
-        el.saveProjectQuickBtn.innerHTML = '<span>Saved!</span>';
-        setTimeout(() => { el.saveProjectQuickBtn.innerHTML = origContent; }, 1400);
-
-        await dbSaveProject(title.trim());
-        showToast(`Saved "${title.trim()}" to project library!`, 'success');
-      } catch (err) {
-        el.saveProjectQuickBtn.innerHTML = origContent;
-        showToast('Could not save project: ' + (err.message || 'Storage error'), 'error');
-      }
-    }
-  });
-
-  el.exportProjectsJsonBtn.addEventListener('click', async () => {
-    const list = await dbGetAllProjects();
-    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(list, null, 2));
-    const a = document.createElement('a');
-    a.href = dataStr;
-    a.download = `liquid-qr-projects-${Date.now()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
-
-  el.importProjectsFile.addEventListener('change', async (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = async (evt) => {
-        try {
-          const list = JSON.parse(evt.target.result);
-          if (!Array.isArray(list)) {
-            showToast('Import failed: File must contain a project list array', 'error');
-            return;
-          }
-          if (list.length === 0) {
-            showToast('Import note: The selected project list is empty', 'info');
-            return;
-          }
-          const db = await openDatabase();
-          const tx = db.transaction(STORE_NAME, 'readwrite');
-          const store = tx.objectStore(STORE_NAME);
-          let count = 0;
-
-          list.forEach(p => {
-            if (p && typeof p === 'object') {
-              const sanitized = {
-                id: (p.id && typeof p.id === 'string') ? p.id : 'proj_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-                title: (p.title && typeof p.title === 'string') ? p.title.trim() : 'Imported Project',
-                date: p.date || new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
-                preview: p.preview || '',
-                state: (p.state && typeof p.state === 'object') ? p.state : {}
-              };
-              store.put(sanitized);
-              count++;
-            }
-          });
-
-          await new Promise((res, rej) => {
-            tx.oncomplete = res;
-            tx.onerror = () => rej(tx.error);
-          });
-
-          await renderProjectsList();
-          showToast(`Imported ${count} project${count === 1 ? '' : 's'} successfully!`, 'success');
-        } catch (err) {
-          showToast('Import failed: ' + (err.message || 'Malformed JSON file'), 'error');
-        } finally {
-          el.importProjectsFile.value = '';
-        }
-      };
-      reader.readAsText(file);
-    }
-  });
-
-  // --- 22. Accessible Modals Control with Focus Trap ---
+  // --- 21. Accessible Modals Control with Focus Trap ---
   let lastFocusedElement = null;
 
   function openModal(modalEl) {
@@ -2192,11 +1990,6 @@
     openModal(el.pdfModal);
   });
 
-  el.openProjectsBtn.addEventListener('click', async () => {
-    await renderProjectsList();
-    openModal(el.projectsModal);
-  });
-
   // History Controls
   el.undoBtn.addEventListener('click', () => history.undo());
   el.redoBtn.addEventListener('click', () => history.redo());
@@ -2244,7 +2037,7 @@
       }
     } else if ((e.ctrlKey || e.metaKey) && e.key === 's') {
       e.preventDefault();
-      el.saveProjectQuickBtn.click();
+      el.btnDownloadPng.click();
     } else if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
       e.preventDefault();
       el.btnDownloadPng.click();

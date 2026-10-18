@@ -75,11 +75,6 @@
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
           <span>Batch ZIP</span>
         </button>
-
-        <button id="open-projects-btn" class="header-tool-btn" title="My Projects Library">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-          <span>Projects</span>
-        </button>
       </nav>
 
       <!-- History & Theme Controls -->
@@ -702,9 +697,6 @@
             <button type="button" id="btn-copy-image" class="secondary-btn" title="Copy to clipboard">
               <span>Copy</span>
             </button>
-            <button type="button" id="save-project-quick-btn" class="secondary-btn" title="Save to local library">
-              <span>Save</span>
-            </button>
           </div>
         </div>
       </aside>
@@ -791,38 +783,7 @@
     </div>
   </div>
 
-  <!-- FULLSCREEN VIEW 2: PROJECT LIBRARY -->
-  <div class="modal-overlay fullscreen-overlay" id="projects-modal" role="dialog" aria-modal="true" aria-labelledby="projects-modal-title">
-    <div class="modal-card fullscreen-card">
-      <header class="fullscreen-topbar">
-        <div class="fullscreen-topbar-left">
-          <button type="button" class="fullscreen-back-btn" data-close="projects-modal">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>Back to Studio</span>
-          </button>
-          <div class="fullscreen-title-wrap">
-            <h2 id="projects-modal-title">Project Library</h2>
-            <span class="fullscreen-subtitle">Private Browser Storage (IndexedDB)</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" id="export-projects-json-btn" class="header-tool-btn">Export JSON</button>
-          <label class="header-tool-btn" style="cursor: pointer; margin-bottom: 0;">Import JSON<input type="file" id="import-projects-file" accept=".json" style="display: none;"></label>
-          <button class="modal-close-btn" data-close="projects-modal" aria-label="Close projects">✕</button>
-        </div>
-      </header>
-      <div class="fullscreen-body">
-        <div style="margin-bottom: 22px;">
-          <p style="font-size: 0.88rem; color: var(--text-muted);">
-            All projects are stored privately on your device. Easily load previous designs back into the studio or export backups.
-          </p>
-        </div>
-        <div class="projects-grid" id="projects-list-grid"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FULLSCREEN VIEW 3: QR BATCH GENERATOR -->
+  <!-- FULLSCREEN VIEW 2: QR BATCH GENERATOR -->
   <div class="modal-overlay fullscreen-overlay" id="batch-modal" role="dialog" aria-modal="true" aria-labelledby="batch-modal-title">
     <div class="modal-card fullscreen-card">
       <header class="fullscreen-topbar">
