@@ -141,7 +141,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.field-label-row label {
+  margin-bottom: 0;
 }
 
 label {
@@ -156,6 +160,10 @@ label {
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.input-container .minimal-input {
+  padding-right: 38px;
 }
 
 .minimal-input,
@@ -333,6 +341,16 @@ label {
 /* --- Compact Appearance Header Row --- */
 .appearance-header-row {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.appearance-header-row .section-label {
+  margin-bottom: 0;
+}
+
+.appearance-controls-bar {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -342,57 +360,72 @@ label {
 .swatches-compact-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 10px;
 }
 
 .swatch-btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 2px;
+  padding: 3px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-smooth);
+  transition: transform var(--transition-smooth), outline-color var(--transition-smooth);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .swatch-btn:hover {
-  transform: scale(1.18);
+  transform: scale(1.15);
+}
+
+.swatch-btn.active {
+  outline: 2px solid var(--accent);
 }
 
 .swatch-btn span {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: block;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 .quick-add-toggles {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
 }
 
 .toggle-chip {
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 7px 14px;
+  border-radius: 9px;
   background: var(--surface-chip);
   border: 1px solid var(--border-card);
   color: var(--text-muted);
   font-family: inherit;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   transition: all var(--transition-smooth);
 }
 
-.toggle-chip:hover,
-.toggle-chip.active {
+.toggle-chip:hover {
   background: var(--surface-chip-hover);
+  color: var(--text-main);
+  border-color: var(--border-card);
+}
+
+.toggle-chip.active {
+  background: var(--accent-subtle);
   color: var(--accent-text);
   border-color: var(--accent);
+  font-weight: 600;
 }
 
 /* Expandable Panels (Inline Logo & Frame) */
@@ -413,7 +446,7 @@ label {
 
 /* --- Advanced Accordion Component --- */
 .advanced-accordion-wrapper {
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .accordion-toggle-btn {
@@ -421,13 +454,13 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 13px 18px;
   border-radius: 12px;
-  background: var(--surface-chip);
+  background: var(--surface-input);
   border: 1px solid var(--border-card);
   color: var(--text-muted);
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-smooth);
@@ -436,6 +469,7 @@ label {
 .accordion-toggle-btn:hover {
   background: var(--surface-chip-hover);
   color: var(--text-main);
+  border-color: var(--border-card);
 }
 
 .toggle-btn-left {
