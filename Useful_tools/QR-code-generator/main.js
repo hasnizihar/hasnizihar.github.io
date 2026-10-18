@@ -1099,12 +1099,9 @@
 
       if (state.logoBadgeBg) {
         ctx.fillStyle = state.isTransparentBg ? '#ffffff' : state.bgColor;
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
-        ctx.shadowBlur = 8;
         const badgeX = centerX - badgePixelSize / 2;
         const badgeY = centerY - badgePixelSize / 2;
         drawRoundedRect(ctx, badgeX, badgeY, badgePixelSize, badgePixelSize, badgePixelSize * 0.25);
-        ctx.shadowColor = 'transparent';
       }
 
       const logoX = centerX - logoPixelSize / 2;
